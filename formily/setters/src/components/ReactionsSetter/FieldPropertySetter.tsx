@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { TextWidget, usePrefix } from '@designable/react'
-import { Menu } from 'antd'
 import { MonacoInput } from '@designable/react-settings-form'
 import { isPlainObj, reduce } from '@formily/shared'
 import { FieldProperties } from './properties'
+import { Nav } from '@douyinfe/semi-ui'
 export interface IFieldProperty {
   [key: string]: string
 }
@@ -49,7 +49,7 @@ export const FieldPropertySetter: React.FC<IFieldPropertySetterProps> = (
 
   return (
     <div className={prefix}>
-      <Menu
+      <Nav
         mode="vertical"
         style={{
           width: 200,
@@ -61,28 +61,28 @@ export const FieldPropertySetter: React.FC<IFieldPropertySetterProps> = (
         defaultSelectedKeys={selectKeys}
         selectedKeys={selectKeys}
         onSelect={({ selectedKeys }) => {
-          setSelectKeys(selectedKeys)
+          setSelectKeys(selectedKeys.map((rt) => rt.toString()))
         }}
       >
         {FieldProperties.map((key) => {
           if (isPlainObj(key)) {
             return (
-              <Menu.Item key={key.key}>
+              <Nav.Item key={key.key} itemKey={key.key}>
                 <TextWidget
                   token={`SettingComponents.ReactionsSetter.${
                     key.token || key.key
                   }`}
                 />
-              </Menu.Item>
+              </Nav.Item>
             )
           }
           return (
-            <Menu.Item key={key}>
+            <Nav.Item key={key} itemKey={key}>
               <TextWidget token={`SettingComponents.ReactionsSetter.${key}`} />
-            </Menu.Item>
+            </Nav.Item>
           )
         })}
-      </Menu>
+      </Nav>
       <div className={prefix + '-coder-wrapper'}>
         <div className={prefix + '-coder-start'}>
           {`$self.${selectKeys[0]} = (`}

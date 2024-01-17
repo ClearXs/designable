@@ -51,6 +51,9 @@ export class Rect implements IRect {
     this.width = width
     this.height = height
   }
+  toJSON() {
+    throw new Error('Method not implemented.')
+  }
 
   get left() {
     return this.x
@@ -83,6 +86,7 @@ export interface IRect {
   y: number
   width: number
   height: number
+  toJSON(): any
 }
 
 export enum RectQuadrant {

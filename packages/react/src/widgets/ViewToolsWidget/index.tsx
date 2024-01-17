@@ -1,10 +1,10 @@
 import React from 'react'
-import { Button } from 'antd'
 import { observer } from '@formily/reactive-react'
 import { WorkbenchTypes } from '@designable/core'
 import { IconWidget } from '../IconWidget'
 import { usePrefix, useWorkbench } from '../../hooks'
 import cls from 'classnames'
+import { Button, ButtonGroup } from '@douyinfe/semi-ui'
 
 export interface IViewToolsWidget {
   use?: WorkbenchTypes[]
@@ -17,7 +17,7 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
     const workbench = useWorkbench()
     const prefix = usePrefix('view-tools')
     return (
-      <Button.Group style={style} className={cls(prefix, className)}>
+      <ButtonGroup style={style} className={cls(prefix, className)}>
         {use.includes('DESIGNABLE') && (
           <Button
             disabled={workbench.type === 'DESIGNABLE'}
@@ -62,7 +62,7 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
             <IconWidget infer="Play" />
           </Button>
         )}
-      </Button.Group>
+      </ButtonGroup>
     )
   }
 )

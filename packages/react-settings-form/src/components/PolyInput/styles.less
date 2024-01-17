@@ -1,4 +1,4 @@
-@import '~antd/lib/style/themes/default.less';
+@import '../../variables.less';
 
 .dn-poly-input {
   display: flex;
@@ -10,18 +10,16 @@
     margin-right: 2px;
     display: flex;
 
-    .@{ant-prefix}-select {
+    .@{ui-prefix}-select {
       width: 100%;
     }
 
-    .@{ant-prefix}-input-number {
+    .@{ui-prefix}-input-number {
       width: 100%;
     }
   }
 
   .dn-poly-input-controller {
-    border: 1px solid @border-color-base;
-    border-radius: 2px;
     cursor: pointer;
     padding: 0 8px;
     display: flex;

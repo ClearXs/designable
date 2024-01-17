@@ -6,6 +6,7 @@ import {
   DatePicker,
   TimePicker,
   Select,
+  TreeSelect,
   Radio,
   Switch,
   Space,
@@ -15,8 +16,7 @@ import {
   FormGrid,
   FormLayout,
   FormTab,
-} from '@formily/antd'
-import { Slider } from 'antd'
+} from '@formily/semi'
 import {
   SizeInput,
   ColorInput,
@@ -37,6 +37,7 @@ import {
   DrawerSetter,
   CollapseItem,
 } from './components'
+import { Slider } from '@douyinfe/semi-ui'
 
 export const SchemaField = createSchemaField({
   components: {
@@ -64,6 +65,7 @@ export const SchemaField = createSchemaField({
     DatePicker,
     TimePicker,
     Select,
+    TreeSelect,
     Radio,
     Slider,
     Switch,

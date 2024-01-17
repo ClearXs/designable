@@ -156,7 +156,7 @@ export const ArrayTable: DnFC<TableProps> = observer((props) => {
           size="small"
           hasBorder
           {...props}
-          className={cls('ant-formily-array-table', props.className)}
+          className={cls(props.className)}
           style={{ marginBottom: 10, ...props.style }}
           primaryKey={defaultRowKey()}
           dataSource={[{ id: '1' }]}

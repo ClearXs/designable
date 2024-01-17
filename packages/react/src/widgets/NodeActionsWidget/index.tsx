@@ -1,11 +1,11 @@
 import React from 'react'
-import { Space, Typography, Divider, TypographyProps } from 'antd'
 import { observer } from '@formily/reactive-react'
 import { usePrefix, useTreeNode, useSelected } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { TextWidget } from '../TextWidget'
 import cls from 'classnames'
 import './styles.less'
+import { Space, Typography } from '@douyinfe/semi-ui'
 
 export interface INodeActionsWidgetProps {
   className?: string
@@ -14,8 +14,7 @@ export interface INodeActionsWidgetProps {
 }
 
 export interface INodeActionsWidgetActionProps
-  extends Omit<React.ComponentProps<'a'>, 'title' | 'type' | 'ref'>,
-    Partial<TypographyProps['Link']> {
+  extends Omit<React.ComponentProps<'a'>, 'title' | 'type' | 'ref'> {
   className?: string
   style?: React.CSSProperties
   title: React.ReactNode
@@ -32,7 +31,7 @@ export const NodeActionsWidget: React.FC<INodeActionsWidgetProps> & {
   return (
     <div className={cls(prefix, props.className)} style={props.style}>
       <div className={prefix + '-content'}>
-        <Space split={<Divider type="vertical" />}>{props.children}</Space>
+        <Space>{props.children}</Space>
       </div>
     </div>
   )
@@ -41,7 +40,7 @@ export const NodeActionsWidget: React.FC<INodeActionsWidgetProps> & {
 NodeActionsWidget.Action = ({ icon, title, ...props }) => {
   const prefix = usePrefix('node-actions-item')
   return (
-    <Typography.Link
+    <Typography.Text
       {...props}
       className={cls(props.className, prefix)}
       data-click-stop-propagation="true"
@@ -50,6 +49,6 @@ NodeActionsWidget.Action = ({ icon, title, ...props }) => {
         <IconWidget infer={icon} />
         <TextWidget>{title}</TextWidget>
       </span>
-    </Typography.Link>
+    </Typography.Text>
   )
 }

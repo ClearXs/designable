@@ -1,5 +1,4 @@
 import React, { Fragment, useRef } from 'react'
-import { Button, InputNumber } from 'antd'
 import { observer } from '@formily/reactive-react'
 import { CursorType, ScreenType } from '@designable/core'
 import {
@@ -12,6 +11,8 @@ import {
 import { IconWidget } from '../IconWidget'
 import cls from 'classnames'
 import './styles.less'
+import { Button, ButtonGroup, InputNumber, Tooltip } from '@douyinfe/semi-ui'
+import { TextWidget } from '../TextWidget'
 
 type DesignerToolsType = 'HISTORY' | 'CURSOR' | 'SCREEN_TYPE'
 
@@ -32,26 +33,41 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
     const renderHistoryController = () => {
       if (!props.use.includes('HISTORY')) return null
       return (
-        <Button.Group size="small" style={{ marginRight: 20 }}>
-          <Button
-            size="small"
-            disabled={!history?.allowUndo}
-            onClick={() => {
-              history.undo()
-            }}
+        <ButtonGroup size="small" style={{ marginRight: 20 }}>
+          <Tooltip
+            position="bottom"
+            content={
+              <TextWidget token={'panels.widgets.DesignableTools.Undo'} />
+            }
           >
-            <IconWidget infer="Undo" />
-          </Button>
-          <Button
-            size="small"
-            disabled={!history?.allowRedo}
-            onClick={() => {
-              history.redo()
-            }}
+            <Button
+              size="small"
+              disabled={!history?.allowUndo}
+              onClick={() => {
+                history.undo()
+              }}
+            >
+              <IconWidget infer="Undo" />
+            </Button>
+          </Tooltip>
+
+          <Tooltip
+            position="bottom"
+            content={
+              <TextWidget token={'panels.widgets.DesignableTools.Redo'} />
+            }
           >
-            <IconWidget infer="Redo" />
-          </Button>
-        </Button.Group>
+            <Button
+              size="small"
+              disabled={!history?.allowRedo}
+              onClick={() => {
+                history.redo()
+              }}
+            >
+              <IconWidget infer="Redo" />
+            </Button>
+          </Tooltip>
+        </ButtonGroup>
       )
     }
 
@@ -59,26 +75,40 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
       if (workbench.type !== 'DESIGNABLE') return null
       if (!props.use.includes('CURSOR')) return null
       return (
-        <Button.Group size="small" style={{ marginRight: 20 }}>
-          <Button
-            size="small"
-            disabled={cursor.type === CursorType.Normal}
-            onClick={() => {
-              cursor.setType(CursorType.Normal)
-            }}
+        <ButtonGroup size="small" style={{ marginRight: 20 }}>
+          <Tooltip
+            position="bottom"
+            content={
+              <TextWidget token={'panels.widgets.DesignableTools.Move'} />
+            }
           >
-            <IconWidget infer="Move" />
-          </Button>
-          <Button
-            size="small"
-            disabled={cursor.type === CursorType.Selection}
-            onClick={() => {
-              cursor.setType(CursorType.Selection)
-            }}
+            <Button
+              size="small"
+              disabled={cursor.type === CursorType.Normal}
+              onClick={() => {
+                cursor.setType(CursorType.Normal)
+              }}
+            >
+              <IconWidget infer="Move" />
+            </Button>
+          </Tooltip>
+          <Tooltip
+            position="bottom"
+            content={
+              <TextWidget token={'panels.widgets.DesignableTools.Selection'} />
+            }
           >
-            <IconWidget infer="Selection" />
-          </Button>
-        </Button.Group>
+            <Button
+              size="small"
+              disabled={cursor.type === CursorType.Selection}
+              onClick={() => {
+                cursor.setType(CursorType.Selection)
+              }}
+            >
+              <IconWidget infer="Selection" />
+            </Button>
+          </Tooltip>
+        </ButtonGroup>
       )
     }
 
@@ -91,10 +121,10 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
             size="small"
             value={screen.width}
             style={{ width: 70, textAlign: 'center' }}
-            onChange={(value) => {
+            onNumberChange={(value) => {
               sizeRef.current.width = value
             }}
-            onPressEnter={() => {
+            onBlur={() => {
               screen.setSize(sizeRef.current.width, screen.height)
             }}
           />
@@ -111,23 +141,30 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
               textAlign: 'center',
               marginRight: 10,
             }}
-            onChange={(value) => {
+            onNumberChange={(value) => {
               sizeRef.current.height = value
             }}
-            onPressEnter={() => {
+            onBlur={() => {
               screen.setSize(screen.width, sizeRef.current.height)
             }}
           />
           {(screen.width !== '100%' || screen.height !== '100%') && (
-            <Button
-              size="small"
-              style={{ marginRight: 20 }}
-              onClick={() => {
-                screen.resetSize()
-              }}
+            <Tooltip
+              position="bottom"
+              content={
+                <TextWidget token={'panels.widgets.DesignableTools.Recover'} />
+              }
             >
-              <IconWidget infer="Recover" />
-            </Button>
+              <Button
+                size="small"
+                style={{ marginRight: 20 }}
+                onClick={() => {
+                  screen.resetSize()
+                }}
+              >
+                <IconWidget infer="Recover" />
+              </Button>
+            </Tooltip>
           )}
         </Fragment>
       )
@@ -136,35 +173,54 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
     const renderScreenTypeController = () => {
       if (!props.use.includes('SCREEN_TYPE')) return null
       return (
-        <Button.Group size="small" style={{ marginRight: 20 }}>
-          <Button
-            size="small"
-            disabled={screen.type === ScreenType.PC}
-            onClick={() => {
-              screen.setType(ScreenType.PC)
-            }}
+        <ButtonGroup size="small" style={{ marginRight: 20 }}>
+          <Tooltip
+            position="bottom"
+            content={<TextWidget token={'panels.widgets.DesignableTools.PC'} />}
           >
-            <IconWidget infer="PC" />
-          </Button>
-          <Button
-            size="small"
-            disabled={screen.type === ScreenType.Mobile}
-            onClick={() => {
-              screen.setType(ScreenType.Mobile)
-            }}
+            <Button
+              size="small"
+              disabled={screen.type === ScreenType.PC}
+              onClick={() => {
+                screen.setType(ScreenType.PC)
+              }}
+            >
+              <IconWidget infer="PC" />
+            </Button>
+          </Tooltip>
+          <Tooltip
+            position="bottom"
+            content={
+              <TextWidget token={'panels.widgets.DesignableTools.Mobile'} />
+            }
           >
-            <IconWidget infer="Mobile" />
-          </Button>
-          <Button
-            size="small"
-            disabled={screen.type === ScreenType.Responsive}
-            onClick={() => {
-              screen.setType(ScreenType.Responsive)
-            }}
+            <Button
+              size="small"
+              disabled={screen.type === ScreenType.Mobile}
+              onClick={() => {
+                screen.setType(ScreenType.Mobile)
+              }}
+            >
+              <IconWidget infer="Mobile" />
+            </Button>
+          </Tooltip>
+          <Tooltip
+            position="bottom"
+            content={
+              <TextWidget token={'panels.widgets.DesignableTools.Responsive'} />
+            }
           >
-            <IconWidget infer="Responsive" />
-          </Button>
-        </Button.Group>
+            <Button
+              size="small"
+              disabled={screen.type === ScreenType.Responsive}
+              onClick={() => {
+                screen.setType(ScreenType.Responsive)
+              }}
+            >
+              <IconWidget infer="Responsive" />
+            </Button>
+          </Tooltip>
+        </ButtonGroup>
       )
     }
 
@@ -172,21 +228,26 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
       if (!props.use.includes('SCREEN_TYPE')) return null
       if (screen.type !== ScreenType.Mobile) return
       return (
-        <Button
-          size="small"
-          style={{ marginRight: 20 }}
-          onClick={() => {
-            screen.setFlip(!screen.flip)
-          }}
+        <Tooltip
+          position="bottom"
+          content={<TextWidget token={'panels.widgets.DesignableTools.Flip'} />}
         >
-          <IconWidget
-            infer="Flip"
-            style={{
-              transition: 'all .15s ease-in',
-              transform: screen.flip ? 'rotate(-90deg)' : '',
+          <Button
+            size="small"
+            style={{ marginRight: 20 }}
+            onClick={() => {
+              screen.setFlip(!screen.flip)
             }}
-          />
-        </Button>
+          >
+            <IconWidget
+              infer="Flip"
+              style={{
+                transition: 'all .15s ease-in',
+                transform: screen.flip ? 'rotate(-90deg)' : '',
+              }}
+            />
+          </Button>
+        </Tooltip>
       )
     }
 

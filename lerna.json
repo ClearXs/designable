@@ -1,9 +1,12 @@
 {
-  "version": "1.0.0-beta.45",
-  "npmClient": "yarn",
+  "version": "0.0.1-beta.5",
+  "npmClient": "npm",
   "useWorkspaces": true,
   "npmClientArgs": ["--ignore-engines"],
   "command": {
+    "publish": {
+      "registry": "https://packages.aliyun.com/636dc75af003e3b7bb5cad97/npm/npm-registry/"
+    },
     "version": {
       "forcePublish": true,
       "exact": true,

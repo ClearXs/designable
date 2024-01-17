@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react'
 import Editor, { EditorProps, loader } from '@monaco-editor/react'
 import { TextWidget, IconWidget, usePrefix, useTheme } from '@designable/react'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
-import { Tooltip } from 'antd'
 import { parseExpression, parse } from '@babel/parser'
 import { uid } from '@designable/shared'
 import { format } from './format'
@@ -10,6 +9,7 @@ import cls from 'classnames'
 import './styles.less'
 import './config'
 import { initMonaco } from './config'
+import { Tooltip } from '@douyinfe/semi-ui'
 
 export type Monaco = typeof monaco
 export interface MonacoInputProps extends EditorProps {
@@ -105,7 +105,7 @@ export const MonacoInput: React.FC<MonacoInputProps> & {
     return (
       href && (
         <Tooltip
-          title={
+          content={
             <TextWidget token="SettingComponents.MonacoInput.helpDocument" />
           }
         >

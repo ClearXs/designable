@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
-import { Input, Popover } from 'antd'
 import { usePrefix } from '@designable/react'
 import { SketchPicker } from 'react-color'
 import './styles.less'
+import { Input, Popover } from '@douyinfe/semi-ui'
 
 export interface IColorInputProps {
   value?: string
@@ -17,15 +17,16 @@ export const ColorInput: React.FC<IColorInputProps> = (props) => {
     <div ref={container} className={prefix}>
       <Input
         value={props.value}
-        onChange={(e) => {
-          props.onChange?.(e.target.value)
+        onChange={(value) => {
+          props.onChange?.(value)
         }}
         placeholder="Color"
         prefix={
           <Popover
             autoAdjustOverflow
             trigger="click"
-            overlayInnerStyle={{ padding: 0 }}
+            closeOnEsc
+            clickToHide
             getPopupContainer={() => container.current}
             content={
               <SketchPicker

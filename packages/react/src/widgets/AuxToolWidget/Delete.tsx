@@ -2,7 +2,7 @@ import React from 'react'
 import { TreeNode } from '@designable/core'
 import { IconWidget } from '../IconWidget'
 import { usePrefix } from '../../hooks'
-import { Button } from 'antd'
+import { Button } from '@douyinfe/semi-ui'
 
 export interface IDeleteProps {
   node: TreeNode

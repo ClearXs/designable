@@ -13,14 +13,14 @@ import {
   Select,
   FormItem,
   FormCollapse,
-} from '@formily/antd'
-import { Modal, Card, Button, Tag, Tooltip } from 'antd'
+} from '@formily/semi'
 import { PathSelector } from './PathSelector'
 import { FieldPropertySetter } from './FieldPropertySetter'
 import { FulfillRunHelper } from './helpers'
 import { IReaction } from './types'
 import { initDeclaration } from './declarations'
 import './styles.less'
+import { Button, Card, Modal, Tag, Tooltip } from '@douyinfe/semi-ui'
 
 export interface IReactionsSetterProps {
   value?: IReaction
@@ -33,7 +33,7 @@ const TypeView = ({ value }) => {
   return (
     <Tag>
       <Tooltip
-        title={
+        content={
           <div style={{ fontSize: 12 }}>
             <code>
               <pre style={{ whiteSpace: 'pre-wrap', padding: 0, margin: 0 }}>
@@ -179,11 +179,8 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
         width="70%"
         centered
         bodyStyle={{ padding: 10 }}
-        transitionName=""
-        maskTransitionName=""
         visible={modalVisible}
         onCancel={closeModal}
-        destroyOnClose
         onOk={() => {
           form.submit((values) => {
             props.onChange?.(values)
@@ -206,7 +203,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                   <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
-                      key: 'deps',
+                      itemKey: 'deps',
                       header: GlobalRegistry.getDesignerMessage(
                         'SettingComponents.ReactionsSetter.relationsFields'
                       ),
@@ -380,7 +377,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                       header: GlobalRegistry.getDesignerMessage(
                         'SettingComponents.ReactionsSetter.propertyReactions'
                       ),
-                      key: 'state',
+                      itemKey: 'state',
                       className: 'reaction-state',
                     }}
                   >
@@ -392,7 +389,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                   <SchemaField.Void
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
-                      key: 'run',
+                      itemKey: 'run',
                       header: GlobalRegistry.getDesignerMessage(
                         'SettingComponents.ReactionsSetter.actionReactions'
                       ),

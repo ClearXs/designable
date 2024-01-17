@@ -3,8 +3,8 @@ import { TreeNode } from '@designable/core'
 import { useHover, useSelection, usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { NodeTitleWidget } from '../NodeTitleWidget'
-import { Button } from 'antd'
 import { observer } from '@formily/reactive-react'
+import { Button } from '@douyinfe/semi-ui'
 
 const useMouseHover = <T extends { current: HTMLElement }>(
   ref: T,

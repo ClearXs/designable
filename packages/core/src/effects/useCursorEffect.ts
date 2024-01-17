@@ -46,12 +46,15 @@ export const useCursorEffect = (engine: Engine) => {
     const el = target?.closest?.(`
       *[${engine.props.nodeIdAttrName}],
       *[${engine.props.outlineNodeIdAttrName}]
+      *[${engine.props.boNodeIdAttrName}]
     `)
     if (!el?.getAttribute) {
       return
     }
     const nodeId = el.getAttribute(engine.props.nodeIdAttrName)
-    const outlineNodeId = el.getAttribute(engine.props.outlineNodeIdAttrName)
+    const outlineNodeId =
+      el.getAttribute(engine.props.outlineNodeIdAttrName) ||
+      el.getAttribute(engine.props.boNodeIdAttrName)
     const node = operation.tree.findById(nodeId || outlineNodeId)
     if (node) {
       operation.hover.setHover(node)

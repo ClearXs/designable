@@ -9,6 +9,7 @@ export const useSelectionEffect = (engine: Engine) => {
     const el = target?.closest?.(`
       *[${engine.props.nodeIdAttrName}],
       *[${engine.props.outlineNodeIdAttrName}]
+      *[${engine.props.boNodeIdAttrName}]
     `)
     const isHelpers = target?.closest?.(
       `*[${engine.props.nodeSelectionIdAttrName}]`
@@ -32,7 +33,9 @@ export const useSelectionEffect = (engine: Engine) => {
       return
     }
     const nodeId = el.getAttribute(engine.props.nodeIdAttrName)
-    const structNodeId = el.getAttribute(engine.props.outlineNodeIdAttrName)
+    const structNodeId =
+      el.getAttribute(engine.props.outlineNodeIdAttrName) ||
+      el.getAttribute(engine.props.boNodeIdAttrName)
     const operation = currentWorkspace.operation
     const selection = operation.selection
     const tree = operation.tree

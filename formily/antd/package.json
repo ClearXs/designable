@@ -1,18 +1,18 @@
 {
   "name": "@designable/formily-antd",
-  "version": "1.0.0-beta.45",
+  "version": "0.0.1-beta.5",
   "license": "MIT",
   "main": "lib",
   "module": "esm",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alibaba/designable.git"
+    "url": "git+https://github.com/ClearXs/designable.git"
   },
   "types": "esm/index.d.ts",
   "bugs": {
-    "url": "https://github.com/alibaba/designable/issues"
+    "url": "https://github.com/ClearXs/designable/issues"
   },
-  "homepage": "https://github.com/alibaba/designable#readme",
+  "homepage": "https://github.com/ClearXs/designable#readme",
   "engines": {
     "npm": ">=3.0.0"
   },
@@ -24,12 +24,12 @@
     "start": "webpack-dev-server --config playground/webpack.dev.ts"
   },
   "devDependencies": {
-    "@designable/react-settings-form": "1.0.0-beta.45",
-    "@formily/antd": "^2.0.2",
-    "@formily/core": "^2.0.2",
-    "@formily/react": "^2.0.2",
-    "@formily/reactive": "^2.0.2",
-    "@formily/shared": "^2.0.2",
+    "@designable/react-settings-form": "0.0.1-beta.5",
+    "@formily/antd": "^2.3.1",
+    "@formily/core": "^2.3.1",
+    "@formily/react": "^2.3.1",
+    "@formily/reactive": "^2.3.1",
+    "@formily/shared": "^2.3.1",
     "autoprefixer": "^9.0",
     "file-loader": "^5.0.2",
     "fs-extra": "^8.1.0",
@@ -47,11 +47,11 @@
     "webpack-dev-server": "^3.10.1"
   },
   "peerDependencies": {
-    "@formily/antd": "^2.0.2",
-    "@formily/core": "^2.0.2",
-    "@formily/react": "^2.0.2",
-    "@formily/reactive": "^2.0.2",
-    "@formily/shared": "^2.0.2",
+    "@formily/antd": "^2.3.1",
+    "@formily/core": "^2.3.1",
+    "@formily/react": "^2.3.1",
+    "@formily/reactive": "^2.3.1",
+    "@formily/shared": "^2.3.1",
     "@types/react": ">=16.8.0 || >=17.0.0",
     "@types/react-dom": ">=16.8.0 || >=17.0.0",
     "antd": "^4.0.0",
@@ -60,13 +60,9 @@
     "react-is": ">=16.8.0 || >=17.0.0"
   },
   "dependencies": {
-    "@designable/core": "1.0.0-beta.45",
-    "@designable/formily-setters": "1.0.0-beta.45",
-    "@designable/formily-transformer": "1.0.0-beta.45",
-    "@designable/react": "1.0.0-beta.45"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "gitHead": "2c44ae410a73f02735c63c6430e021a50e21f3ec"
+    "@designable/core": "0.0.1-beta.5",
+    "@designable/formily-setters": "0.0.1-beta.5",
+    "@designable/formily-transformer": "0.0.1-beta.5",
+    "@designable/react": "0.0.1-beta.5"
+  }
 }

@@ -1,6 +1,6 @@
 import { runCopy } from '../../scripts/build-style'
 
 runCopy({
-  esStr: 'antd/es/',
-  libStr: 'antd/lib/',
+  esStr: '@douyinfe/semi-ui/lib/es/',
+  libStr: '@douyinfe/semi-ui/lib/cjs/',
 })

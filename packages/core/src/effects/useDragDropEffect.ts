@@ -21,6 +21,7 @@ export const useDragDropEffect = (engine: Engine) => {
        *[${engine.props.nodeIdAttrName}],
        *[${engine.props.sourceIdAttrName}],
        *[${engine.props.outlineNodeIdAttrName}]
+       *[${engine.props.boNodeIdAttrName}]
       `)
     const handler = target?.closest(
       `*[${engine.props.nodeDragHandlerAttrName}]`
@@ -31,13 +32,16 @@ export const useDragDropEffect = (engine: Engine) => {
     if (!el?.getAttribute && !handler) return
     const sourceId = el?.getAttribute(engine.props.sourceIdAttrName)
     const outlineId = el?.getAttribute(engine.props.outlineNodeIdAttrName)
+    const boId = el?.getAttribute(engine.props.boNodeIdAttrName)
     const handlerId = helper?.getAttribute(engine.props.nodeSelectionIdAttrName)
     const nodeId = el?.getAttribute(engine.props.nodeIdAttrName)
     engine.workbench.eachWorkspace((currentWorkspace) => {
       const operation = currentWorkspace.operation
       const moveHelper = operation.moveHelper
-      if (nodeId || outlineId || handlerId) {
-        const node = engine.findNodeById(outlineId || nodeId || handlerId)
+      if (nodeId || outlineId || handlerId || boId) {
+        const node = engine.findNodeById(
+          outlineId || nodeId || handlerId || boId
+        )
         if (node) {
           if (!node.allowDrag()) return
           if (node === node.root) return
@@ -67,17 +71,19 @@ export const useDragDropEffect = (engine: Engine) => {
     const el = target?.closest(`
       *[${engine.props.nodeIdAttrName}],
       *[${engine.props.outlineNodeIdAttrName}]
+      *[${engine.props.boNodeIdAttrName}]
     `)
     const point = new Point(event.data.topClientX, event.data.topClientY)
     const nodeId = el?.getAttribute(engine.props.nodeIdAttrName)
     const outlineId = el?.getAttribute(engine.props.outlineNodeIdAttrName)
+    const boId = el?.getAttribute(engine.props.boNodeIdAttrName)
     engine.workbench.eachWorkspace((currentWorkspace) => {
       const operation = currentWorkspace.operation
       const moveHelper = operation.moveHelper
       const dragNodes = moveHelper.dragNodes
       const tree = operation.tree
       if (!dragNodes.length) return
-      const touchNode = tree.findById(outlineId || nodeId)
+      const touchNode = tree.findById(outlineId || nodeId || boId)
       moveHelper.dragMove({
         point,
         touchNode,
@@ -106,18 +112,26 @@ export const useDragDropEffect = (engine: Engine) => {
     const viewportNodeElement = viewportTarget?.closest(`
       *[${engine.props.nodeIdAttrName}],
       *[${engine.props.outlineNodeIdAttrName}]
+      *[${engine.props.boNodeIdAttrName}]
     `)
     const outlineNodeElement = outlineTarget?.closest(`
     *[${engine.props.nodeIdAttrName}],
     *[${engine.props.outlineNodeIdAttrName}]
   `)
+
+    const boNodeElement = outlineTarget?.closest(`
+  *[${engine.props.nodeIdAttrName}],
+  *[${engine.props.boNodeIdAttrName}]
+`)
     const nodeId = viewportNodeElement?.getAttribute(
       engine.props.nodeIdAttrName
     )
     const outlineNodeId = outlineNodeElement?.getAttribute(
       engine.props.outlineNodeIdAttrName
     )
-    const touchNode = tree.findById(outlineNodeId || nodeId)
+    const boId = boNodeElement?.getAttribute(engine.props.boNodeIdAttrName)
+
+    const touchNode = tree.findById(outlineNodeId || nodeId || boId)
     moveHelper.dragMove({ point, touchNode })
   })
 

@@ -5,6 +5,7 @@ import { Cursor } from './Cursor'
 import { Keyboard } from './Keyboard'
 import { Screen, ScreenType } from './Screen'
 import { Event, uid, globalThisPolyfill } from '@designable/shared'
+import { BoNode, BOSchema, BusinessObject } from './BusinessObject'
 
 /**
  * 设计器引擎
@@ -23,6 +24,8 @@ export class Engine extends Event {
 
   screen: Screen
 
+  bo: BusinessObject
+
   constructor(props: IEngineProps<Engine>) {
     super(props)
     this.props = {
@@ -31,6 +34,7 @@ export class Engine extends Event {
     }
     this.init()
     this.id = uid()
+    this.bo = new BusinessObject(this)
   }
 
   init() {
@@ -48,6 +52,20 @@ export class Engine extends Event {
 
   getCurrentTree() {
     return this.workbench?.currentWorkspace?.operation?.tree
+  }
+
+  getBoTree() {
+    const createBOSchema = (node: BoNode, schema: BOSchema = {}) => {
+      Object.assign(schema, node)
+      if (node.hasChildren()) {
+        schema['children'] = node.children.map((chiNode) =>
+          createBOSchema(chiNode)
+        )
+      }
+      delete schema['treeNode']
+      return schema
+    }
+    return createBOSchema(this.bo.root)
   }
 
   getAllSelectedNodes() {
@@ -102,6 +120,7 @@ export class Engine extends Event {
     screenResizeHandlerAttrName: 'data-designer-screen-resize-handler',
     nodeResizeHandlerAttrName: 'data-designer-node-resize-handler',
     outlineNodeIdAttrName: 'data-designer-outline-node-id',
+    boNodeIdAttrName: 'data-designer-bo-node-id',
     nodeTranslateAttrName: 'data-designer-node-translate-handler',
     defaultScreenType: ScreenType.PC,
   }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { Button } from 'antd'
 import { usePrefix, IconWidget } from '@designable/react'
 import cls from 'classnames'
 import './styles.less'
+import { Button } from '@douyinfe/semi-ui'
 
 export interface IInput {
   style?: React.CSSProperties
@@ -105,7 +105,7 @@ export function createPolyInput(polyTypes: PolyTypes = []): React.FC<IInput> {
         <Button
           className={prefix + '-controller'}
           style={{
-            width: !component ? '100%' : 'auto',
+            width: !component ? '100%' : '2em',
           }}
           block
           onClick={() => {

@@ -50,6 +50,7 @@ export const transformDataToValue = (data: INodeItem[]): IDataSourceItem[] => {
       if (item.label) valueItem[item.label] = item.value
     })
     valueItem.children = dataSource[i]?.children || []
+
     dataSource[i] = valueItem
   })
   return value

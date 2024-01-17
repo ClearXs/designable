@@ -1,6 +1,5 @@
 import React, { Fragment, useMemo, useState } from 'react'
 import cls from 'classnames'
-import { Modal, Button } from 'antd'
 import { Form } from '@formily/core'
 import { observable } from '@formily/reactive'
 import { observer } from '@formily/reactive-react'
@@ -10,12 +9,12 @@ import { TreePanel } from './TreePanel'
 import { transformDataToValue, transformValueToData } from './shared'
 import { IDataSourceItem, ITreeDataSource } from './types'
 import './styles.less'
+import { Button, Modal } from '@douyinfe/semi-ui'
 export interface IDataSourceSetterProps {
   className?: string
   style?: React.CSSProperties
   onChange: (dataSource: IDataSourceItem[]) => void
   value: IDataSourceItem[]
-  allowTree?: boolean
   allowExtendOption?: boolean
   defaultOptionValue?: {
     label: string
@@ -30,7 +29,6 @@ export const DataSourceSetter: React.FC<IDataSourceSetterProps> = observer(
       className,
       value = [],
       onChange,
-      allowTree = true,
       allowExtendOption = true,
       defaultOptionValue,
       effects = () => {},
@@ -59,8 +57,6 @@ export const DataSourceSetter: React.FC<IDataSourceSetterProps> = observer(
           }
           width="65%"
           bodyStyle={{ padding: 10 }}
-          transitionName=""
-          maskTransitionName=""
           visible={modalVisible}
           onCancel={closeModal}
           onOk={() => {
@@ -76,7 +72,6 @@ export const DataSourceSetter: React.FC<IDataSourceSetterProps> = observer(
             <div className={`${prefix + '-layout-item left'}`}>
               <TreePanel
                 defaultOptionValue={defaultOptionValue}
-                allowTree={allowTree}
                 treeDataSource={treeDataSource}
               ></TreePanel>
             </div>

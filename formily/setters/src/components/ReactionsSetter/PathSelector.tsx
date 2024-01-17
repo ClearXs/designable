@@ -1,10 +1,10 @@
 import React from 'react'
 import { TreeNode } from '@designable/core'
 import { useSelectedNode } from '@designable/react'
-import { TreeSelectProps, TreeSelect } from 'antd'
+import { TreeSelect } from '@douyinfe/semi-ui'
+import { TreeSelectProps } from '@douyinfe/semi-ui/lib/es/treeSelect'
 
-export interface IPathSelectorProps
-  extends Omit<TreeSelectProps<any>, 'onChange'> {
+export interface IPathSelectorProps extends Omit<TreeSelectProps, 'onChange'> {
   value?: string
   onChange?: (value: string, node: TreeNode) => void
   style?: React.CSSProperties
@@ -73,6 +73,7 @@ const transformDataSource = (node: TreeNode) => {
         ? transformRelativePath(arrayNode, node)
         : currentPath.join('.')
       return buf.concat({
+        key: value,
         label,
         value,
         node,
@@ -103,10 +104,10 @@ export const PathSelector: React.FC<IPathSelectorProps> = (props) => {
   return (
     <TreeSelect
       {...props}
+      expandAll
       onChange={(value) => {
         props.onChange(value, findNode(dataSource, value))
       }}
-      treeDefaultExpandAll
       treeData={dataSource}
     />
   )

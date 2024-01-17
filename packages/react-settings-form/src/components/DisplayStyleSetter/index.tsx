@@ -1,12 +1,12 @@
 import React from 'react'
 import { useField, Field, observer } from '@formily/react'
 import { Field as FieldType } from '@formily/core'
-import { FormItem } from '@formily/antd'
-import { Radio } from 'antd'
+import { FormItem } from '@formily/semi'
 import { usePrefix, IconWidget } from '@designable/react'
 import { FlexStyleSetter } from '../FlexStyleSetter'
 import cls from 'classnames'
 import './styles.less'
+import { RadioGroup } from '@douyinfe/semi-ui'
 export interface IDisplayStyleSetterProps {
   className?: string
   style?: React.CSSProperties
@@ -25,7 +25,7 @@ export const DisplayStyleSetter: React.FC<IDisplayStyleSetterProps> = observer(
           className={cls(prefix, props.className)}
           style={props.style}
         >
-          <Radio.Group
+          <RadioGroup
             className={prefix + '-radio'}
             options={[
               {
@@ -49,7 +49,7 @@ export const DisplayStyleSetter: React.FC<IDisplayStyleSetterProps> = observer(
             onChange={(e) => {
               props.onChange?.(e.target.value)
             }}
-            optionType="button"
+            type="button"
           />
         </FormItem.BaseItem>
         <Field

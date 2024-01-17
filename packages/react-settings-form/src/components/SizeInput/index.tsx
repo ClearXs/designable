@@ -1,4 +1,4 @@
-import { InputNumber } from 'antd'
+import { InputNumber } from '@douyinfe/semi-ui'
 import { createPolyInput } from '../PolyInput'
 
 const takeNumber = (value: any) => {

@@ -14,12 +14,12 @@ import {
 } from './types'
 import { mergeLocales, lowerSnake, getBrowserLanguage } from './internals'
 import { isBehaviorHost } from './externals'
-import { TreeNode } from './models'
+import { GlobalBOTransferRegistry, Transfer, TreeNode } from './models'
 import { isBehaviorList } from './externals'
 
 const getISOCode = (language: string) => {
   let isoCode = DESIGNER_LANGUAGE_STORE.value
-  let lang = lowerSnake(language)
+  const lang = lowerSnake(language)
   if (DESIGNER_LOCALES_STORE.value[lang]) {
     return lang
   }
@@ -35,7 +35,7 @@ const getISOCode = (language: string) => {
 const reSortBehaviors = (target: IBehavior[], sources: IDesignerBehaviors) => {
   const findTargetBehavior = (behavior: IBehavior) => target.includes(behavior)
   const findSourceBehavior = (name: string) => {
-    for (let key in sources) {
+    for (const key in sources) {
       const { Behavior } = sources[key]
       for (let i = 0; i < Behavior.length; i++) {
         if (Behavior[i].name === name) return Behavior[i]
@@ -109,7 +109,7 @@ const DESIGNER_GlobalRegistry = {
     const lang = getISOCode(DESIGNER_LANGUAGE_STORE.value)
     const locale = locales ? locales[lang] : DESIGNER_LOCALES_STORE.value[lang]
     if (!locale) {
-      for (let key in DESIGNER_LOCALES_STORE.value) {
+      for (const key in DESIGNER_LOCALES_STORE.value) {
         const message = Path.getIn(
           DESIGNER_LOCALES_STORE.value[key],
           lowerSnake(token)
@@ -139,6 +139,14 @@ const DESIGNER_GlobalRegistry = {
     if (results.length) {
       DESIGNER_BEHAVIORS_STORE.value = results
     }
+  },
+
+  /**
+   * bo 转换器注册
+   * @param transfers transfer
+   */
+  registerBOTransfer: (...transfers: Transfer[]) => {
+    GlobalBOTransferRegistry.register(...transfers)
   },
 }
 

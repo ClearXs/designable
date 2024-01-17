@@ -19,6 +19,7 @@ export type IEngineProps<T = Event> = IEventProps<T> & {
   contentEditableNodeIdAttrName?: string //原地编辑指定Node Id属性名
   clickStopPropagationAttrName?: string //点击阻止冒泡属性
   outlineNodeIdAttrName?: string //大纲树节点ID的dom属性名
+  boNodeIdAttrName?: string // bo结点id的dom属性名
   nodeSelectionIdAttrName?: string //节点工具栏属性名
   nodeDragHandlerAttrName?: string //节点拖拽手柄属性名
   screenResizeHandlerAttrName?: string

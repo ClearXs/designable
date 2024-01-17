@@ -1,10 +1,10 @@
 import React from 'react'
-import { Breadcrumb } from 'antd'
 import { useSelectedNode, useSelection, usePrefix, useHover } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { NodeTitleWidget } from '../NodeTitleWidget'
 import { observer } from '@formily/reactive-react'
 import './styles.less'
+import { Breadcrumb } from '@douyinfe/semi-ui'
 
 export interface INodePathWidgetProps {
   workspaceId?: string

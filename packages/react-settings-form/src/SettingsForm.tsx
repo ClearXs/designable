@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { createForm } from '@formily/core'
-import { Form } from '@formily/antd'
+import { Form } from '@formily/semi'
 import { observer } from '@formily/react'
 import { requestIdle, cancelIdle } from '@designable/shared'
 import {
@@ -11,14 +11,15 @@ import {
   useWorkbench,
   IconWidget,
   NodePathWidget,
+  useBo,
 } from '@designable/react'
 import { SchemaField } from './SchemaField'
 import { ISettingFormProps } from './types'
 import { SettingsFormContext } from './shared/context'
-import { useLocales, useSnapshot } from './effects'
-import { Empty } from 'antd'
+import { useBoDataSource, useLocales, useSnapshot } from './effects'
 import cls from 'classnames'
 import './styles.less'
+import { Empty } from '@douyinfe/semi-ui'
 
 const GlobalState = {
   idleRequest: null,
@@ -31,6 +32,7 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
       workbench?.activeWorkspace || workbench?.currentWorkspace
     const currentWorkspaceId = currentWorkspace?.id
     const operation = useOperation(currentWorkspaceId)
+    const bo = useBo()
     const node = useSelectedNode(currentWorkspaceId)
     const selected = useSelected(currentWorkspaceId)
     const prefix = usePrefix('settings-form')
@@ -46,6 +48,7 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
         values: node?.props,
         effects(form) {
           useLocales(node)
+          useBoDataSource(node, bo)
           useSnapshot(operation)
           props.effects?.(form)
         },
@@ -67,7 +70,7 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
                 labelWidth={120}
                 labelAlign="left"
                 wrapperAlign="right"
-                feedbackLayout="none"
+                feedbackLayout="loose"
                 tooltipLayout="text"
               >
                 <SchemaField

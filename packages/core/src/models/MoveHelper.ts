@@ -64,13 +64,19 @@ export class MoveHelper {
 
   outlineClosestRect: Rect = null
 
+  boClosestClosestRect: Rect = null
+
   viewportClosestOffsetRect: Rect = null
 
   outlineClosestOffsetRect: Rect = null
 
+  boViewportClosestOffsetRect: Rect = null
+
   viewportClosestDirection: ClosestPosition = null
 
   outlineClosestDirection: ClosestPosition = null
+
+  boViewportClosestDirection: ClosestPosition = null
 
   dragging = false
 
@@ -90,6 +96,10 @@ export class MoveHelper {
 
   get outline() {
     return this.operation.workspace.outline
+  }
+
+  get boViewPort() {
+    return this.operation.workspace.boView
   }
 
   get hasDragNodes() {
@@ -304,12 +314,19 @@ export class MoveHelper {
         this.outline
       )
       this.viewportClosestDirection = this.outlineClosestDirection
+    } else if (this.activeViewport === this.boViewPort) {
+      this.boViewportClosestDirection = this.calcClosestPosition(
+        point,
+        this.boViewPort
+      )
+      this.viewportClosestDirection = this.boViewportClosestDirection
     } else {
       this.viewportClosestDirection = this.calcClosestPosition(
         point,
         this.viewport
       )
       this.outlineClosestDirection = this.viewportClosestDirection
+      this.boViewportClosestDirection = this.viewportClosestDirection
     }
     if (this.outline.mounted) {
       this.outlineClosestRect = this.calcClosestRect(
@@ -319,6 +336,16 @@ export class MoveHelper {
       this.outlineClosestOffsetRect = this.calcClosestOffsetRect(
         this.outline,
         this.outlineClosestDirection
+      )
+    }
+    if (this.boViewPort.mounted) {
+      this.boClosestClosestRect = this.calcClosestRect(
+        this.boViewPort,
+        this.boViewportClosestDirection
+      )
+      this.boViewportClosestOffsetRect = this.calcClosestOffsetRect(
+        this.boViewPort,
+        this.boViewportClosestDirection
       )
     }
     if (this.viewport.mounted) {
@@ -351,6 +378,9 @@ export class MoveHelper {
     this.outlineClosestDirection = null
     this.outlineClosestOffsetRect = null
     this.outlineClosestRect = null
+    this.boViewportClosestDirection = null
+    this.boViewportClosestOffsetRect = null
+    this.boClosestClosestRect = null
     this.viewportClosestDirection = null
     this.viewportClosestOffsetRect = null
     this.viewportClosestRect = null
@@ -372,6 +402,9 @@ export class MoveHelper {
       outlineClosestDirection: observable.ref,
       outlineClosestOffsetRect: observable.ref,
       outlineClosestRect: observable.ref,
+      boViewportClosestDirection: observable.ref,
+      boViewportClosestOffsetRect: observable.ref,
+      boClosestClosestRect: observable.ref,
       viewportClosestDirection: observable.ref,
       viewportClosestOffsetRect: observable.ref,
       viewportClosestRect: observable.ref,

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import { InputProps } from 'antd/lib/input'
-import { Input, Upload } from 'antd'
 import { usePrefix, IconWidget } from '@designable/react'
 import { SettingsFormContext } from '../../shared/context'
 import cls from 'classnames'
 import './styles.less'
+import { Input, Upload } from '@douyinfe/semi-ui'
+import { InputProps } from '@douyinfe/semi-ui/lib/es/input'
 export interface ImageInputProps extends Omit<InputProps, 'onChange'> {
   value?: string
   onChange?: (value: string) => void
@@ -21,14 +21,13 @@ export const ImageInput: React.FC<ImageInputProps> = ({
     <div className={cls(prefix, className)} style={style}>
       <Input
         {...props}
-        onChange={(e) => {
-          props.onChange?.(e?.target?.['value'])
+        onChange={(value) => {
+          props.onChange?.(value)
         }}
         prefix={
           <Upload
             action={context.uploadAction}
-            itemRender={() => null}
-            maxCount={1}
+            maxSize={1}
             onChange={(params: any) => {
               const response = params.file?.response
               const url =

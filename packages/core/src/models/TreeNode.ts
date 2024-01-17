@@ -21,6 +21,7 @@ import {
 } from '../types'
 import { GlobalRegistry } from '../registry'
 import { mergeLocales } from '../internals'
+import { GlobalBOTransferRegistry } from './BusinessObject'
 
 export interface ITreeNode {
   componentName?: string
@@ -254,6 +255,10 @@ export class TreeNode {
     return this.viewport?.getValidNodeLayout(this)
   }
 
+  get bo() {
+    return GlobalBOTransferRegistry.getHandler(this)?.transform(this)
+  }
+
   getElement(area: 'viewport' | 'outline' = 'viewport') {
     return this[area]?.findElementById(this.id)
   }
@@ -298,7 +303,7 @@ export class TreeNode {
   }
 
   getParentByDepth(depth = 0) {
-    let parent = this.parent
+    const parent = this.parent
     if (parent?.depth === depth) {
       return parent
     } else {

@@ -8,9 +8,9 @@ import {
   ISchema,
 } from '@formily/react'
 import { GlobalRegistry } from '@designable/core'
-import { ArrayItems } from '@formily/antd'
+import { ArrayItems } from '@formily/semi'
 import { FoldItem } from '@designable/react-settings-form'
-import { Select } from 'antd'
+import { Select } from '@douyinfe/semi-ui'
 
 export interface IValidatorSetterProps {
   value?: any
@@ -152,11 +152,11 @@ export const ValidatorSetter: React.FC<IValidatorSetterProps> = observer(
           <Select
             value={Array.isArray(props.value) ? undefined : props.value}
             onChange={props.onChange}
-            allowClear
+            showClear
             placeholder={GlobalRegistry.getDesignerMessage(
               'SettingComponents.ValidatorSetter.pleaseSelect'
             )}
-            options={GlobalRegistry.getDesignerMessage(
+            optionList={GlobalRegistry.getDesignerMessage(
               'SettingComponents.ValidatorSetter.formats'
             )}
           />

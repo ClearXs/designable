@@ -9,6 +9,7 @@ export interface INodeItem {
   duplicateKey?: string
   map?: { label: string; value: any }[]
   children?: INodeItem[]
+  [key: string]: any
 }
 
 export interface ITreeDataSource {

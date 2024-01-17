@@ -2,7 +2,7 @@ import React from 'react'
 import { TreeNode } from '@designable/core'
 import { usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
-import { Button } from 'antd'
+import { Button } from '@douyinfe/semi-ui'
 export interface ICopyProps {
   node: TreeNode
   style?: React.CSSProperties
@@ -15,7 +15,6 @@ export const Copy: React.FC<ICopyProps> = ({ node, style }) => {
     <Button
       className={prefix}
       style={style}
-      type="primary"
       onClick={() => {
         TreeNode.clone([node])
       }}

@@ -1,9 +1,10 @@
 @import './variables.less';
+@import '@douyinfe/semi-ui/dist/css/semi.css';
 
-:root {
+body {
   //品牌色
-  --dn-brand-color: rgba(24, 144, 255, 1);
-  --dn-brand-hovering: rgba(64, 169, 255, 1);
+  --dn-brand-color: var(--semi-color-primary);
+  --dn-brand-hovering: var(--semi-color-primary-hover);
   --dn-brand-dragging: rgba(24, 144, 255, 0.26);
   --dn-brand-dropping: rgba(24, 144, 255, 0.34);
   --dn-brand-moving: rgba(24, 144, 255, 0.5);
@@ -40,6 +41,13 @@
   --dn-outline-tree-node-header-color: var(--dn-gray);
   --dn-outline-tree-node-hover-color: var(--dn-brand-color);
 
+  --dn-bo-tree-bg-color: var(--dn-white);
+  --dn-bo-tree-header-border-color: var(--dn-white-gray-light);
+  --dn-bo-tree-color: var(--dn-gray);
+  --dn-bo-tree-insertion-bg-color: var(--dn-brand-color);
+  --dn-bo-tree-node-header-color: var(--dn-gray);
+  --dn-bo-tree-node-hover-color: var(--dn-brand-color);
+
   --dn-toolbar-input-color: var(--dn-gray-dark);
   --dn-toolbar-input-bg-color: var(--dn-white);
   --dn-toolbar-input-border-color: var(--dn-white-gray-light);
@@ -56,16 +64,6 @@
   --dn-mobile-simulator-border-color: var(--dn-gray-dark);
   --dn-responsive-simulator-bg-color: var(--dn-white);
   --dn-pc-simulator-bg-color: var(--dn-white);
-
-  --dn-aux-selector-btn-color: var(--dn-white);
-  --dn-aux-selector-btn-bg-color: var(--dn-brand-color);
-  --dn-aux-selector-btn-border-color: var(--dn-brand-color);
-  --dn-aux-selector-btn-hover-color: var(--dn-white);
-  --dn-aux-selector-btn-hover-bg-color: var(--dn-brand-hovering);
-  --dn-aux-selector-btn-hover-border-color: var(--dn-brand-hovering);
-  --dn-aux-selector-btn-active-color: var(--dn-white);
-  --dn-aux-selector-btn-active-bg-color: var(--dn-brand-hovering);
-  --dn-aux-selector-btn-active-border-color: var(--dn-brand-hovering);
 
   --dn-panel-border-color: var(--dn-white-gray);
   --dn-panel-active-bg-color: var(--dn-white-gray-light);

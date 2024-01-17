@@ -6,6 +6,7 @@ import { Hover } from './Hover'
 import { TransformHelper } from './TransformHelper'
 import { MoveHelper } from './MoveHelper'
 import { cancelIdle, ICustomEvent, isFn, requestIdle } from '@designable/shared'
+import { RootNodeCreateEvent } from '../events/mutation/RootNodeCreateEvent'
 
 export interface IOperation {
   tree?: ITreeNode
@@ -52,6 +53,10 @@ export class Operation {
       operation: this,
     })
     this.selection.select(this.tree)
+
+    this.dispatch(
+      new RootNodeCreateEvent({ source: this.tree, target: this.tree })
+    )
   }
 
   dispatch(event: ICustomEvent, callback?: () => void) {

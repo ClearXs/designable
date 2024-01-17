@@ -1,7 +1,6 @@
 import React, { useMemo, Fragment } from 'react'
-import { Button } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
-import { ArrayItems, Form, Input, FormItem } from '@formily/antd'
+import { ArrayItems, Form, Input, FormItem } from '@formily/semi'
 import { createForm, Form as FormCore } from '@formily/core'
 import { observer } from '@formily/reactive-react'
 import { createSchemaField } from '@formily/react'
@@ -11,6 +10,7 @@ import { Header } from './Header'
 import { traverseTree } from './shared'
 import { ITreeDataSource } from './types'
 import './styles.less'
+import { Button } from '@douyinfe/semi-ui'
 
 const SchemaField = createSchemaField({
   components: {
@@ -69,7 +69,6 @@ export const DataSettingPanel: React.FC<IDataSettingPanelProps> = observer(
           extra={
             allowExtendOption ? (
               <Button
-                type="text"
                 onClick={() => {
                   form.setFieldState('map', (state) => {
                     state.value.push({})
@@ -111,6 +110,7 @@ export const DataSettingPanel: React.FC<IDataSettingPanelProps> = observer(
                     x-component="ArrayItems.Remove"
                     x-visible={allowExtendOption}
                     x-component-props={{
+                      svg: {},
                       style: {
                         margin: 5,
                         display: 'flex',

@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useEffect, useRef } from 'react'
 import { isStr, isFn, isObj, isPlainObj } from '@designable/shared'
 import { observer } from '@formily/reactive-react'
-import { Tooltip, TooltipProps } from 'antd'
 import { usePrefix, useRegistry, useTheme } from '../../hooks'
 import cls from 'classnames'
 import './styles.less'
+import { Tooltip } from '@douyinfe/semi-ui'
+import { TooltipProps } from '@douyinfe/semi-ui/lib/es/tooltip'
 
 const IconContext = createContext<IconProviderProps>(null)
 
@@ -104,7 +105,7 @@ export const IconWidget: React.FC<IIconWidgetProps> & {
           ? tooltip
           : {}
       return (
-        <Tooltip {...props} title={title}>
+        <Tooltip {...props} content={title}>
           {children}
         </Tooltip>
       )

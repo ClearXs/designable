@@ -1,11 +1,12 @@
 import React, { Fragment, useState, useLayoutEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { observer, useField } from '@formily/react'
-import { FormLayout } from '@formily/antd'
+import { FormLayout } from '@formily/semi'
 import { IconWidget, usePrefix, useTreeNode } from '@designable/react'
-import { Button, ButtonProps } from 'antd'
 import cls from 'classnames'
 import './styles.less'
+import { ButtonProps } from '@douyinfe/semi-ui/lib/es/button'
+import { Button } from '@douyinfe/semi-ui'
 
 export interface IDrawerSetterProps {
   text: React.ReactNode
@@ -47,7 +48,7 @@ export const DrawerSetter: React.FC<IDrawerSetterProps> = observer((props) => {
               labelWidth={120}
               labelAlign="left"
               wrapperAlign="right"
-              feedbackLayout="none"
+              feedbackLayout="loose"
               tooltipLayout="text"
             >
               {props.children}

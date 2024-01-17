@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { Tree, Button, TreeProps } from 'antd'
 import { uid } from '@formily/shared'
 import { observer } from '@formily/reactive-react'
 import { usePrefix, TextWidget, IconWidget } from '@designable/react'
@@ -9,17 +8,11 @@ import { traverseTree } from './shared'
 import { ITreeDataSource, INodeItem } from './types'
 import './styles.less'
 import { GlobalRegistry } from '@designable/core'
-
-const limitTreeDrag = ({ dropPosition }) => {
-  if (dropPosition === 0) {
-    return false
-  }
-  return true
-}
+import { TreeProps } from '@douyinfe/semi-ui/lib/es/tree'
+import { Button, Tree } from '@douyinfe/semi-ui'
 
 export interface ITreePanelProps {
   treeDataSource: ITreeDataSource
-  allowTree: boolean
   defaultOptionValue: {
     label: string
     value: any
@@ -85,7 +78,6 @@ export const TreePanel: React.FC<ITreePanelProps> = observer((props) => {
         }
         extra={
           <Button
-            type="text"
             onClick={() => {
               const uuid = uid()
               const dataSource = props.treeDataSource.dataSource
@@ -99,6 +91,7 @@ export const TreePanel: React.FC<ITreePanelProps> = observer((props) => {
                   )} ${dataSource.length + 1}`,
                 },
                 { label: 'value', value: uuid },
+                { label: 'key', value: uuid },
               ]
               props.treeDataSource.dataSource = dataSource.concat({
                 key: uuid,
@@ -117,28 +110,22 @@ export const TreePanel: React.FC<ITreePanelProps> = observer((props) => {
         <Tree
           blockNode
           draggable={true}
-          allowDrop={props.allowTree ? () => true : limitTreeDrag}
           defaultExpandAll
-          defaultExpandParent
           autoExpandParent
-          showLine={{ showLeafIcon: false }}
           treeData={props.treeDataSource.dataSource}
           onDragEnter={() => {}}
           onDrop={dropHandler}
-          titleRender={(titleProps: INodeItem) => {
+          renderLabel={(label: any, titleProps: INodeItem) => {
             return (
-              <Title
-                {...titleProps}
-                treeDataSource={props.treeDataSource}
-              ></Title>
+              <Title {...titleProps} treeDataSource={props.treeDataSource}>
+                {label}
+              </Title>
             )
           }}
-          onSelect={(selectedKeys) => {
-            if (selectedKeys[0]) {
-              props.treeDataSource.selectedKey = selectedKeys[0].toString()
-            }
+          onSelect={(selectedKey) => {
+            props.treeDataSource.selectedKey = selectedKey.toString()
           }}
-        ></Tree>
+        />
       </div>
     </Fragment>
   )

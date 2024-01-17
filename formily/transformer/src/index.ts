@@ -84,6 +84,7 @@ export const transformToTreeNode = (
 ) => {
   const realOptions = createOptions(options)
   const root: ITreeNode = {
+    id: formily.schema['x-designable-id'],
     componentName: realOptions.designableFormName,
     props: formily.form,
     children: [],

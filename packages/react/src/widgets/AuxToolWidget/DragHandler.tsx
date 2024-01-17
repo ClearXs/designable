@@ -3,7 +3,7 @@ import { TreeNode } from '@designable/core'
 import { observer } from '@formily/reactive-react'
 import { IconWidget } from '../IconWidget'
 import { useDesigner, usePrefix } from '../../hooks'
-import { Button } from 'antd'
+import { Button } from '@douyinfe/semi-ui'
 
 export interface IDragHandlerProps {
   node: TreeNode

@@ -44,6 +44,8 @@ export class Workspace {
 
   outline: Viewport
 
+  boView: Viewport
+
   operation: Operation
 
   history: History<Workspace>
@@ -71,6 +73,15 @@ export class Workspace {
       viewportElement: props.viewportElement,
       contentWindow: props.contentWindow,
       nodeIdAttrName: this.engine.props.outlineNodeIdAttrName,
+      moveSensitive: false,
+      moveInsertionType: 'block',
+    })
+    this.boView = new Viewport({
+      engine: this.engine,
+      workspace: this,
+      viewportElement: props.viewportElement,
+      contentWindow: props.contentWindow,
+      nodeIdAttrName: this.engine.props.boNodeIdAttrName,
       moveSensitive: false,
       moveInsertionType: 'block',
     })
