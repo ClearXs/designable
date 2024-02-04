@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import ReactDOM from 'react-dom'
 import {
   Designer,
@@ -65,6 +65,15 @@ import {
   Rate,
   Slider,
 } from '../src'
+import { BoSchemaEditorWidget } from './widgets/BoSchemaEditorWidget'
+import {
+  Button,
+  ButtonGroup,
+  Spin,
+  Steps,
+  TabPane,
+  Tabs,
+} from '@douyinfe/semi-ui'
 
 setNpmCDNRegistry('//unpkg.com')
 
@@ -116,123 +125,155 @@ const App = () => {
       }),
     []
   )
+
+  const [mode, setMode] = useState<string>('designer')
+
+  const DesignerPanel = (
+    <>
+      <CompositePanel>
+        <CompositePanel.Item title="panels.Component" icon="Component">
+          <ResourceWidget
+            title="sources.Inputs"
+            sources={[
+              Input,
+              // Password,
+              // NumberPicker,
+              Select,
+              TreeSelect,
+              // Cascader,
+              // Transfer,
+              // Checkbox,
+              // Radio,
+              // Rate,
+              // DatePicker,
+              // TimePicker,
+              // Upload,
+              // Switch,
+              // ObjectContainer,
+              // Slider,
+            ]}
+          />
+          <ResourceWidget
+            title="sources.Layouts"
+            sources={[Card, FormGrid, FormTab, FormLayout, FormCollapse, Space]}
+          />
+          <ResourceWidget
+            title="sources.Arrays"
+            sources={[ArrayCards, ArrayTable]}
+            // sources={[]}
+          />
+          <ResourceWidget title="sources.Displays" sources={[]} />
+          <ResourceWidget title="sources.Advanced" sources={[]} />
+        </CompositePanel.Item>
+        <CompositePanel.Item title="panels.OutlinedTree" icon="Outline">
+          <OutlineTreeWidget />
+        </CompositePanel.Item>
+        <CompositePanel.Item title="panels.History" icon="History">
+          <HistoryWidget />
+        </CompositePanel.Item>
+        <CompositePanel.Item title="panels.Model" icon="Database">
+          <BOWidget />
+        </CompositePanel.Item>
+      </CompositePanel>
+      <Workspace id="form">
+        <WorkspacePanel>
+          <ToolbarPanel>
+            <DesignerToolsWidget />
+            <ViewToolsWidget
+              use={['DESIGNABLE', 'JSONTREE', 'MARKUP', 'PREVIEW', 'BOTREE']}
+            />
+          </ToolbarPanel>
+          <ViewportPanel style={{ height: '100%' }}>
+            <ViewPanel type="DESIGNABLE">
+              {() => (
+                <ComponentTreeWidget
+                  components={{
+                    Form,
+                    Field,
+                    Input,
+                    Select,
+                    TreeSelect,
+                    Cascader,
+                    Radio,
+                    Checkbox,
+                    NumberPicker,
+                    Transfer,
+                    Password,
+                    DatePicker,
+                    TimePicker,
+                    Upload,
+                    Switch,
+                    Text,
+                    Card,
+                    ArrayCards,
+                    ArrayTable,
+                    Space,
+                    FormTab,
+                    FormCollapse,
+                    FormGrid,
+                    FormLayout,
+                    ObjectContainer,
+                    Rate,
+                    Slider,
+                  }}
+                />
+              )}
+            </ViewPanel>
+            <ViewPanel type="JSONTREE" scrollable={false}>
+              {(tree, bo, onChange) => (
+                <SchemaEditorWidget tree={tree} onChange={onChange} />
+              )}
+            </ViewPanel>
+            <ViewPanel type="BOTREE" scrollable={false}>
+              {(tree, bo, onChange) => (
+                <BoSchemaEditorWidget bo={bo} onChange={onChange} />
+              )}
+            </ViewPanel>
+            <ViewPanel type="MARKUP" scrollable={false}>
+              {(tree) => <MarkupSchemaWidget tree={tree} />}
+            </ViewPanel>
+            <ViewPanel type="PREVIEW">
+              {(tree) => <PreviewWidget tree={tree} />}
+            </ViewPanel>
+          </ViewportPanel>
+        </WorkspacePanel>
+      </Workspace>
+      <SettingsPanel title="panels.PropertySettings">
+        <SettingsForm />
+      </SettingsPanel>
+    </>
+  )
+
+  const PagePanel = <div>PagePanel</div>
+
+  const PageDeployPanel = <div>PageDeployPanel</div>
+
+  let Panel
+  if (mode === 'designer') {
+    Panel = DesignerPanel
+  } else if (mode === 'page') {
+    Panel = PagePanel
+  } else if (mode === 'deploy') {
+    Panel = PageDeployPanel
+  }
+
   return (
     <Designer engine={engine}>
-      <StudioPanel logo={<LogoWidget />} actions={<ActionsWidget />}>
-        <CompositePanel>
-          <CompositePanel.Item title="panels.Component" icon="Component">
-            <ResourceWidget
-              title="sources.Inputs"
-              sources={[
-                Input,
-                // Password,
-                // NumberPicker,
-                Select,
-                TreeSelect,
-                // Cascader,
-                // Transfer,
-                // Checkbox,
-                // Radio,
-                // Rate,
-                // DatePicker,
-                // TimePicker,
-                // Upload,
-                // Switch,
-                // ObjectContainer,
-                // Slider,
-              ]}
-            />
-            <ResourceWidget
-              title="sources.Layouts"
-              sources={[
-                Card,
-                FormGrid,
-                FormTab,
-                FormLayout,
-                FormCollapse,
-                Space,
-              ]}
-            />
-            <ResourceWidget
-              title="sources.Arrays"
-              sources={[ArrayCards, ArrayTable]}
-              // sources={[]}
-            />
-            <ResourceWidget title="sources.Displays" sources={[]} />
-            <ResourceWidget title="sources.Advanced" sources={[]} />
-          </CompositePanel.Item>
-          <CompositePanel.Item title="panels.OutlinedTree" icon="Outline">
-            <OutlineTreeWidget />
-          </CompositePanel.Item>
-          <CompositePanel.Item title="panels.History" icon="History">
-            <HistoryWidget />
-          </CompositePanel.Item>
-          <CompositePanel.Item title="panels.Model" icon="Database">
-            <BOWidget />
-          </CompositePanel.Item>
-        </CompositePanel>
-        <Workspace id="form">
-          <WorkspacePanel>
-            <ToolbarPanel>
-              <DesignerToolsWidget />
-              <ViewToolsWidget
-                use={['DESIGNABLE', 'JSONTREE', 'MARKUP', 'PREVIEW']}
-              />
-            </ToolbarPanel>
-            <ViewportPanel style={{ height: '100%' }}>
-              <ViewPanel type="DESIGNABLE">
-                {() => (
-                  <ComponentTreeWidget
-                    components={{
-                      Form,
-                      Field,
-                      Input,
-                      Select,
-                      TreeSelect,
-                      Cascader,
-                      Radio,
-                      Checkbox,
-                      NumberPicker,
-                      Transfer,
-                      Password,
-                      DatePicker,
-                      TimePicker,
-                      Upload,
-                      Switch,
-                      Text,
-                      Card,
-                      ArrayCards,
-                      ArrayTable,
-                      Space,
-                      FormTab,
-                      FormCollapse,
-                      FormGrid,
-                      FormLayout,
-                      ObjectContainer,
-                      Rate,
-                      Slider,
-                    }}
-                  />
-                )}
-              </ViewPanel>
-              <ViewPanel type="JSONTREE" scrollable={false}>
-                {(tree, onChange) => (
-                  <SchemaEditorWidget tree={tree} onChange={onChange} />
-                )}
-              </ViewPanel>
-              <ViewPanel type="MARKUP" scrollable={false}>
-                {(tree) => <MarkupSchemaWidget tree={tree} />}
-              </ViewPanel>
-              <ViewPanel type="PREVIEW">
-                {(tree) => <PreviewWidget tree={tree} />}
-              </ViewPanel>
-            </ViewportPanel>
-          </WorkspacePanel>
-        </Workspace>
-        <SettingsPanel title="panels.PropertySettings">
-          <SettingsForm />
-        </SettingsPanel>
-      </StudioPanel>
+      <Spin>
+        <StudioPanel
+          logo={<LogoWidget />}
+          body={
+            <Tabs activeKey={mode} onTabClick={(key) => setMode(key)}>
+              <TabPane tab="表单设计" itemKey="designer" />
+              <TabPane tab="页面设置" itemKey="page" />
+              <TabPane tab="页面发布" itemKey="deploy" />
+            </Tabs>
+          }
+          actions={<ActionsWidget />}
+        >
+          {Panel}
+        </StudioPanel>
+      </Spin>
     </Designer>
   )
 }

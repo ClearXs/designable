@@ -20,8 +20,9 @@ export default {
         },
         ViewTools: {
           Designable: '画布',
-          JsonView: 'Json View',
-          CodeView: 'Code View',
+          JsonSchema: 'Json',
+          BoSchema: 'Bo',
+          MarkSchema: 'Mark',
           Preview: '预览',
         },
       },
@@ -48,8 +49,9 @@ export default {
         },
         ViewTools: {
           Designable: 'Designable',
-          JsonView: 'Json View',
-          CodeView: 'Code View',
+          JsonSchema: 'Json',
+          BoSchema: 'Bo',
+          MarkSchema: 'Mark',
           Preview: 'Preview',
         },
       },

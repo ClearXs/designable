@@ -53,9 +53,11 @@ GlobalRegistry.registerBOTransfer({
   },
   transform(node, root) {
     return GlobalBOFieldProps.transform(node, root, {
-      type: 'number',
       precision: 12,
       scala: 2,
+      attrType: 'field',
+      type: 'number',
+      icon: 'NumberType',
     })
   },
 })

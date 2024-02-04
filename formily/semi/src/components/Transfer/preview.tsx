@@ -43,6 +43,10 @@ GlobalRegistry.registerBOTransfer({
     return node.props['x-component'] === 'Transfer'
   },
   transform(node, root) {
-    return GlobalBOFieldProps.transform(node, root, { type: 'array' })
+    return GlobalBOFieldProps.transform(node, root, {
+      attrType: 'field',
+      type: 'array',
+      icon: 'ArrayType',
+    })
   },
 })

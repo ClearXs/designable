@@ -5,6 +5,7 @@ import { IconWidget } from '../IconWidget'
 import { usePrefix, useWorkbench } from '../../hooks'
 import cls from 'classnames'
 import { Button, ButtonGroup } from '@douyinfe/semi-ui'
+import { TextWidget } from '../TextWidget'
 
 export interface IViewToolsWidget {
   use?: WorkbenchTypes[]
@@ -25,8 +26,9 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
               workbench.type = 'DESIGNABLE'
             }}
             size="small"
+            icon={<IconWidget infer="Design" />}
           >
-            <IconWidget infer="Design" />
+            <TextWidget token={'panels.widgets.ViewTools.Designable'} />
           </Button>
         )}
         {use.includes('JSONTREE') && (
@@ -36,8 +38,21 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
               workbench.type = 'JSONTREE'
             }}
             size="small"
+            icon={<IconWidget infer="JSON" />}
           >
-            <IconWidget infer="JSON" />
+            <TextWidget token={'panels.widgets.ViewTools.JsonSchema'} />
+          </Button>
+        )}
+        {use.includes('BOTREE') && (
+          <Button
+            disabled={workbench.type === 'BOTREE'}
+            onClick={() => {
+              workbench.type = 'BOTREE'
+            }}
+            size="small"
+            icon={<IconWidget infer="Bo" />}
+          >
+            <TextWidget token={'panels.widgets.ViewTools.BoSchema'} />
           </Button>
         )}
         {use.includes('MARKUP') && (
@@ -47,8 +62,9 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
               workbench.type = 'MARKUP'
             }}
             size="small"
+            icon={<IconWidget infer="Code" />}
           >
-            <IconWidget infer="Code" />
+            <TextWidget token={'panels.widgets.ViewTools.MarkSchema'} />
           </Button>
         )}
         {use.includes('PREVIEW') && (
@@ -58,8 +74,9 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
               workbench.type = 'PREVIEW'
             }}
             size="small"
+            icon={<IconWidget infer="Play" />}
           >
-            <IconWidget infer="Play" />
+            <TextWidget token={'panels.widgets.ViewTools.Preview'} />
           </Button>
         )}
       </ButtonGroup>

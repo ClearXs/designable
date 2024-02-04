@@ -97,18 +97,20 @@ export const IconWidget: React.FC<IIconWidgetProps> & {
       const title =
         React.isValidElement(tooltip) || isStr(tooltip)
           ? tooltip
-          : tooltip.title
+          : tooltip.content
       const props =
         React.isValidElement(tooltip) || isStr(tooltip)
           ? {}
           : isObj(tooltip)
           ? tooltip
           : {}
-      return (
-        <Tooltip {...props} content={title}>
-          {children}
-        </Tooltip>
-      )
+      if (title) {
+        return (
+          <Tooltip {...props} content={title}>
+            {children}
+          </Tooltip>
+        )
+      }
     }
     return children
   }

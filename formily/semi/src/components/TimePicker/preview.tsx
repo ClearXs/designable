@@ -81,6 +81,10 @@ GlobalRegistry.registerBOTransfer({
     return node.props['x-component'] === 'TimePicker'
   },
   transform(node, root) {
-    return GlobalBOFieldProps.transform(node, root, { type: 'date' })
+    return GlobalBOFieldProps.transform(node, root, {
+      attrType: 'field',
+      type: 'date',
+      icon: 'DateType',
+    })
   },
 })

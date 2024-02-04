@@ -282,7 +282,8 @@ GlobalRegistry.registerBOTransfer({
   },
   transform(node, root) {
     return GlobalBOFieldProps.transform(node, root, {
-      type: 'array',
+      attrType: 'table',
+      icon: 'TableType',
     })
   },
 })

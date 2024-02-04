@@ -137,8 +137,9 @@ export type WorkbenchTypes =
   | 'DESIGNABLE'
   | 'PREVIEW'
   | 'JSONTREE'
+  | 'BOTREE'
   | 'MARKUP'
-  | (string & {})
+  | 'CUSTOM'
 
 export interface IBehavior {
   name: string

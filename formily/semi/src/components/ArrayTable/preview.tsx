@@ -384,6 +384,9 @@ GlobalRegistry.registerBOTransfer({
     return node.props['x-component'] === 'ArrayTable'
   },
   transform(node, root) {
-    return GlobalBOFieldProps.transform(node, root, { type: 'table' })
+    return GlobalBOFieldProps.transform(node, root, {
+      attrType: 'table',
+      icon: 'TableType',
+    })
   },
 })

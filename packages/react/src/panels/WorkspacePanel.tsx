@@ -4,6 +4,7 @@ import { usePrefix } from '../hooks'
 export interface IWorkspaceItemProps {
   style?: React.CSSProperties
   flexable?: boolean
+  children: any
 }
 
 export const WorkspacePanel: React.FC & {

@@ -43,6 +43,10 @@ GlobalRegistry.registerBOTransfer({
     return node.props['x-component'] === 'Slider'
   },
   transform(node, root) {
-    return GlobalBOFieldProps.transform(node, root, { type: 'bool' })
+    return GlobalBOFieldProps.transform(node, root, {
+      attrType: 'field',
+      type: 'bool',
+      icon: 'BoolType',
+    })
   },
 })

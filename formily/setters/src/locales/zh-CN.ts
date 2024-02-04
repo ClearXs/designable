@@ -95,6 +95,25 @@ export default {
         pleaseSelect: '请选择',
         formats: ValidatorFormats,
       },
+      DataSetSetter: {
+        static: '静态数据',
+        dictionary: {
+          title: '字典数据',
+          placeholder: '请选择字典项',
+        },
+        dynamic: '动态数据',
+        DynamicSetter: {
+          configureRequest: '配置请求',
+          url: '请求url',
+          method: '请求方法',
+          params: '请求参数',
+          headers: '请求头',
+          internal: '是否内部接口',
+          mapping: '返回结果参数转换',
+
+          addColumn: '添加条目',
+        },
+      },
     },
   },
 }

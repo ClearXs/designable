@@ -44,8 +44,10 @@ GlobalRegistry.registerBOTransfer({
   },
   transform(node, root) {
     return GlobalBOFieldProps.transform(node, root, {
-      type: 'varchar',
       precision: 64,
+      attrType: 'field',
+      type: 'varchar',
+      icon: 'StringType',
     })
   },
 })

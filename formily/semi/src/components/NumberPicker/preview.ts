@@ -45,6 +45,10 @@ GlobalRegistry.registerBOTransfer({
     return NumberPicker.Behavior[0].selector(node)
   },
   transform(node, root) {
-    return GlobalBOFieldProps.transform(node, root, { type: 'number' })
+    return GlobalBOFieldProps.transform(node, root, {
+      attrType: 'field',
+      type: 'number',
+      icon: 'NumberType',
+    })
   },
 })

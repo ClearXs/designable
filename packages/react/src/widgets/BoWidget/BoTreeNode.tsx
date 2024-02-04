@@ -19,7 +19,6 @@ import cls from 'classnames'
 import './styles.less'
 import { isFn } from '@designable/shared'
 import { NodeContext } from './context'
-import { NodeTitleWidget } from '../NodeTitleWidget'
 export interface IBoFieldNodeProps {
   node: BoNode
   style?: React.CSSProperties
@@ -108,16 +107,14 @@ export const BoTreeNode: React.FC<IBoFieldNodeProps> = observer(
     }
 
     const renderTitle = (bo: BoNode) => {
-      if (isFn(ctx.renderTitle)) return ctx.renderTitle(bo.treeNode)
-      return (
-        <span>
-          <NodeTitleWidget node={bo.treeNode} />
-        </span>
-      )
+      if (isFn(ctx.renderTitle) && bo.treeNode)
+        return ctx.renderTitle(bo.treeNode)
+      return <span>{bo.name}</span>
     }
 
     const renderActions = (bo: BoNode) => {
-      if (isFn(ctx.renderActions)) return ctx.renderActions(bo.treeNode)
+      if (isFn(ctx.renderActions) && bo.treeNode)
+        return ctx.renderActions(bo.treeNode)
     }
 
     return (
@@ -161,7 +158,7 @@ export const BoTreeNode: React.FC<IBoFieldNodeProps> = observer(
               data-click-stop-propagation
             >
               {renderActions(node)}
-              {!node.root && (
+              {!node.root && node.treeNode && (
                 <IconWidget
                   className={cls(prefix + '-hidden-icon', {
                     hidden: node.treeNode.hidden,
@@ -171,6 +168,14 @@ export const BoTreeNode: React.FC<IBoFieldNodeProps> = observer(
                   onClick={() => {
                     node.treeNode.hidden = !node.treeNode.hidden
                   }}
+                />
+              )}
+              {!node.root && (
+                <IconWidget
+                  className={cls(prefix + '-hidden-icon')}
+                  infer={'Close'}
+                  size={14}
+                  onClick={() => node.removeThis()}
                 />
               )}
             </div>

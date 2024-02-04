@@ -1,4 +1,4 @@
-import { DataSourceSetter } from '@designable/formily-setters'
+import { DataSetSetter } from '@designable/formily-setters'
 import { ISchema } from '@formily/react'
 
 export const Select: ISchema = {
@@ -12,9 +12,10 @@ export const Select: ISchema = {
         defaultChecked: false,
       },
     },
-    optionList: {
+    dataSet: {
       'x-decorator': 'FormItem',
-      'x-component': DataSourceSetter,
+      'x-component': DataSetSetter,
+      'x-value': 'static',
     },
     borderless: {
       type: 'boolean',

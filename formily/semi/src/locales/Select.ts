@@ -4,7 +4,7 @@ export const Select = {
     settings: {
       'x-component-props': {
         multiple: '多选',
-        optionList: '可选项',
+        dataSet: '可选项',
         filter: '是否可搜索',
         borderless: '无边框模式',
         autoAdjustOverflow: {

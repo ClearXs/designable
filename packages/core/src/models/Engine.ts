@@ -5,12 +5,12 @@ import { Cursor } from './Cursor'
 import { Keyboard } from './Keyboard'
 import { Screen, ScreenType } from './Screen'
 import { Event, uid, globalThisPolyfill } from '@designable/shared'
-import { BoNode, BOSchema, BusinessObject } from './BusinessObject'
+import { BoSchema, BusinessObject } from './BusinessObject'
+import { Dictionary } from './Dictionary'
 
 /**
  * 设计器引擎
  */
-
 export class Engine extends Event {
   id: string
 
@@ -26,6 +26,8 @@ export class Engine extends Event {
 
   bo: BusinessObject
 
+  dictionary: Dictionary[]
+
   constructor(props: IEngineProps<Engine>) {
     super(props)
     this.props = {
@@ -35,6 +37,7 @@ export class Engine extends Event {
     this.init()
     this.id = uid()
     this.bo = new BusinessObject(this)
+    this.dictionary = []
   }
 
   init() {
@@ -54,18 +57,24 @@ export class Engine extends Event {
     return this.workbench?.currentWorkspace?.operation?.tree
   }
 
+  setBoTree(schema?: BoSchema) {
+    this.bo.from(schema)
+  }
+
   getBoTree() {
-    const createBOSchema = (node: BoNode, schema: BOSchema = {}) => {
-      Object.assign(schema, node)
-      if (node.hasChildren()) {
-        schema['children'] = node.children.map((chiNode) =>
-          createBOSchema(chiNode)
-        )
-      }
-      delete schema['treeNode']
-      return schema
-    }
-    return createBOSchema(this.bo.root)
+    return this.bo.root
+  }
+
+  getBoSchema() {
+    return this.bo.toBoSchema()
+  }
+
+  setDictionary(dictionary: Dictionary[]) {
+    this.dictionary = dictionary
+  }
+
+  getDictionary() {
+    return this.dictionary
   }
 
   getAllSelectedNodes() {

@@ -39,7 +39,7 @@ export const ActionsWidget = observer(() => {
         onClick={() => {
           Notification.info({
             position: 'top',
-            content: JSON.stringify(designer.getBOTree()),
+            content: JSON.stringify(designer.getBoSchema()),
           })
         }}
       >

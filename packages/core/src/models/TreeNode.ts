@@ -84,7 +84,7 @@ const resetNodesParent = (nodes: TreeNode[], parent: TreeNode) => {
       deepReset(node)
     }
     if (!TreeNodes.has(node.id)) {
-      TreeNodes.set(node.id, node)
+      node.setCacheId(node.id)
       CommonDesignerPropsMap.set(node.componentName, node.designerProps)
     }
     return node
@@ -130,17 +130,17 @@ export class TreeNode {
     if (node instanceof TreeNode) {
       return node
     }
-    this.id = node.id || uid()
+    const id = node.id || uid()
     if (parent) {
       this.parent = parent
       this.depth = parent.depth + 1
       this.root = parent.root
-      TreeNodes.set(this.id, this)
+      this.setCacheId(id)
     } else {
       this.root = this
       this.rootOperation = node.operation
       this.isSelfSourceNode = node.isSourceNode || false
-      TreeNodes.set(this.id, this)
+      this.setCacheId(id)
     }
     if (node) {
       this.from(node)
@@ -437,11 +437,20 @@ export class TreeNode {
     return ['y']
   }
 
-  allowRotate() {}
+  allowRotate() {
+    // TODO 待实现
+    return true
+  }
 
-  allowRound() {}
+  allowRound() {
+    // TODO 待实现
+    return true
+  }
 
-  allowScale() {}
+  allowScale() {
+    // TODO 待实现
+    return true
+  }
 
   allowTranslate(): boolean {
     if (this === this.root && !this.isSourceNode) return false
@@ -681,6 +690,14 @@ export class TreeNode {
     return this.setChildren(...nodes)
   }
 
+  setCacheId(id: string) {
+    if (this.id) {
+      TreeNodes.delete(this.id)
+    }
+    this.id = id
+    TreeNodes.set(id, this)
+  }
+
   remove() {
     return this.triggerMutation(
       new RemoveNodeEvent({
@@ -729,9 +746,7 @@ export class TreeNode {
       }),
       () => {
         if (node.id && node.id !== this.id) {
-          TreeNodes.delete(this.id)
-          TreeNodes.set(node.id, this)
-          this.id = node.id
+          this.setCacheId(node.id)
         }
         if (node.componentName) {
           this.componentName = node.componentName

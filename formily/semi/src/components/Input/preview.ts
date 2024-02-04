@@ -69,8 +69,10 @@ GlobalRegistry.registerBOTransfer({
   },
   transform(node, root) {
     return GlobalBOFieldProps.transform(node, root, {
-      type: 'varchar',
       precision: 64,
+      attrType: 'field',
+      type: 'varchar',
+      icon: 'StringType',
     })
   },
 })
@@ -80,6 +82,10 @@ GlobalRegistry.registerBOTransfer({
     return Input.Behavior[1].selector(node)
   },
   transform(node, root) {
-    return GlobalBOFieldProps.transform(node, root, { type: 'text' })
+    return GlobalBOFieldProps.transform(node, root, {
+      attrType: 'field',
+      type: 'text',
+      icon: 'TextType',
+    })
   },
 })

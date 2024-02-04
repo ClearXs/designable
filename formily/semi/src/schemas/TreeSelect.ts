@@ -1,4 +1,4 @@
-import { DataSourceSetter } from '@designable/formily-setters'
+import { DataSetSetter } from '@designable/formily-setters'
 import { ISchema } from '@formily/react'
 
 export const TreeSelect: ISchema = {
@@ -11,7 +11,7 @@ export const TreeSelect: ISchema = {
     },
     enum: {
       'x-decorator': 'FormItem',
-      'x-component': DataSourceSetter,
+      'x-component': DataSetSetter,
     },
     autoClearSearchValue: {
       type: 'boolean',
