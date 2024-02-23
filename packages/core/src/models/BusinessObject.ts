@@ -83,6 +83,8 @@ export type BoAttrSchema = {
   lifecycle: 'temporary' | 'persistent'
   // 子
   children?: BoAttrSchema[]
+  // 是否为默认字段
+  defaulted?: boolean
 }
 
 export type BoDataSource = {
@@ -236,6 +238,7 @@ export class BusinessObject {
     boNode.schema = attrSchema
     boNode.parent = parent
     boNode.lifecycle = 'persistent'
+    boNode.defaulted = attrSchema.defaulted
     boNode.children = attrSchema.children?.map((attr) =>
       BusinessObject.toBoNode(attr, boNode, map)
     )
@@ -258,6 +261,7 @@ export class BusinessObject {
       binding: boNode.binding(),
       span: boNode.span(),
       lifecycle: boNode.lifecycle,
+      defaulted: boNode.defaulted,
       props: boNode.treeNode?.props || {},
       children: boNode.children?.map(BusinessObject.toBoAttrSchema),
     }
@@ -271,6 +275,7 @@ export class BoNode {
   type: FieldType
   // bo生命周期，通过{@code #from} persistent方式，或者 {@code eventBus#FromNodeEvent} temporary
   lifecycle: 'temporary' | 'persistent'
+  defaulted?: boolean
   parent?: BoNode
   parentId: string
   depth?: number
