@@ -74,6 +74,7 @@ import {
   TabPane,
   Tabs,
 } from '@douyinfe/semi-ui'
+import DataForm from './DataForm'
 
 setNpmCDNRegistry('//unpkg.com')
 
@@ -244,9 +245,29 @@ const App = () => {
     </>
   )
 
-  const PagePanel = <div>PagePanel</div>
+  const PagePanel = (
+    <>
+      <Workspace id="form">
+        <WorkspacePanel>
+          <ViewportPanel>
+            <ViewPanel type="CUSTOM">{() => <div>PagePanel</div>}</ViewPanel>
+          </ViewportPanel>
+        </WorkspacePanel>
+      </Workspace>
+      <SettingsPanel title="panels.PropertySettings">
+        <DataForm />
+      </SettingsPanel>
+    </>
+  )
 
-  const PageDeployPanel = <div>PageDeployPanel</div>
+  const PageDeployPanel = (
+    <>
+      <ViewportPanel>
+        <ViewPanel type="CUSTOM">{() => <div>PageDeployPanel</div>}</ViewPanel>
+      </ViewportPanel>
+      <SettingsPanel></SettingsPanel>
+    </>
+  )
 
   let Panel
   if (mode === 'designer') {
@@ -259,21 +280,31 @@ const App = () => {
 
   return (
     <Designer engine={engine}>
-      <Spin>
-        <StudioPanel
-          logo={<LogoWidget />}
-          body={
-            <Tabs activeKey={mode} onTabClick={(key) => setMode(key)}>
-              <TabPane tab="表单设计" itemKey="designer" />
-              <TabPane tab="页面设置" itemKey="page" />
-              <TabPane tab="页面发布" itemKey="deploy" />
-            </Tabs>
-          }
-          actions={<ActionsWidget />}
-        >
-          {Panel}
-        </StudioPanel>
-      </Spin>
+      <StudioPanel
+        logo={<LogoWidget />}
+        body={
+          <Tabs
+            activeKey={mode}
+            onTabClick={(key) => {
+              setMode(key)
+              if (key === 'page') {
+                engine.workbench.type = 'CUSTOM_DESIGNABLE'
+              } else if (key === 'designer') {
+                engine.workbench.type = 'DESIGNABLE'
+              } else if (key === 'deploy') {
+                engine.workbench.type = 'CUSTOM'
+              }
+            }}
+          >
+            <TabPane tab="表单设计" itemKey="designer" />
+            <TabPane tab="页面设置" itemKey="page" />
+            <TabPane tab="页面发布" itemKey="deploy" />
+          </Tabs>
+        }
+        actions={<ActionsWidget />}
+      >
+        {Panel}
+      </StudioPanel>
     </Designer>
   )
 }

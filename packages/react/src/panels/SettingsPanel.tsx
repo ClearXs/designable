@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { requestIdle } from '@designable/shared'
+import React, { useState } from 'react'
 import { observer } from '@formily/reactive-react'
 import { TextWidget, IconWidget } from '../widgets'
 import { usePrefix, useWorkbench } from '../hooks'
@@ -13,26 +12,15 @@ export interface ISettingPanelProps {
 export const SettingsPanel: React.FC<ISettingPanelProps> = observer((props) => {
   const prefix = usePrefix('settings-panel')
   const workbench = useWorkbench()
-  const [innerVisible, setInnerVisible] = useState(true)
   const [pinning, setPinning] = useState(false)
   const [visible, setVisible] = useState(true)
-  useEffect(() => {
-    if (visible || workbench.type === 'DESIGNABLE') {
-      if (!innerVisible) {
-        requestIdle(() => {
-          requestAnimationFrame(() => {
-            setInnerVisible(true)
-          })
-        })
-      }
-    }
-  }, [visible, workbench.type])
-  if (workbench.type !== 'DESIGNABLE') {
-    if (innerVisible) setInnerVisible(false)
+
+  const innerVisible =
+    workbench.type === 'DESIGNABLE' || workbench.type === 'CUSTOM_DESIGNABLE'
+  if (!innerVisible) {
     return null
   }
   if (!visible) {
-    if (innerVisible) setInnerVisible(false)
     return (
       <div
         className={prefix + '-opener'}

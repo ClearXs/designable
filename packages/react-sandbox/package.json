@@ -1,6 +1,6 @@
 {
   "name": "@designable/react-sandbox",
-  "version": "0.0.1-beta.22",
+  "version": "0.0.1-beta.24",
   "license": "MIT",
   "main": "lib",
   "types": "lib/index.d.ts",
@@ -26,7 +26,7 @@
     "react": "16.x || 17.x"
   },
   "dependencies": {
-    "@designable/react": "0.0.1-beta.22",
-    "@designable/shared": "0.0.1-beta.22"
+    "@designable/react": "0.0.1-beta.24",
+    "@designable/shared": "0.0.1-beta.24"
   }
 }

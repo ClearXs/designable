@@ -140,6 +140,7 @@ export type WorkbenchTypes =
   | 'BOTREE'
   | 'MARKUP'
   | 'CUSTOM'
+  | 'CUSTOM_DESIGNABLE'
 
 export interface IBehavior {
   name: string

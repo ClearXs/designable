@@ -1,6 +1,6 @@
 {
   "name": "@designable/formily-setters",
-  "version": "0.0.1-beta.22",
+  "version": "0.0.1-beta.24",
   "license": "MIT",
   "main": "lib",
   "module": "esm",
@@ -42,9 +42,9 @@
     "react-is": ">=16.8.0 || >=17.0.0"
   },
   "dependencies": {
-    "@designable/core": "0.0.1-beta.22",
-    "@designable/formily-transformer": "0.0.1-beta.22",
-    "@designable/react": "0.0.1-beta.22",
-    "@designable/react-settings-form": "0.0.1-beta.22"
+    "@designable/core": "0.0.1-beta.24",
+    "@designable/formily-transformer": "0.0.1-beta.24",
+    "@designable/react": "0.0.1-beta.24",
+    "@designable/react-settings-form": "0.0.1-beta.24"
   }
 }
