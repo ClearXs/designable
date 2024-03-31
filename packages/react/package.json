@@ -27,7 +27,7 @@
     "@formily/reactive-react": "^2.3.1"
   },
   "peerDependencies": {
-    "@douyinfe/semi-ui": "^2.50.0",
+    "@douyinfe/semi-ui": "^2.55.1",
     "@formily/reactive": "^2.3.1",
     "@formily/reactive-react": "^2.3.1",
     "react": "16.x || 17.x"

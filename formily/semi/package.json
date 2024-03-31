@@ -28,7 +28,7 @@
     "@formily/core": "^2.3.1",
     "@formily/react": "^2.3.1",
     "@formily/reactive": "^2.3.1",
-    "@formily/semi": "^0.0.3-beta.0",
+    "@formily/semi": "^0.0.4-beta.0",
     "@formily/shared": "^2.3.1",
     "autoprefixer": "^9.0",
     "file-loader": "^5.0.2",
@@ -47,7 +47,7 @@
     "webpack-dev-server": "^3.10.1"
   },
   "peerDependencies": {
-    "@douyinfe/semi-ui": "^2.50.0",
+    "@douyinfe/semi-ui": "^2.55.1",
     "@formily/core": "^2.3.1",
     "@formily/react": "^2.3.1",
     "@formily/reactive": "^2.3.1",

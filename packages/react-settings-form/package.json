@@ -23,7 +23,7 @@
     "build:umd": "rollup --config"
   },
   "peerDependencies": {
-    "@douyinfe/semi-ui": "^2.50.0",
+    "@douyinfe/semi-ui": "^2.55.1",
     "@formily/core": "^2.3.1",
     "@formily/react": "^2.3.1",
     "@formily/reactive": "^2.3.1",
@@ -32,7 +32,7 @@
     "@formily/shared": "^2.3.1"
   },
   "devDependencies": {
-    "@douyinfe/semi-ui": "^2.50.0",
+    "@douyinfe/semi-ui": "^2.55.1",
     "@formily/core": "^2.3.1",
     "@formily/react": "^2.3.1",
     "@formily/reactive": "^2.3.1",

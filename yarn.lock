@@ -1164,84 +1164,85 @@
   dependencies:
     tslib "^2.0.0"
 
-"@douyinfe/semi-animation-react@2.51.3":
-  version "2.51.3"
-  resolved "https://registry.npmmirror.com/@douyinfe/semi-animation-react/-/semi-animation-react-2.51.3.tgz#3fb47e3d75af7bc6430516ce240cb995cede51d4"
-  integrity sha512-esalw4JW6IkzH6BkLvxHmogBlEuFDVmcPN5XNgpjpZCWUGk/qYHExxQ4Fcyp5BCNJDrKNgah4OOUDVPAzBiFPQ==
+"@douyinfe/semi-animation-react@2.55.2":
+  version "2.55.2"
+  resolved "https://packages.aliyun.com/636dc75af003e3b7bb5cad97/npm/npm-registry/@douyinfe/semi-animation-react/-/semi-animation-react-2.55.2.tgz#3bb3fa7d9bdc15c6349cc516f374d86d09813a7b"
+  integrity sha512-G7CGH5DpD9qzOOU5BSJ1YaUPsQpm3AVUGu+AsKQwEc+ENNZnm+09sGXdpcFHHA7FWUk2mdUWtvLPR/Skc4r6jQ==
   dependencies:
-    "@douyinfe/semi-animation" "2.51.3"
-    "@douyinfe/semi-animation-styled" "2.51.3"
+    "@douyinfe/semi-animation" "2.55.2"
+    "@douyinfe/semi-animation-styled" "2.55.2"
     classnames "^2.2.6"
 
-"@douyinfe/semi-animation-styled@2.51.3":
-  version "2.51.3"
-  resolved "https://registry.npmmirror.com/@douyinfe/semi-animation-styled/-/semi-animation-styled-2.51.3.tgz#c5c2136c5ef9659b387986e91bff8e5a7fe2c16b"
-  integrity sha512-wb59wgq23ZRh/ma47CW6KDOU9U8PH/j12sk6pvLRPVmCsKQC+Ir3t+TIGOsEAAuaNN860KnW6ks2iJKfgS/2DQ==
+"@douyinfe/semi-animation-styled@2.55.2":
+  version "2.55.2"
+  resolved "https://packages.aliyun.com/636dc75af003e3b7bb5cad97/npm/npm-registry/@douyinfe/semi-animation-styled/-/semi-animation-styled-2.55.2.tgz#9e14fed2a63732538a0f16a5e3f79ab0e932224b"
+  integrity sha512-Sds48XUpCQwfRf9uVt6Of18pjcs54kL+elpKe5SMhwfIdtHUC5deyBuZaiFRiFPGC4Qp/gZlhMjbM+P7wvZdwg==
 
-"@douyinfe/semi-animation@2.51.3":
-  version "2.51.3"
-  resolved "https://registry.npmmirror.com/@douyinfe/semi-animation/-/semi-animation-2.51.3.tgz#b8563d6d2f138f0e8a4eff52d509e24a143ee5d3"
-  integrity sha512-S9MUvbzHQoV70G29QNpdJvOnGvU5NoQjZDEgcBSBVLcuAVXVTgbl3Syld0CYSzWfVUIdTbK9l7eHYPN2D1Bf0w==
+"@douyinfe/semi-animation@2.55.2":
+  version "2.55.2"
+  resolved "https://packages.aliyun.com/636dc75af003e3b7bb5cad97/npm/npm-registry/@douyinfe/semi-animation/-/semi-animation-2.55.2.tgz#a355b0d1ba2702d032fe1f60d8977fba6ac3eb04"
+  integrity sha512-WBb2/La3tymzlbzE706+WAh3vZ0F0jP8IHCr6CqhC+1mOPJSdNK0/rNA69a8SGw9PHqm7rqz2bVrSajH0VcHAw==
   dependencies:
     bezier-easing "^2.1.0"
 
-"@douyinfe/semi-foundation@2.51.3":
-  version "2.51.3"
-  resolved "https://registry.npmmirror.com/@douyinfe/semi-foundation/-/semi-foundation-2.51.3.tgz#dc277b1bd21d742cf579a2f7e0b7f278344ef1f9"
-  integrity sha512-Tx9AVTkLhgaSsUo36XZP6OJhNPKE3qUv8u9STy/eDfCdZtBeqG0Zy5A6AkAR3Mnhp4PHyT8Nu8ix+XEcFS/tQQ==
+"@douyinfe/semi-foundation@2.55.2":
+  version "2.55.2"
+  resolved "https://packages.aliyun.com/636dc75af003e3b7bb5cad97/npm/npm-registry/@douyinfe/semi-foundation/-/semi-foundation-2.55.2.tgz#04dde026d3899edd6bcc3f8eb932cf360201a9b9"
+  integrity sha512-GaRMbu1hYFXh3cVZ3UHkVpCj3SmDZ5gKVjbqtsEBKRI0pyOEmTmyAnxwpNlpMWa08vkbH+ym4FIeLdrLOne1BQ==
   dependencies:
-    "@douyinfe/semi-animation" "2.51.3"
+    "@douyinfe/semi-animation" "2.55.2"
     async-validator "^3.5.0"
     classnames "^2.2.6"
     date-fns "^2.29.3"
     date-fns-tz "^1.3.8"
+    fast-copy "^3.0.1 "
     lodash "^4.17.21"
     memoize-one "^5.2.1"
     scroll-into-view-if-needed "^2.2.24"
 
-"@douyinfe/semi-icons@2.51.3":
-  version "2.51.3"
-  resolved "https://registry.npmmirror.com/@douyinfe/semi-icons/-/semi-icons-2.51.3.tgz#6a854cdee14e6e2366509d134185ab20846e80c1"
-  integrity sha512-jH2XEF3CIvMkPjTc0tNMw+VMFx+xP4DthGmfsyqDR2+wUMqtW+mW8Z5wee/rumyBuEKNEwifHNU6NskNNywLHw==
+"@douyinfe/semi-icons@2.55.2":
+  version "2.55.2"
+  resolved "https://packages.aliyun.com/636dc75af003e3b7bb5cad97/npm/npm-registry/@douyinfe/semi-icons/-/semi-icons-2.55.2.tgz#9c7aa11c8cac63bb810667131da506baa3e88ffd"
+  integrity sha512-fyipiQKZcSYrb31TeKSAkxBwKxCdl1YVPxv3uVsY/nTnxosSSKzOpYZpIWxeiDsdTuAXoJT7Xh2TbTv88ucHaQ==
   dependencies:
     classnames "^2.2.6"
 
-"@douyinfe/semi-illustrations@2.51.3":
-  version "2.51.3"
-  resolved "https://registry.npmmirror.com/@douyinfe/semi-illustrations/-/semi-illustrations-2.51.3.tgz#38db96231193daef5fd4710706ac6e1aec1a0b9c"
-  integrity sha512-UK7i8+MT/pDwRMgOOint+JjnjdL2XsAGiMVKXsaxB4dz2OO+xa4QYcXg5Y62ggJwebKeKXJP0J22Dm3SG+hpxw==
+"@douyinfe/semi-illustrations@2.55.2":
+  version "2.55.2"
+  resolved "https://packages.aliyun.com/636dc75af003e3b7bb5cad97/npm/npm-registry/@douyinfe/semi-illustrations/-/semi-illustrations-2.55.2.tgz#a365c6b70dcec2927f0885fbc43e231502d9388b"
+  integrity sha512-8AeOeNZBE3WyMh891HHPEB4nVRWzVxdMNb8MtL1EMk3vzWYmaUBzjB/BgDyo94yHJTyKIe3FXLVlvfgmnoji4w==
 
-"@douyinfe/semi-theme-default@2.51.3":
-  version "2.51.3"
-  resolved "https://registry.npmmirror.com/@douyinfe/semi-theme-default/-/semi-theme-default-2.51.3.tgz#f65a21d18ea237ea966e3fee75c5df9e81b95e7a"
-  integrity sha512-WH3O3igZiYR2s2tPCyMz6GJmrITcP32gAgPCth7W6KofD3ez2JNDYhtSmwnsKEya9N3ER8ADRroZNbVrI4gK8A==
+"@douyinfe/semi-theme-default@2.55.2":
+  version "2.55.2"
+  resolved "https://packages.aliyun.com/636dc75af003e3b7bb5cad97/npm/npm-registry/@douyinfe/semi-theme-default/-/semi-theme-default-2.55.2.tgz#f34b1334c8f4ce0afed10a9d34fb98ec1312caf4"
+  integrity sha512-d09ybC+wG/OEMJD7uuoHPd9kobP5LbjvNkPzV2R0z10RxNtY/KnB+gRk/TOiQeK7lcDbCdKwNdSmOhiGCKbGSw==
   dependencies:
     glob "^7.1.6"
 
-"@douyinfe/semi-ui@^2.50.0":
-  version "2.51.3"
-  resolved "https://registry.npmmirror.com/@douyinfe/semi-ui/-/semi-ui-2.51.3.tgz#b670e25b1af256112797061ecec18753cf39e9f1"
-  integrity sha512-uqyEeH9OrNpp4VOK/wKzpteEYoGaYv4IIJ9oYyyGGFpZgF4ev2azRs/rNGWgrPMYDCw/jAc32QD/edaBIsNbVQ==
+"@douyinfe/semi-ui@^2.55.1":
+  version "2.55.2"
+  resolved "https://packages.aliyun.com/636dc75af003e3b7bb5cad97/npm/npm-registry/@douyinfe/semi-ui/-/semi-ui-2.55.2.tgz#59f778b12d2dde683f61a68a8a5f7fb4b9356e97"
+  integrity sha512-XZ7pO7Eyz1I92G7OJdJEdCR51Og/fkEZPDfnmNTUQ4EKzu9YIJ3D72eS2wkdAwKlUiF9MrfUWIxxGnPZbOIB2Q==
   dependencies:
     "@dnd-kit/core" "^6.0.8"
     "@dnd-kit/sortable" "^7.0.2"
     "@dnd-kit/utilities" "^3.2.1"
-    "@douyinfe/semi-animation" "2.51.3"
-    "@douyinfe/semi-animation-react" "2.51.3"
-    "@douyinfe/semi-foundation" "2.51.3"
-    "@douyinfe/semi-icons" "2.51.3"
-    "@douyinfe/semi-illustrations" "2.51.3"
-    "@douyinfe/semi-theme-default" "2.51.3"
+    "@douyinfe/semi-animation" "2.55.2"
+    "@douyinfe/semi-animation-react" "2.55.2"
+    "@douyinfe/semi-foundation" "2.55.2"
+    "@douyinfe/semi-icons" "2.55.2"
+    "@douyinfe/semi-illustrations" "2.55.2"
+    "@douyinfe/semi-theme-default" "2.55.2"
     async-validator "^3.5.0"
     classnames "^2.2.6"
     copy-text-to-clipboard "^2.1.1"
     date-fns "^2.29.3"
     date-fns-tz "^1.3.8"
+    fast-copy "^3.0.1 "
     lodash "^4.17.21"
     prop-types "^15.7.2"
     react-resizable "^3.0.5"
     react-window "^1.8.2"
-    resize-observer-polyfill "^1.5.1"
     scroll-into-view-if-needed "^2.2.24"
     utility-types "^3.10.0"
 
@@ -1360,6 +1361,15 @@
   version "0.0.3-beta.0"
   resolved "https://packages.aliyun.com/636dc75af003e3b7bb5cad97/npm/npm-registry/@formily/semi/-/@formily/semi-0.0.3-beta.0.tgz#34aabf44f1a7e549777b6b90e9c77e4a0535a2e0"
   integrity sha512-NtmO8SOLq51ETidmjQKhWlrKGGouekP3S8kdC6sphdsg0cQev9BtFWzMGI6mTdcI30BJgxg2SIKqDtzbQmYYqA==
+  dependencies:
+    dayjs "^1.10.7"
+    react-sortable-hoc "^2.0.0"
+    react-sticky-box "^0.9.3"
+
+"@formily/semi@^0.0.4-beta.0":
+  version "0.0.4-beta.0"
+  resolved "https://packages.aliyun.com/636dc75af003e3b7bb5cad97/npm/npm-registry/@formily/semi/-/@formily/semi-0.0.4-beta.0.tgz#577986e905632bcf89a389fd7476e4172c90cf84"
+  integrity sha512-CMVnaiW3XkKhoowiwc0ZagmH0JujQcBnsiS7iMwozDIhzPBS+9ZIHVfojaZJEqUSkHCcOxTWFOoHvR/M0BA1pA==
   dependencies:
     dayjs "^1.10.7"
     react-sortable-hoc "^2.0.0"
@@ -7176,6 +7186,11 @@ extsprintf@^1.2.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.1.tgz#8d172c064867f235c0c84a596806d279bf4bcc07"
   integrity sha512-Wrk35e8ydCKDj/ArClo1VrPVmN8zph5V4AtHwIuHhvMXsKf73UT3BOD+azBIW+3wOJ4FhEH7zyaJCFvChjYvMA==
+
+"fast-copy@^3.0.1 ":
+  version "3.0.2"
+  resolved "https://packages.aliyun.com/636dc75af003e3b7bb5cad97/npm/npm-registry/fast-copy/-/fast-copy-3.0.2.tgz#59c68f59ccbcac82050ba992e0d5c389097c9d35"
+  integrity sha512-dl0O9Vhju8IrcLndv2eU4ldt1ftXMqqfgN4H1cpmGV7P6jeB9FwpN9a2c8DPGE1Ys88rNUJVYDHq73CGAGOPfQ==
 
 fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
