@@ -1,6 +1,6 @@
 {
   "name": "@designable/formily-semi",
-  "version": "0.0.1-beta.24",
+  "version": "0.0.1-beta.26",
   "license": "MIT",
   "main": "lib",
   "module": "esm",
@@ -24,7 +24,7 @@
     "start": "webpack-dev-server --config playground/webpack.dev.ts"
   },
   "devDependencies": {
-    "@designable/react-settings-form": "0.0.1-beta.24",
+    "@designable/react-settings-form": "0.0.1-beta.26",
     "@formily/core": "^2.3.1",
     "@formily/react": "^2.3.1",
     "@formily/reactive": "^2.3.1",
@@ -47,7 +47,7 @@
     "webpack-dev-server": "^3.10.1"
   },
   "peerDependencies": {
-    "@douyinfe/semi-ui": "^2.55.1",
+    "@douyinfe/semi-ui": "^2.61.0",
     "@formily/core": "^2.3.1",
     "@formily/react": "^2.3.1",
     "@formily/reactive": "^2.3.1",
@@ -59,9 +59,9 @@
     "react-is": ">=16.8.0 || >=17.0.0"
   },
   "dependencies": {
-    "@designable/core": "0.0.1-beta.24",
-    "@designable/formily-setters": "0.0.1-beta.24",
-    "@designable/formily-transformer": "0.0.1-beta.24",
-    "@designable/react": "0.0.1-beta.24"
+    "@designable/core": "0.0.1-beta.26",
+    "@designable/formily-setters": "0.0.1-beta.26",
+    "@designable/formily-transformer": "0.0.1-beta.26",
+    "@designable/react": "0.0.1-beta.26"
   }
 }

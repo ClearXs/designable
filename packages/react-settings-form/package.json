@@ -1,6 +1,6 @@
 {
   "name": "@designable/react-settings-form",
-  "version": "0.0.1-beta.24",
+  "version": "0.0.1-beta.26",
   "license": "MIT",
   "main": "lib",
   "types": "lib/index.d.ts",
@@ -23,7 +23,7 @@
     "build:umd": "rollup --config"
   },
   "peerDependencies": {
-    "@douyinfe/semi-ui": "^2.55.1",
+    "@douyinfe/semi-ui": "^2.61.0",
     "@formily/core": "^2.3.1",
     "@formily/react": "^2.3.1",
     "@formily/reactive": "^2.3.1",
@@ -32,7 +32,7 @@
     "@formily/shared": "^2.3.1"
   },
   "devDependencies": {
-    "@douyinfe/semi-ui": "^2.55.1",
+    "@douyinfe/semi-ui": "^2.61.0",
     "@formily/core": "^2.3.1",
     "@formily/react": "^2.3.1",
     "@formily/reactive": "^2.3.1",
@@ -42,9 +42,9 @@
   },
   "dependencies": {
     "@babel/parser": "^7.14.7",
-    "@designable/core": "0.0.1-beta.24",
-    "@designable/react": "0.0.1-beta.24",
-    "@designable/shared": "0.0.1-beta.24",
+    "@designable/core": "0.0.1-beta.26",
+    "@designable/react": "0.0.1-beta.26",
+    "@designable/shared": "0.0.1-beta.26",
     "@monaco-editor/react": "^4.2.1",
     "monaco-editor": "^0.25.2",
     "prettier": "^2.3.2",
