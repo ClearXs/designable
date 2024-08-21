@@ -1,6 +1,6 @@
 {
   "name": "@designable/formily-setters",
-  "version": "0.0.1-beta.26",
+  "version": "0.0.1-beta.27",
   "license": "MIT",
   "main": "lib",
   "module": "esm",
@@ -23,17 +23,17 @@
     "start": "webpack-dev-server --config playground/webpack.dev.ts"
   },
   "devDependencies": {
-    "@formily/core": "^2.3.1",
-    "@formily/react": "^2.3.1",
-    "@formily/semi": "^0.0.3-beta.0",
-    "@formily/shared": "^2.3.1",
+    "@formily/core": "^2.3.2",
+    "@formily/react": "^2.3.2",
+    "@formily/semi": "^0.0.6-beta.0",
+    "@formily/shared": "^2.3.2",
     "antd": "^4.0.0"
   },
   "peerDependencies": {
-    "@formily/core": "^2.3.1",
-    "@formily/react": "^2.3.1",
-    "@formily/semi": "^0.0.3-beta.0",
-    "@formily/shared": "^2.3.1",
+    "@formily/core": "^2.3.2",
+    "@formily/react": "^2.3.2",
+    "@formily/semi": "^0.0.6-beta.0",
+    "@formily/shared": "^2.3.2",
     "@types/react": ">=16.8.0 || >=17.0.0",
     "@types/react-dom": ">=16.8.0 || >=17.0.0",
     "antd": "^4.0.0",
@@ -42,9 +42,9 @@
     "react-is": ">=16.8.0 || >=17.0.0"
   },
   "dependencies": {
-    "@designable/core": "0.0.1-beta.26",
-    "@designable/formily-transformer": "0.0.1-beta.26",
-    "@designable/react": "0.0.1-beta.26",
-    "@designable/react-settings-form": "0.0.1-beta.26"
+    "@designable/core": "0.0.1-beta.27",
+    "@designable/formily-transformer": "0.0.1-beta.27",
+    "@designable/react": "0.0.1-beta.27",
+    "@designable/react-settings-form": "0.0.1-beta.27"
   }
 }
