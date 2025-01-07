@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import { useDesigner, TextWidget } from '@designable/react'
-import { GlobalRegistry } from '@designable/core'
+import { useDesigner, TextWidget } from '@clearx/designable-react'
+import { GlobalRegistry } from '@clearx/designable-core'
 import { observer } from '@formily/react'
 import { loadInitialSchema, saveSchema } from '../service'
 import { Button, Notification, RadioGroup, Space } from '@douyinfe/semi-ui'

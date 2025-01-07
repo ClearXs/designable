@@ -1,10 +1,10 @@
-import { AppendNodeEvent, TreeNode } from '@designable/core'
-import { useDesigner } from '@designable/react'
+import { AppendNodeEvent, TreeNode } from '@clearx/designable-core'
+import { useDesigner } from '@clearx/designable-react'
 import { matchComponent, matchChildComponent } from '../shared'
 
 export const useDropTemplate = (
   name: string,
-  getChildren: (source: TreeNode[]) => TreeNode[]
+  getChildren: (source: TreeNode[]) => TreeNode[],
 ) => {
   return useDesigner((designer) => {
     return designer.subscribeTo(AppendNodeEvent, (event) => {
@@ -16,7 +16,7 @@ export const useDropTemplate = (
           target,
           (key) =>
             key === name &&
-            source.every((child) => !matchChildComponent(child, name))
+            source.every((child) => !matchChildComponent(child, name)),
         ) &&
         target.children.length === 0
       ) {

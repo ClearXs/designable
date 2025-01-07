@@ -6,7 +6,7 @@ import {
   IAutoScrollBasicInfo,
   IPoint,
   Point,
-} from '@designable/shared'
+} from '@clearx/designable-shared'
 
 export const useAutoScrollEffect = (engine: Engine) => {
   let xScroller: IAutoScrollBasicInfo = null
@@ -26,7 +26,7 @@ export const useAutoScrollEffect = (engine: Engine) => {
           viewport.scrollContainer,
           'x',
           xScroller.direction,
-          xScroller.speed
+          xScroller.speed,
         )
       } else {
         if (xScrollerAnimationStop) {
@@ -41,7 +41,7 @@ export const useAutoScrollEffect = (engine: Engine) => {
           viewport.scrollContainer,
           'y',
           yScroller.direction,
-          yScroller.speed
+          yScroller.speed,
         )
       } else {
         if (yScrollerAnimationStop) {

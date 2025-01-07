@@ -1,11 +1,11 @@
 import React from 'react'
 import { useField, Field, observer } from '@formily/react'
 import { Field as FieldType } from '@formily/core'
-import { FormItem } from '@formily/semi'
-import { usePrefix, IconWidget } from '@designable/react'
+import { FormItem } from '@clearx/formily-semi'
+import { usePrefix, IconWidget } from '@clearx/designable-react'
 import { FlexStyleSetter } from '../FlexStyleSetter'
 import cls from 'classnames'
-import './styles.less'
+import './styles.scss'
 import { RadioGroup } from '@douyinfe/semi-ui'
 export interface IDisplayStyleSetterProps {
   className?: string
@@ -63,5 +63,5 @@ export const DisplayStyleSetter: React.FC<IDisplayStyleSetterProps> = observer(
         />
       </>
     )
-  }
+  },
 )

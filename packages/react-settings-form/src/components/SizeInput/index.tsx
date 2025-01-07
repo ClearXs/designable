@@ -1,5 +1,6 @@
 import { InputNumber } from '@douyinfe/semi-ui'
 import { createPolyInput } from '../PolyInput'
+import './styles.scss'
 
 const takeNumber = (value: any) => {
   const num = String(value)

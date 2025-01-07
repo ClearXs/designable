@@ -2,10 +2,10 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { clone, uid } from '@formily/shared'
 import { createForm, isVoidField } from '@formily/core'
 import { createSchemaField } from '@formily/react'
-import { GlobalRegistry } from '@designable/core'
-import { requestIdle } from '@designable/shared'
-import { usePrefix, TextWidget } from '@designable/react'
-import { MonacoInput } from '@designable/react-settings-form'
+import { GlobalRegistry } from '@clearx/designable-core'
+import { requestIdle } from '@clearx/designable-shared'
+import { usePrefix, TextWidget } from '@clearx/designable-react'
+import { MonacoInput } from '@clearx/designable-react-settings-form'
 import {
   Form,
   ArrayTable,
@@ -13,13 +13,13 @@ import {
   Select,
   FormItem,
   FormCollapse,
-} from '@formily/semi'
+} from '@clearx/formily-semi'
 import { PathSelector } from './PathSelector'
 import { FieldPropertySetter } from './FieldPropertySetter'
 import { FulfillRunHelper } from './helpers'
 import { IReaction } from './types'
 import { initDeclaration } from './declarations'
-import './styles.less'
+import './styles.scss'
 import { Button, Card, Modal, Tag, Tooltip } from '@douyinfe/semi-ui'
 
 export interface IReactionsSetterProps {
@@ -147,7 +147,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
   }, [modalVisible, props.value])
   const formCollapse = useMemo(
     () => FormCollapse.createFormCollapse(['deps', 'state']),
-    [modalVisible]
+    [modalVisible],
   )
   const openModal = () => setModalVisible(true)
   const closeModal = () => setModalVisible(false)
@@ -161,7 +161,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
         },
         {
           timeout: 400,
-        }
+        },
       )
     } else {
       setInnerVisible(false)
@@ -174,7 +174,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
       </Button>
       <Modal
         title={GlobalRegistry.getDesignerMessage(
-          'SettingComponents.ReactionsSetter.configureReactions'
+          'SettingComponents.ReactionsSetter.configureReactions',
         )}
         width="70%"
         centered
@@ -205,7 +205,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                     x-component-props={{
                       itemKey: 'deps',
                       header: GlobalRegistry.getDesignerMessage(
-                        'SettingComponents.ReactionsSetter.relationsFields'
+                        'SettingComponents.ReactionsSetter.relationsFields',
                       ),
                     }}
                   >
@@ -219,7 +219,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                           x-component="ArrayTable.Column"
                           x-component-props={{
                             title: GlobalRegistry.getDesignerMessage(
-                              'SettingComponents.ReactionsSetter.sourceField'
+                              'SettingComponents.ReactionsSetter.sourceField',
                             ),
                             width: 240,
                           }}
@@ -230,7 +230,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                             x-component="PathSelector"
                             x-component-props={{
                               placeholder: GlobalRegistry.getDesignerMessage(
-                                'SettingComponents.ReactionsSetter.pleaseSelect'
+                                'SettingComponents.ReactionsSetter.pleaseSelect',
                               ),
                             }}
                           />
@@ -239,7 +239,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                           x-component="ArrayTable.Column"
                           x-component-props={{
                             title: GlobalRegistry.getDesignerMessage(
-                              'SettingComponents.ReactionsSetter.sourceProperty'
+                              'SettingComponents.ReactionsSetter.sourceProperty',
                             ),
                             width: 200,
                           }}
@@ -257,7 +257,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                           x-component="ArrayTable.Column"
                           x-component-props={{
                             title: GlobalRegistry.getDesignerMessage(
-                              'SettingComponents.ReactionsSetter.variableName'
+                              'SettingComponents.ReactionsSetter.variableName',
                             ),
                             width: 200,
                           }}
@@ -268,14 +268,14 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                             x-validator={{
                               pattern: /^[$_a-zA-Z]+[$_a-zA-Z0-9]*$/,
                               message: GlobalRegistry.getDesignerMessage(
-                                'SettingComponents.ReactionsSetter.variableNameValidateMessage'
+                                'SettingComponents.ReactionsSetter.variableNameValidateMessage',
                               ),
                             }}
                             x-component="Input"
                             x-component-props={{
                               addonBefore: '$deps.',
                               placeholder: GlobalRegistry.getDesignerMessage(
-                                'SettingComponents.ReactionsSetter.pleaseInput'
+                                'SettingComponents.ReactionsSetter.pleaseInput',
                               ),
                             }}
                             x-reactions={(field) => {
@@ -300,7 +300,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                           x-component="ArrayTable.Column"
                           x-component-props={{
                             title: GlobalRegistry.getDesignerMessage(
-                              'SettingComponents.ReactionsSetter.variableType'
+                              'SettingComponents.ReactionsSetter.variableType',
                             ),
                             ellipsis: {
                               showTitle: false,
@@ -349,7 +349,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                           x-component="ArrayTable.Column"
                           x-component-props={{
                             title: GlobalRegistry.getDesignerMessage(
-                              'SettingComponents.ReactionsSetter.operations'
+                              'SettingComponents.ReactionsSetter.operations',
                             ),
                             align: 'center',
                             width: 80,
@@ -363,7 +363,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                       </SchemaField.Object>
                       <SchemaField.Void
                         title={GlobalRegistry.getDesignerMessage(
-                          'SettingComponents.ReactionsSetter.addRelationField'
+                          'SettingComponents.ReactionsSetter.addRelationField',
                         )}
                         x-component="ArrayTable.Addition"
                         x-component-props={{ style: { marginTop: 8 } }}
@@ -375,7 +375,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                     x-component="FormCollapse.CollapsePanel"
                     x-component-props={{
                       header: GlobalRegistry.getDesignerMessage(
-                        'SettingComponents.ReactionsSetter.propertyReactions'
+                        'SettingComponents.ReactionsSetter.propertyReactions',
                       ),
                       itemKey: 'state',
                       className: 'reaction-state',
@@ -391,7 +391,7 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
                     x-component-props={{
                       itemKey: 'run',
                       header: GlobalRegistry.getDesignerMessage(
-                        'SettingComponents.ReactionsSetter.actionReactions'
+                        'SettingComponents.ReactionsSetter.actionReactions',
                       ),
                       className: 'reaction-runner',
                     }}

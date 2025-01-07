@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { usePrefix, IconWidget } from '@designable/react'
+import { usePrefix, IconWidget } from '@clearx/designable-react'
 import { SettingsFormContext } from '../../shared/context'
 import cls from 'classnames'
-import './styles.less'
+import './styles.scss'
 import { Input, Upload } from '@douyinfe/semi-ui'
 import { InputProps } from '@douyinfe/semi-ui/lib/es/input'
 export interface ImageInputProps extends Omit<InputProps, 'onChange'> {

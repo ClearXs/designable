@@ -1,23 +1,26 @@
 {
-  "name": "@designable/shared",
-  "version": "0.0.1-beta.27",
+  "name": "@clearx/designable-shared",
+  "version": "1.0.8",
   "license": "MIT",
-  "main": "lib",
-  "types": "lib/index.d.ts",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "typings": "lib/esm/index.d.ts",
   "engines": {
     "npm": ">=3.0.0"
   },
-  "module": "esm",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ClearXs/designable.git"
   },
+  "files": [
+    "lib/*"
+  ],
   "bugs": {
     "url": "https://github.com/ClearXs/designable/issues"
   },
   "homepage": "https://github.com/ClearXs/designable#readme",
   "scripts": {
-    "build": "rimraf -rf lib esm dist && npm run build:cjs && npm run build:esm && npm run build:umd",
+    "build": "rollup --config rollup.config.mjs",
     "build:cjs": "tsc --project tsconfig.build.json",
     "build:esm": "tsc --project tsconfig.build.json --module es2015 --outDir esm",
     "build:umd": "rollup --config"

@@ -4,16 +4,16 @@ import {
   isResourceList,
   IResourceLike,
   IResource,
-} from '@designable/core'
-import { isFn } from '@designable/shared'
+} from '@clearx/designable-core'
+import { isFn } from '@clearx/designable-shared'
 import { observer } from '@formily/reactive-react'
 import { usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { TextWidget } from '../TextWidget'
 import cls from 'classnames'
-import './styles.less'
+import './styles.scss'
 
-export type SourceMapper = (resource: IResource) => React.ReactChild
+export type SourceMapper = (resource: IResource) => React.ReactNode
 
 export interface IResourceWidgetProps {
   title: React.ReactNode
@@ -26,7 +26,7 @@ export interface IResourceWidgetProps {
 export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
   (props) => {
     const prefix = usePrefix('resource')
-    const [expand, setExpand] = useState(props.defaultExpand)
+    const [expand = true, setExpand] = useState(props.defaultExpand)
     const renderNode = (source: IResource) => {
       const { node, icon, title, thumb, span } = source
       return (
@@ -102,9 +102,5 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
         </div>
       </div>
     )
-  }
+  },
 )
-
-ResourceWidget.defaultProps = {
-  defaultExpand: true,
-}

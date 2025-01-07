@@ -5,7 +5,7 @@
 import React from 'react'
 import { createPolyInput } from '../PolyInput'
 import { MonacoInput } from '../MonacoInput'
-import { TextWidget } from '@designable/react'
+import { TextWidget } from '@clearx/designable-react'
 import { Button, Input, InputNumber, Popover, Select } from '@douyinfe/semi-ui'
 
 const STARTTAG_REX =

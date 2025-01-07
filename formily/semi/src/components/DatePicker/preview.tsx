@@ -1,12 +1,12 @@
 import React from 'react'
-import { DatePicker as FormilyDatePicker } from '@formily/semi'
+import { DatePicker as FormilyDatePicker } from '@clearx/formily-semi'
 import {
   GlobalBOFieldProps,
   GlobalRegistry,
   createBehavior,
   createResource,
-} from '@designable/core'
-import { DnFC } from '@designable/react'
+} from '@clearx/designable-core'
+import { DnFC } from '@clearx/designable-react'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
@@ -36,7 +36,7 @@ DatePicker.Behavior = createBehavior(
       propsSchema: createFieldSchema(AllSchemas.DatePicker.RangePicker),
     },
     designerLocales: AllLocales.DateRangePicker,
-  }
+  },
 )
 
 DatePicker.Resource = createResource(
@@ -70,7 +70,7 @@ DatePicker.Resource = createResource(
         },
       },
     ],
-  }
+  },
 )
 
 GlobalRegistry.registerBOTransfer({

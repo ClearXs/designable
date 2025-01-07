@@ -1,18 +1,22 @@
 import React from 'react'
-import { FormGrid as FormilyGird } from '@formily/semi'
-import { TreeNode, createBehavior, createResource } from '@designable/core'
+import { FormGrid as FormilyGird } from '@clearx/formily-semi'
+import {
+  TreeNode,
+  createBehavior,
+  createResource,
+} from '@clearx/designable-core'
 import {
   DnFC,
   useTreeNode,
   useNodeIdProps,
   DroppableWidget,
-} from '@designable/react'
+} from '@clearx/designable-react'
 import { observer } from '@formily/reactive-react'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { createFieldSchema, createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
-import './styles.less'
+import './styles.scss'
 
 type formilyGrid = typeof FormilyGird
 
@@ -101,7 +105,7 @@ FormGrid.Behavior = createBehavior(
       propsSchema: createFieldSchema(AllSchemas.FormGrid.GridColumn),
     },
     designerLocales: AllLocales.FormGridColumn,
-  }
+  },
 )
 
 FormGrid.Resource = createResource({

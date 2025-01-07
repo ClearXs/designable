@@ -1,15 +1,15 @@
 import React, { useRef, useEffect } from 'react'
 import { useCursor, usePrefix, useDesigner } from '../../hooks'
-import { CursorStatus } from '@designable/core'
+import { CursorStatus } from '@clearx/designable-core'
 import { autorun } from '@formily/reactive'
 import { observer } from '@formily/reactive-react'
 import { NodeTitleWidget } from '../NodeTitleWidget'
-import './styles.less'
+import './styles.scss'
 
 export const GhostWidget = observer(() => {
   const designer = useDesigner()
   const cursor = useCursor()
-  const ref = useRef<HTMLDivElement>()
+  const ref = useRef<HTMLDivElement | undefined>(undefined)
   const prefix = usePrefix('ghost')
   const movingNodes = designer.findMovingNodes()
   const firstNode = movingNodes[0]
@@ -22,7 +22,7 @@ export const GhostWidget = observer(() => {
         if (!ref.current) return
         ref.current.style.transform = transform
       }),
-    [designer, cursor]
+    [designer, cursor],
   )
   const renderNodes = () => {
     return (

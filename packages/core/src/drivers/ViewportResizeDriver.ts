@@ -1,8 +1,8 @@
-import { EventDriver } from '@designable/shared'
+import { EventDriver } from '@clearx/designable-shared'
 import { Engine } from '../models/Engine'
 import { ViewportResizeEvent } from '../events'
 import { ResizeObserver } from '@juggle/resize-observer'
-import { globalThisPolyfill } from '@designable/shared'
+import { globalThisPolyfill } from '@clearx/designable-shared'
 
 export class ViewportResizeDriver extends EventDriver<Engine> {
   request = null
@@ -23,7 +23,7 @@ export class ViewportResizeDriver extends EventDriver<Engine> {
           innerWidth: this.contentWindow.innerWidth,
           view: this.contentWindow,
           target: e.target || this.container,
-        })
+        }),
       )
     })
   }

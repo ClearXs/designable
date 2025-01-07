@@ -3,7 +3,7 @@ import { useSelectedNode, useSelection, usePrefix, useHover } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { NodeTitleWidget } from '../NodeTitleWidget'
 import { observer } from '@formily/reactive-react'
-import './styles.less'
+import './styles.scss'
 import { Breadcrumb } from '@douyinfe/semi-ui'
 
 export interface INodePathWidgetProps {
@@ -50,5 +50,5 @@ export const NodePathWidget: React.FC<INodePathWidgetProps> = observer(
         })}
       </Breadcrumb>
     )
-  }
+  },
 )

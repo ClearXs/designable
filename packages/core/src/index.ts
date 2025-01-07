@@ -1,15 +1,7 @@
 import * as Core from './exports'
-export * from './exports'
-import { globalThisPolyfill } from '@designable/shared'
+import { globalThisPolyfill } from '@clearx/designable-shared'
 
-if (globalThisPolyfill?.['Designable']?.['Core']) {
-  if (module.exports) {
-    module.exports = {
-      __esModule: true,
-      ...globalThisPolyfill['Designable']['Core'],
-    }
-  }
-} else {
-  globalThisPolyfill['Designable'] = globalThisPolyfill['Designable'] || {}
-  globalThisPolyfill['Designable'].Core = Core
-}
+globalThisPolyfill['Designable'] = globalThisPolyfill['Designable'] || {}
+globalThisPolyfill['Designable'].Core = Core
+
+export * from './exports'

@@ -1,12 +1,12 @@
 import React from 'react'
 import { useField, Field, observer } from '@formily/react'
 import { Field as FieldType } from '@formily/core'
-import { IconWidget, TextWidget, usePrefix } from '@designable/react'
+import { IconWidget, TextWidget, usePrefix } from '@clearx/designable-react'
 import { RadioGroup } from '@douyinfe/semi-ui'
 import { StaticDataSourceSetter } from './StaticDataSourceSetter'
 import { DictionaryDataSourceSetter } from './DictionaryDataSourceSetter'
 import cls from 'classnames'
-import './styles.less'
+import './styles.scss'
 import { DynamicDataSourceSetter } from './DynamicDataSourceSetter'
 export interface IDataSetSetterProps {
   className?: string
@@ -111,5 +111,5 @@ export const DataSetSetter: React.FC<IDataSetSetterProps> = observer(
         </div>
       </>
     )
-  }
+  },
 )

@@ -1,5 +1,5 @@
 import { action, define, observable, toJS } from '@formily/reactive'
-import { uid, isFn, each } from '@designable/shared'
+import { uid, isFn, each } from '@clearx/designable-shared'
 import { Operation } from './Operation'
 import {
   InsertBeforeEvent,
@@ -45,7 +45,7 @@ const CommonDesignerPropsMap = new Map<string, IDesignerControllerProps>()
 const removeNode = (node: TreeNode) => {
   if (node.parent) {
     node.parent.children = node.parent.children.filter(
-      (child) => child !== node
+      (child) => child !== node,
     )
   }
 }
@@ -97,7 +97,7 @@ const resetParent = (node: TreeNode, parent: TreeNode) => {
 
 const resolveDesignerProps = (
   node: TreeNode,
-  props: IDesignerControllerProps
+  props: IDesignerControllerProps,
 ) => {
   if (isFn(props)) return props(node)
   return props
@@ -186,7 +186,7 @@ export class TreeNode {
         mergeLocales(buf, pattern.designerLocales)
         return buf
       },
-      {}
+      {},
     )
     return designerLocales
   }
@@ -505,7 +505,7 @@ export class TreeNode {
   resetNodesParent(nodes: TreeNode[], parent: TreeNode) {
     return resetNodesParent(
       nodes.filter((node) => node !== this),
-      parent
+      parent,
     )
   }
 
@@ -517,7 +517,7 @@ export class TreeNode {
       }),
       () => {
         Object.assign(this.props, props)
-      }
+      },
     )
   }
 
@@ -540,7 +540,7 @@ export class TreeNode {
         this.children = newNodes.concat(this.children)
         return newNodes
       },
-      []
+      [],
     )
   }
 
@@ -559,7 +559,7 @@ export class TreeNode {
         this.children = this.children.concat(newNodes)
         return newNodes
       },
-      []
+      [],
     )
   }
 
@@ -575,7 +575,7 @@ export class TreeNode {
         resetParent(this, wrapper)
         resetParent(wrapper, parent)
         return wrapper
-      }
+      },
     )
   }
 
@@ -603,7 +603,7 @@ export class TreeNode {
           }, [])
           return newNodes
         },
-        []
+        [],
       )
     }
     return []
@@ -632,7 +632,7 @@ export class TreeNode {
           }, [])
           return newNodes
         },
-        []
+        [],
       )
     }
     return []
@@ -659,7 +659,7 @@ export class TreeNode {
           }, [])
           return newNodes
         },
-        []
+        [],
       )
     }
     return []
@@ -678,7 +678,7 @@ export class TreeNode {
         this.children = newNodes
         return newNodes
       },
-      []
+      [],
     )
   }
 
@@ -707,7 +707,7 @@ export class TreeNode {
       () => {
         removeNode(this)
         TreeNodes.delete(this.id)
-      }
+      },
     )
   }
 
@@ -720,20 +720,20 @@ export class TreeNode {
         props: toJS(this.props),
         children: [],
       },
-      parent ? parent : this.parent
+      parent ? parent : this.parent,
     )
     newNode.children = resetNodesParent(
       this.children.map((child) => {
         return child.clone(newNode)
       }),
-      newNode
+      newNode,
     )
     return this.triggerMutation(
       new CloneNodeEvent({
         target: this,
         source: newNode,
       }),
-      () => newNode
+      () => newNode,
     )
   }
 
@@ -761,7 +761,7 @@ export class TreeNode {
               return new TreeNode(node, this)
             }) || []
         }
-      }
+      },
     )
   }
 
@@ -794,7 +794,7 @@ export class TreeNode {
         const next = node.next
         node.remove()
         node.operation?.selection.select(
-          previous ? previous : next ? next : node.parent
+          previous ? previous : next ? next : node.parent,
         )
         node.operation?.hover.clear()
       }
@@ -845,7 +845,7 @@ export class TreeNode {
           insertPoint = insertPoint.next
         } else if (node.operation.selection.length === 1) {
           const targetNode = node.operation?.tree.findById(
-            node.operation.selection.first
+            node.operation.selection.first,
           )
           let cloneNodes = parents.get(targetNode)
           if (!cloneNodes) {

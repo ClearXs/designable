@@ -1,6 +1,6 @@
 import { ISchema, Schema } from '@formily/json-schema'
-import { ITreeNode } from '@designable/core'
-import { clone, uid } from '@designable/shared'
+import { ITreeNode } from '@clearx/designable-core'
+import { clone, uid } from '@clearx/designable-shared'
 
 export interface ITransformerOptions {
   designableFieldName?: string
@@ -32,7 +32,7 @@ const findNode = (node: ITreeNode, finder?: (node: ITreeNode) => boolean) => {
 
 export const transformToSchema = (
   node: ITreeNode,
-  options?: ITransformerOptions
+  options?: ITransformerOptions,
 ): IFormilySchema => {
   const realOptions = createOptions(options)
   const root = findNode(node, (child) => {
@@ -80,7 +80,7 @@ export const transformToSchema = (
 
 export const transformToTreeNode = (
   formily: IFormilySchema = {},
-  options?: ITransformerOptions
+  options?: ITransformerOptions,
 ) => {
   const realOptions = createOptions(options)
   const root: ITreeNode = {

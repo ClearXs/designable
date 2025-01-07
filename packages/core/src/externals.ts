@@ -1,4 +1,4 @@
-import { isArr } from '@designable/shared'
+import { isArr } from '@clearx/designable-shared'
 import { untracked } from '@formily/reactive'
 import { DEFAULT_DRIVERS, DEFAULT_EFFECTS, DEFAULT_SHORTCUTS } from './presets'
 import { Engine, TreeNode } from './models'
@@ -82,6 +82,6 @@ export const createDesigner = (props: IEngineProps<Engine> = {}) => {
         effects: [...effects, ...DEFAULT_EFFECTS],
         drivers: [...drivers, ...DEFAULT_DRIVERS],
         shortcuts: [...shortcuts, ...DEFAULT_SHORTCUTS],
-      })
+      }),
   )
 }

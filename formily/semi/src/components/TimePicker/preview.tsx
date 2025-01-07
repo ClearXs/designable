@@ -1,12 +1,12 @@
 import React from 'react'
-import { TimePicker as FormilyTimePicker } from '@formily/semi'
+import { TimePicker as FormilyTimePicker } from '@clearx/formily-semi'
 import {
   GlobalBOFieldProps,
   GlobalRegistry,
   createBehavior,
   createResource,
-} from '@designable/core'
-import { DnFC } from '@designable/react'
+} from '@clearx/designable-core'
+import { DnFC } from '@clearx/designable-react'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
@@ -39,7 +39,7 @@ TimePicker.Behavior = createBehavior(
       propsSchema: createFieldSchema(AllSchemas.TimePicker.RangePicker),
     },
     designerLocales: AllLocales.TimeRangePicker,
-  }
+  },
 )
 
 TimePicker.Resource = createResource(
@@ -73,7 +73,7 @@ TimePicker.Resource = createResource(
         },
       },
     ],
-  }
+  },
 )
 
 GlobalRegistry.registerBOTransfer({

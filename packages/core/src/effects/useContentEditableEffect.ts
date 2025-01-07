@@ -1,5 +1,5 @@
 import { Path } from '@formily/path'
-import { requestIdle, globalThisPolyfill } from '@designable/shared'
+import { requestIdle, globalThisPolyfill } from '@clearx/designable-shared'
 import { Engine, TreeNode } from '../models'
 import { MouseDoubleClickEvent, MouseClickEvent } from '../events'
 
@@ -79,7 +79,7 @@ export const useContentEditableEffect = (engine: Engine) => {
         Path.setIn(
           node.props,
           this.getAttribute(engine.props.contentEditableAttrName),
-          target?.textContent
+          target?.textContent,
         )
         requestIdle(() => {
           node.takeSnapshot('update:node:props')
@@ -96,7 +96,7 @@ export const useContentEditableEffect = (engine: Engine) => {
     clearTimeout(globalState.requestTimer)
     globalState.requestTimer = setTimeout(
       globalState.queue[globalState.queue.length - 1],
-      600
+      600,
     )
   }
 
@@ -123,7 +123,7 @@ export const useContentEditableEffect = (engine: Engine) => {
     Path.setIn(
       node.props,
       this.getAttribute(engine.props.contentEditableAttrName),
-      target.textContent
+      target.textContent,
     )
     restore(text.length)
   }
@@ -131,7 +131,7 @@ export const useContentEditableEffect = (engine: Engine) => {
   function findTargetNodeId(element: Element) {
     if (!element) return
     const nodeId = element.getAttribute(
-      engine.props.contentEditableNodeIdAttrName
+      engine.props.contentEditableNodeIdAttrName,
     )
     if (nodeId) return nodeId
     const parent = element.closest(`*[${engine.props.nodeIdAttrName}]`)
@@ -141,7 +141,7 @@ export const useContentEditableEffect = (engine: Engine) => {
   engine.subscribeTo(MouseClickEvent, (event) => {
     const target = event.data.target as Element
     const editableElement = target?.closest?.(
-      `*[${engine.props.contentEditableAttrName}]`
+      `*[${engine.props.contentEditableAttrName}]`,
     )
     if (
       editableElement &&
@@ -164,7 +164,7 @@ export const useContentEditableEffect = (engine: Engine) => {
   engine.subscribeTo(MouseDoubleClickEvent, (event) => {
     const target = event.data.target as Element
     const editableElement = target?.closest?.(
-      `*[${engine.props.contentEditableAttrName}]`
+      `*[${engine.props.contentEditableAttrName}]`,
     ) as HTMLInputElement
     const workspace = engine.workbench.activeWorkspace
     const tree = workspace.operation.tree
@@ -182,21 +182,21 @@ export const useContentEditableEffect = (engine: Engine) => {
             editableElement.addEventListener('input', onInputHandler)
             editableElement.addEventListener(
               'compositionstart',
-              onCompositionHandler
+              onCompositionHandler,
             )
             editableElement.addEventListener(
               'compositionupdate',
-              onCompositionHandler
+              onCompositionHandler,
             )
             editableElement.addEventListener(
               'compositionend',
-              onCompositionHandler
+              onCompositionHandler,
             )
             editableElement.addEventListener('keydown', onKeyDownHandler)
             editableElement.addEventListener('paste', onPastHandler)
             document.addEventListener(
               'selectionchange',
-              onSelectionChangeHandler
+              onSelectionChangeHandler,
             )
             setEndOfContenteditable(editableElement)
           }

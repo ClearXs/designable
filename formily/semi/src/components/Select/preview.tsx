@@ -1,12 +1,12 @@
 import React from 'react'
-import { Select as FormilySelect } from '@formily/semi'
+import { Select as FormilySelect } from '@clearx/formily-semi'
 import {
   GlobalBOFieldProps,
   GlobalRegistry,
   createBehavior,
   createResource,
-} from '@designable/core'
-import { DnFC } from '@designable/react'
+} from '@clearx/designable-core'
+import { DnFC } from '@clearx/designable-react'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'

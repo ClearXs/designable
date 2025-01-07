@@ -1,4 +1,7 @@
-import { MonacoInput, getNpmCDNRegistry } from '@designable/react-settings-form'
+import {
+  MonacoInput,
+  getNpmCDNRegistry,
+} from '@clearx/designable-react-settings-form'
 
 export interface IDependency {
   name: string
@@ -11,9 +14,9 @@ const loadDependencies = async (deps: IDependency[]) => {
       name,
       path,
       library: await fetch(`${getNpmCDNRegistry()}/${name}/${path}`).then(
-        (res) => res.text()
+        (res) => res.text(),
       ),
-    }))
+    })),
   )
 }
 
@@ -25,7 +28,7 @@ export const initDeclaration = async () => {
     deps?.forEach(({ name, library }) => {
       monaco.languages.typescript.typescriptDefaults.addExtraLib(
         `declare module '${name}'{ ${library} }`,
-        `file:///node_modules/${name}/index.d.ts`
+        `file:///node_modules/${name}/index.d.ts`,
       )
     })
     monaco.languages.typescript.typescriptDefaults.addExtraLib(
@@ -62,7 +65,7 @@ export const initDeclaration = async () => {
       declare var $props: (props: any) => void
     }
     `,
-      `file:///node_modules/formily_global.d.ts`
+      `file:///node_modules/formily_global.d.ts`,
     )
   })
 }

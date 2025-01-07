@@ -1,6 +1,6 @@
 import './locales'
 import * as icons from './icons'
-import { GlobalRegistry } from '@designable/core'
+import { GlobalRegistry } from '@clearx/designable-core'
 
 GlobalRegistry.registerDesignerIcons(icons)
 

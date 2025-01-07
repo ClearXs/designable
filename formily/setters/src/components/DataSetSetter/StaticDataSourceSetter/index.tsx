@@ -3,12 +3,12 @@ import cls from 'classnames'
 import { Form } from '@formily/core'
 import { observable } from '@formily/reactive'
 import { observer } from '@formily/reactive-react'
-import { usePrefix, useTheme, TextWidget } from '@designable/react'
+import { usePrefix, useTheme, TextWidget } from '@clearx/designable-react'
 import { DataSettingPanel } from './DataSettingPanel'
 import { TreePanel } from './TreePanel'
 import { transformDataToValue, transformValueToData } from './shared'
 import { IDataSourceItem, ITreeDataSource } from './types'
-import './styles.less'
+import './styles.scss'
 import { Button, Modal } from '@douyinfe/semi-ui'
 export interface IStaticDataSourceSetterProps {
   className?: string
@@ -42,7 +42,7 @@ export const StaticDataSourceSetter: React.FC<IStaticDataSourceSetterProps> =
           dataSource: transformValueToData(value),
           selectedKey: '',
         }),
-      [value, modalVisible]
+      [value, modalVisible],
     )
     const openModal = () => setModalVisible(true)
     const closeModal = () => setModalVisible(false)

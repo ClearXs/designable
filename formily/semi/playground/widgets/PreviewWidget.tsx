@@ -28,9 +28,9 @@ import {
   ArrayTable,
   Rate,
   Slider,
-} from '@formily/semi'
-import { TreeNode } from '@designable/core'
-import { transformToSchema } from '@designable/formily-transformer'
+} from '@clearx/formily-semi'
+import { TreeNode } from '@clearx/designable-react'
+import { transformToSchema } from '@clearx/designable-formily-transformer'
 
 const Text: React.FC<{
   value?: string

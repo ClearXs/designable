@@ -1,8 +1,8 @@
 import React from 'react'
 import { Card as SemiCard } from '@douyinfe/semi-ui'
 
-import { createBehavior, createResource } from '@designable/core'
-import { DnFC } from '@designable/react'
+import { createBehavior, createResource } from '@clearx/designable-core'
+import { DnFC } from '@clearx/designable-react'
 import { createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'

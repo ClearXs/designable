@@ -11,7 +11,7 @@ import {
   DragStopEvent,
   ViewportScrollEvent,
 } from '../events'
-import { Point } from '@designable/shared'
+import { Point } from '@clearx/designable-shared'
 
 export const useDragDropEffect = (engine: Engine) => {
   engine.subscribeTo(DragStartEvent, (event) => {
@@ -24,10 +24,10 @@ export const useDragDropEffect = (engine: Engine) => {
        *[${engine.props.boNodeIdAttrName}]
       `)
     const handler = target?.closest(
-      `*[${engine.props.nodeDragHandlerAttrName}]`
+      `*[${engine.props.nodeDragHandlerAttrName}]`,
     )
     const helper = handler?.closest(
-      `*[${engine.props.nodeSelectionIdAttrName}]`
+      `*[${engine.props.nodeSelectionIdAttrName}]`,
     )
     if (!el?.getAttribute && !handler) return
     const sourceId = el?.getAttribute(engine.props.sourceIdAttrName)
@@ -40,7 +40,7 @@ export const useDragDropEffect = (engine: Engine) => {
       const moveHelper = operation.moveHelper
       if (nodeId || outlineId || handlerId || boId) {
         const node = engine.findNodeById(
-          outlineId || nodeId || handlerId || boId
+          outlineId || nodeId || handlerId || boId,
         )
         if (node) {
           if (!node.allowDrag()) return
@@ -96,7 +96,7 @@ export const useDragDropEffect = (engine: Engine) => {
     if (engine.cursor.dragType !== CursorDragType.Move) return
     const point = new Point(
       engine.cursor.position.topClientX,
-      engine.cursor.position.topClientY
+      engine.cursor.position.topClientY,
     )
     const currentWorkspace =
       event?.context?.workspace ?? engine.workbench.activeWorkspace
@@ -124,10 +124,10 @@ export const useDragDropEffect = (engine: Engine) => {
   *[${engine.props.boNodeIdAttrName}]
 `)
     const nodeId = viewportNodeElement?.getAttribute(
-      engine.props.nodeIdAttrName
+      engine.props.nodeIdAttrName,
     )
     const outlineNodeId = outlineNodeElement?.getAttribute(
-      engine.props.outlineNodeIdAttrName
+      engine.props.outlineNodeIdAttrName,
     )
     const boId = boNodeElement?.getAttribute(engine.props.boNodeIdAttrName)
 
@@ -154,8 +154,8 @@ export const useDragDropEffect = (engine: Engine) => {
           if (closestNode.allowSibling(dragNodes)) {
             selection.batchSafeSelect(
               closestNode.insertAfter(
-                ...TreeNode.filterDroppable(dragNodes, closestNode.parent)
-              )
+                ...TreeNode.filterDroppable(dragNodes, closestNode.parent),
+              ),
             )
           }
         } else if (
@@ -165,8 +165,8 @@ export const useDragDropEffect = (engine: Engine) => {
           if (closestNode.allowSibling(dragNodes)) {
             selection.batchSafeSelect(
               closestNode.insertBefore(
-                ...TreeNode.filterDroppable(dragNodes, closestNode.parent)
-              )
+                ...TreeNode.filterDroppable(dragNodes, closestNode.parent),
+              ),
             )
           }
         } else if (
@@ -176,8 +176,8 @@ export const useDragDropEffect = (engine: Engine) => {
           if (closestNode.allowAppend(dragNodes)) {
             selection.batchSafeSelect(
               closestNode.append(
-                ...TreeNode.filterDroppable(dragNodes, closestNode)
-              )
+                ...TreeNode.filterDroppable(dragNodes, closestNode),
+              ),
             )
             moveHelper.dragDrop({ dropNode: closestNode })
           }
@@ -185,8 +185,8 @@ export const useDragDropEffect = (engine: Engine) => {
           if (closestNode.allowAppend(dragNodes)) {
             selection.batchSafeSelect(
               closestNode.prepend(
-                ...TreeNode.filterDroppable(dragNodes, closestNode)
-              )
+                ...TreeNode.filterDroppable(dragNodes, closestNode),
+              ),
             )
             moveHelper.dragDrop({ dropNode: closestNode })
           }

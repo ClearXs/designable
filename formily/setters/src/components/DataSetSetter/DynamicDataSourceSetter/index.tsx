@@ -1,12 +1,12 @@
 import React, { Fragment, useMemo, useState } from 'react'
 import { observer } from '@formily/reactive-react'
 import { Button, Modal } from '@douyinfe/semi-ui'
-import { TextWidget } from '@designable/react'
-import { SchemaField } from '@designable/react-settings-form'
+import { TextWidget } from '@clearx/designable-react'
+import { SchemaField } from '@clearx/designable-react-settings-form'
 import { ISchema } from '@formily/react'
-import { GlobalRegistry } from '@designable/core'
+import { GlobalRegistry } from '@clearx/designable-core'
 import { createForm } from '@formily/core'
-import { Form } from '@formily/semi'
+import { Form } from '@clearx/formily-semi'
 
 export interface IDynamicDataSourceSetterProps {
   className?: string
@@ -71,7 +71,7 @@ const getKeyValueTable = (
   title: string,
   values: KeyValue[] = [],
   add = true,
-  remove = true
+  remove = true,
 ): ISchema => {
   const schema: ISchema = {
     type: 'array',
@@ -134,7 +134,7 @@ const getKeyValueTable = (
         method: 'unshift',
       },
       title: GlobalRegistry.getDesignerMessage(
-        'SettingComponents.DataSetSetter.DynamicSetter.addColumn'
+        'SettingComponents.DataSetSetter.DynamicSetter.addColumn',
       ),
     }
   }
@@ -173,7 +173,7 @@ export const DynamicDataSourceSetter: React.FC<IDynamicDataSourceSetterProps> =
       schema['properties']['url'] = {
         type: 'string',
         title: GlobalRegistry.getDesignerMessage(
-          'SettingComponents.DataSetSetter.DynamicSetter.url'
+          'SettingComponents.DataSetSetter.DynamicSetter.url',
         ),
         'x-decorator': 'FormItem',
         'x-component': 'Input',
@@ -182,7 +182,7 @@ export const DynamicDataSourceSetter: React.FC<IDynamicDataSourceSetterProps> =
       schema['properties']['method'] = {
         type: 'string',
         title: GlobalRegistry.getDesignerMessage(
-          'SettingComponents.DataSetSetter.DynamicSetter.method'
+          'SettingComponents.DataSetSetter.DynamicSetter.method',
         ),
         required: true,
         enum: ['POST', 'PUT', 'GET', 'DELETE', 'PATCH', 'PURGE'],
@@ -195,20 +195,20 @@ export const DynamicDataSourceSetter: React.FC<IDynamicDataSourceSetterProps> =
       }
       schema['properties']['params'] = getKeyValueTable(
         GlobalRegistry.getDesignerMessage(
-          'SettingComponents.DataSetSetter.DynamicSetter.params'
-        )
+          'SettingComponents.DataSetSetter.DynamicSetter.params',
+        ),
       )
       schema['properties']['headers'] = getKeyValueTable(
         GlobalRegistry.getDesignerMessage(
-          'SettingComponents.DataSetSetter.DynamicSetter.headers'
-        )
+          'SettingComponents.DataSetSetter.DynamicSetter.headers',
+        ),
       )
       schema['properties']['internal'] = {
         type: 'boolean',
         'x-decorator': 'FormItem',
         'x-component': 'Switch',
         title: GlobalRegistry.getDesignerMessage(
-          'SettingComponents.DataSetSetter.DynamicSetter.internal'
+          'SettingComponents.DataSetSetter.DynamicSetter.internal',
         ),
         'x-component-props': {
           defaultValue: true,
@@ -216,7 +216,7 @@ export const DynamicDataSourceSetter: React.FC<IDynamicDataSourceSetterProps> =
       }
       schema['properties']['mapping'] = getKeyValueTable(
         GlobalRegistry.getDesignerMessage(
-          'SettingComponents.DataSetSetter.DynamicSetter.mapping'
+          'SettingComponents.DataSetSetter.DynamicSetter.mapping',
         ),
         [
           { key: 'code', value: 'code' },
@@ -226,7 +226,7 @@ export const DynamicDataSourceSetter: React.FC<IDynamicDataSourceSetterProps> =
           { key: 'label', value: 'name' },
         ],
         false,
-        false
+        false,
       )
       return schema
     }, [value])

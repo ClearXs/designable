@@ -1,4 +1,4 @@
-import { BusinessObject, TreeNode } from '@designable/core'
+import { BusinessObject, TreeNode } from '@clearx/designable-core'
 import { onFieldReact } from '@formily/core'
 
 export const useBoDataSource = (node: TreeNode, bo: BusinessObject) => {

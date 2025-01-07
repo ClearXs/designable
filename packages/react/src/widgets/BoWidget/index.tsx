@@ -6,8 +6,8 @@ import { BoTreeNode } from './BoTreeNode'
 import { Insertion } from './Insertion'
 import { NodeContext } from './context'
 import { useBoViewPort } from '../../hooks/useBoViewport'
-import { TreeNode, Viewport } from '@designable/core'
-import { globalThisPolyfill } from '@designable/shared'
+import { TreeNode, Viewport } from '@clearx/designable-core'
+import { globalThisPolyfill } from '@clearx/designable-shared'
 
 export interface IBoTreeWidgetProps {
   className?: string
@@ -19,14 +19,14 @@ export interface IBoTreeWidgetProps {
 
 export const BOWidget: React.FC<IBoTreeWidgetProps> = observer(
   ({ onClose, style, renderActions, renderTitle, className, ...props }) => {
-    const ref = useRef<HTMLDivElement>()
+    const ref = useRef<HTMLDivElement | undefined>(undefined)
     const prefix = usePrefix('bo-tree')
     const workbench = useWorkbench()
     const current = workbench?.activeWorkspace || workbench?.currentWorkspace
     const workspaceId = current?.id
     const bo = useBo(workspaceId)
     const boViewport = useBoViewPort(workspaceId)
-    const boViewportRef = useRef<Viewport>()
+    const boViewportRef = useRef<Viewport | undefined>(undefined)
     useLayoutEffect(() => {
       if (!workspaceId) return
       if (boViewportRef.current && boViewportRef.current !== boViewport) {
@@ -64,5 +64,5 @@ export const BOWidget: React.FC<IBoTreeWidgetProps> = observer(
         </div>
       </NodeContext.Provider>
     )
-  }
+  },
 )

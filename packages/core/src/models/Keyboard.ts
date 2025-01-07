@@ -1,5 +1,5 @@
 import { observable, define, action } from '@formily/reactive'
-import { KeyCode } from '@designable/shared'
+import { KeyCode } from '@clearx/designable-shared'
 import { Engine } from './Engine'
 import { Shortcut } from './Shortcut'
 import { AbstractKeyboardEvent } from '../events/keyboard/AbstractKeyboardEvent'
@@ -52,7 +52,7 @@ export class Keyboard {
 
   excludes(key: KeyCode) {
     this.sequence = this.sequence.filter(
-      (code) => !Shortcut.matchCode(key, code)
+      (code) => !Shortcut.matchCode(key, code),
     )
   }
 

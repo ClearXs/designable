@@ -1,15 +1,15 @@
 import React, { useMemo, Fragment } from 'react'
-import { PlusOutlined } from '@ant-design/icons'
-import { ArrayItems, Form, Input, FormItem } from '@formily/semi'
+import { ArrayItems, Form, Input, FormItem } from '@clearx/formily-semi'
+import { IconPlus } from '@douyinfe/semi-icons'
 import { createForm, Form as FormCore } from '@formily/core'
 import { observer } from '@formily/reactive-react'
 import { createSchemaField } from '@formily/react'
-import { ValueInput } from '@designable/react-settings-form'
-import { usePrefix, TextWidget } from '@designable/react'
+import { ValueInput } from '@clearx/designable-react-settings-form'
+import { usePrefix, TextWidget } from '@clearx/designable-react'
 import { Header } from './Header'
 import { traverseTree } from './shared'
 import { ITreeDataSource } from './types'
-import './styles.less'
+import './styles.scss'
 import { Button } from '@douyinfe/semi-ui'
 
 const SchemaField = createSchemaField({
@@ -74,7 +74,7 @@ export const DataSettingPanel: React.FC<IDataSettingPanelProps> = observer(
                     state.value.push({})
                   })
                 }}
-                icon={<PlusOutlined />}
+                icon={<IconPlus />}
               >
                 <TextWidget token="SettingComponents.DataSourceSetter.addKeyValuePair" />
               </Button>
@@ -110,7 +110,7 @@ export const DataSettingPanel: React.FC<IDataSettingPanelProps> = observer(
                     x-component="ArrayItems.Remove"
                     x-visible={allowExtendOption}
                     x-component-props={{
-                      svg: {},
+                      svg: null,
                       style: {
                         margin: 5,
                         display: 'flex',
@@ -126,5 +126,5 @@ export const DataSettingPanel: React.FC<IDataSettingPanelProps> = observer(
         </div>
       </Fragment>
     )
-  }
+  },
 )

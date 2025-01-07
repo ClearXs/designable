@@ -3,7 +3,9 @@
   "compilerOptions": {
     "outDir": "./lib",
     "paths": {
-      "@designable/*": ["../../packages/*", "../../formily/*"]
+      "@clearx/designable-*": ["../../formily/*"],
+      "@clearx/designable-*": ["../../packages/*"],
+      "@formily/*": ["node_modules/@formily/*"]
     },
     "declaration": true
   }

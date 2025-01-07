@@ -10,7 +10,7 @@ import {
   Rect,
   IRect,
   isRectInRect,
-} from '@designable/shared'
+} from '@clearx/designable-shared'
 import { action, define, observable } from '@formily/reactive'
 import { Workspace } from './Workspace'
 import { Engine } from './Engine'
@@ -222,7 +222,7 @@ export class Viewport {
   }
 
   matchViewport(
-    target: HTMLElement | Element | Window | Document | EventTarget
+    target: HTMLElement | Element | Window | Document | EventTarget,
   ) {
     if (this.isIframe) {
       return (
@@ -322,7 +322,7 @@ export class Viewport {
     if (!id) return
     if (this.nodeElementsStore[id]) return this.nodeElementsStore[id][0]
     return this.viewportRoot?.querySelector(
-      `*[${this.nodeIdAttrName}='${id}']`
+      `*[${this.nodeIdAttrName}='${id}']`,
     ) as HTMLElement
   }
 
@@ -331,8 +331,8 @@ export class Viewport {
     if (this.nodeElementsStore[id]) return this.nodeElementsStore[id]
     return Array.from(
       this.viewportRoot?.querySelectorAll(
-        `*[${this.nodeIdAttrName}='${id}']`
-      ) ?? []
+        `*[${this.nodeIdAttrName}='${id}']`,
+      ) ?? [],
     )
   }
 
@@ -363,7 +363,7 @@ export class Viewport {
       rect.x,
       rect.y,
       this.scale !== 1 ? offsetWidth : rect.width,
-      this.scale !== 1 ? offsetHeight : rect.height
+      this.scale !== 1 ? offsetHeight : rect.height,
     )
   }
 
@@ -371,7 +371,7 @@ export class Viewport {
   getElementRectById(id: string) {
     const elements = this.findElementsById(id)
     const rect = calcBoundingRect(
-      elements.map((element) => this.getElementRect(element))
+      elements.map((element) => this.getElementRect(element)),
     )
     if (rect) {
       if (this.isIframe) {
@@ -379,7 +379,7 @@ export class Viewport {
           rect.x + this.offsetX,
           rect.y + this.offsetY,
           rect.width,
-          rect.height
+          rect.height,
         )
       } else {
         return new Rect(rect.x, rect.y, rect.width, rect.height)
@@ -396,7 +396,7 @@ export class Viewport {
           elementRect.x + this.contentWindow.scrollX,
           elementRect.y + this.contentWindow.scrollY,
           elementRect.width,
-          elementRect.height
+          elementRect.height,
         )
       } else {
         return new Rect(
@@ -405,7 +405,7 @@ export class Viewport {
           (elementRect.y - this.offsetY + this.viewportElement.scrollTop) /
             this.scale,
           elementRect.width,
-          elementRect.height
+          elementRect.height,
         )
       }
     }
@@ -416,7 +416,7 @@ export class Viewport {
     const elements = this.findElementsById(id)
     if (!elements.length) return
     const elementRect = calcBoundingRect(
-      elements.map((element) => this.getElementRect(element))
+      elements.map((element) => this.getElementRect(element)),
     )
     if (elementRect) {
       if (this.isIframe) {
@@ -424,7 +424,7 @@ export class Viewport {
           elementRect.x + this.contentWindow.scrollX,
           elementRect.y + this.contentWindow.scrollY,
           elementRect.width,
-          elementRect.height
+          elementRect.height,
         )
       } else {
         return new Rect(
@@ -433,7 +433,7 @@ export class Viewport {
           (elementRect.y - this.offsetY + this.viewportElement.scrollTop) /
             this.scale,
           elementRect.width,
-          elementRect.height
+          elementRect.height,
         )
       }
     }
@@ -461,7 +461,7 @@ export class Viewport {
           return buf.concat(rect)
         }
         return buf
-      }, [])
+      }, []),
     )
   }
 
@@ -475,7 +475,7 @@ export class Viewport {
           return buf.concat(rect)
         }
         return buf
-      }, [])
+      }, []),
     )
   }
 

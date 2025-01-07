@@ -1,12 +1,12 @@
 import React from 'react'
-import { Password as FormilyPassword } from '@formily/semi'
+import { Password as FormilyPassword } from '@clearx/formily-semi'
 import {
   GlobalBOFieldProps,
   GlobalRegistry,
   createBehavior,
   createResource,
-} from '@designable/core'
-import { DnFC } from '@designable/react'
+} from '@clearx/designable-core'
+import { DnFC } from '@clearx/designable-react'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'

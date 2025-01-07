@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@clearx/designable-core'
 import { useHover, useSelection, usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { NodeTitleWidget } from '../NodeTitleWidget'
@@ -9,7 +9,7 @@ import { Button } from '@douyinfe/semi-ui'
 const useMouseHover = <T extends { current: HTMLElement }>(
   ref: T,
   enter?: () => void,
-  leave?: () => void
+  leave?: () => void,
 ) => {
   useEffect(() => {
     let timer = null
@@ -43,7 +43,7 @@ export interface ISelectorProps {
 export const Selector: React.FC<ISelectorProps> = observer(({ node }) => {
   const hover = useHover()
   const [expand, setExpand] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement | undefined>(undefined)
   const selection = useSelection()
   const prefix = usePrefix('aux-selector')
   const renderIcon = (node: TreeNode) => {
@@ -100,7 +100,7 @@ export const Selector: React.FC<ISelectorProps> = observer(({ node }) => {
     },
     () => {
       setExpand(false)
-    }
+    },
   )
 
   return (

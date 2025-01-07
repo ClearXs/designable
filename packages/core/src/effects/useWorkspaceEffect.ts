@@ -1,5 +1,5 @@
 import { Engine } from '../models'
-import { ICustomEvent } from '@designable/shared'
+import { ICustomEvent } from '@clearx/designable-shared'
 import { IEngineContext } from '../types'
 import { SelectNodeEvent } from '../events'
 
@@ -23,7 +23,7 @@ export const useWorkspaceEffect = (engine: Engine) => {
       if (event.context?.workbench) {
         engine.workbench.setActiveWorkspace(event.context.workspace)
       }
-    }
+    },
   )
   engine.subscribeTo(SelectNodeEvent, (event) => {
     engine.workbench.eachWorkspace((workspace) => {

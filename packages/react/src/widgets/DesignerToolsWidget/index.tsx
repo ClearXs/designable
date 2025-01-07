@@ -1,6 +1,6 @@
 import React, { Fragment, useRef } from 'react'
 import { observer } from '@formily/reactive-react'
-import { CursorType, ScreenType } from '@designable/core'
+import { CursorType, ScreenType } from '@clearx/designable-core'
 import {
   useCursor,
   useHistory,
@@ -10,7 +10,7 @@ import {
 } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import cls from 'classnames'
-import './styles.less'
+import './styles.scss'
 import { Button, ButtonGroup, InputNumber, Tooltip } from '@douyinfe/semi-ui'
 import { TextWidget } from '../TextWidget'
 
@@ -30,8 +30,9 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
     const history = useHistory()
     const sizeRef = useRef<{ width?: any; height?: any }>({})
     const prefix = usePrefix('designer-tools')
+    const { use = ['HISTORY', 'CURSOR', 'SCREEN_TYPE'] } = props
     const renderHistoryController = () => {
-      if (!props.use.includes('HISTORY')) return null
+      if (!use.includes('HISTORY')) return null
       return (
         <ButtonGroup size="small" style={{ marginRight: 20 }}>
           <Tooltip
@@ -73,7 +74,7 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
 
     const renderCursorController = () => {
       if (workbench.type !== 'DESIGNABLE') return null
-      if (!props.use.includes('CURSOR')) return null
+      if (!use.includes('CURSOR')) return null
       return (
         <ButtonGroup size="small" style={{ marginRight: 20 }}>
           <Tooltip
@@ -113,7 +114,7 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
     }
 
     const renderResponsiveController = () => {
-      if (!props.use.includes('SCREEN_TYPE')) return null
+      if (!use.includes('SCREEN_TYPE')) return null
       if (screen.type !== ScreenType.Responsive) return null
       return (
         <Fragment>
@@ -171,7 +172,7 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
     }
 
     const renderScreenTypeController = () => {
-      if (!props.use.includes('SCREEN_TYPE')) return null
+      if (!use.includes('SCREEN_TYPE')) return null
       return (
         <ButtonGroup size="small" style={{ marginRight: 20 }}>
           <Tooltip
@@ -225,7 +226,7 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
     }
 
     const renderMobileController = () => {
-      if (!props.use.includes('SCREEN_TYPE')) return null
+      if (!use.includes('SCREEN_TYPE')) return null
       if (screen.type !== ScreenType.Mobile) return
       return (
         <Tooltip
@@ -261,7 +262,3 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
       </div>
     )
   })
-
-DesignerToolsWidget.defaultProps = {
-  use: ['HISTORY', 'CURSOR', 'SCREEN_TYPE'],
-}

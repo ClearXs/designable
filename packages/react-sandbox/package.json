@@ -1,17 +1,20 @@
 {
-  "name": "@designable/react-sandbox",
-  "version": "0.0.1-beta.27",
+  "name": "@clearx/designable-react-sandbox",
+  "version": "1.0.8",
   "license": "MIT",
-  "main": "lib",
-  "types": "lib/index.d.ts",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "typings": "lib/esm/index.d.ts",
   "engines": {
     "npm": ">=3.0.0"
   },
-  "module": "esm",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ClearXs/designable.git"
   },
+  "files": [
+    "lib/*"
+  ],
   "bugs": {
     "url": "https://github.com/ClearXs/designable/issues"
   },
@@ -23,10 +26,14 @@
     "build:umd": "rollup --config"
   },
   "peerDependencies": {
-    "react": "16.x || 17.x"
+    "@types/react": "18.x",
+    "@types/react-dom": "18.x",
+    "react": "18.x",
+    "react-dom": "18.x",
+    "react-is": "18.x"
   },
   "dependencies": {
-    "@designable/react": "0.0.1-beta.27",
-    "@designable/shared": "0.0.1-beta.27"
+    "@clearx/designable-react": "workspace:^",
+    "@clearx/designable-shared": "workspace:^"
   }
 }

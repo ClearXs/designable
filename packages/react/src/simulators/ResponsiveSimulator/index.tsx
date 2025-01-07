@@ -6,22 +6,22 @@ import {
   DragMoveEvent,
   DragStopEvent,
   CursorDragType,
-} from '@designable/core'
+} from '@clearx/designable-core'
 import {
   calcSpeedFactor,
   createUniformSpeedAnimation,
-} from '@designable/shared'
+} from '@clearx/designable-shared'
 import { useScreen, useDesigner, usePrefix } from '../../hooks'
 import { IconWidget } from '../../widgets'
 import { ResizeHandle, ResizeHandleType } from './handle'
 
 import cls from 'classnames'
-import './styles.less'
+import './styles.scss'
 
 const useResizeEffect = (
   container: React.MutableRefObject<HTMLDivElement>,
   content: React.MutableRefObject<HTMLDivElement>,
-  engine: Engine
+  engine: Engine,
 ) => {
   let status: ResizeHandleType = null
   let startX = 0
@@ -43,19 +43,19 @@ const useResizeEffect = (
       engine.screen.setSize(startWidth + deltaX, startHeight + deltaY)
       container.current.scrollBy(
         containerRect.width + deltaX,
-        containerRect.height + deltaY
+        containerRect.height + deltaY,
       )
     } else if (status === ResizeHandleType.ResizeHeight) {
       engine.screen.setSize(startWidth, startHeight + deltaY)
       container.current.scrollBy(
         container.current.scrollLeft,
-        containerRect.height + deltaY
+        containerRect.height + deltaY,
       )
     } else if (status === ResizeHandleType.ResizeWidth) {
       engine.screen.setSize(startWidth + deltaX, startHeight)
       container.current.scrollBy(
         containerRect.width + deltaX,
-        container.current.scrollTop
+        container.current.scrollTop,
       )
     }
   }
@@ -67,7 +67,7 @@ const useResizeEffect = (
       const rect = content.current?.getBoundingClientRect()
       if (!rect) return
       status = target.getAttribute(
-        engine.props.screenResizeHandlerAttrName
+        engine.props.screenResizeHandlerAttrName,
       ) as ResizeHandleType
       engine.cursor.setStyle(getStyle(status))
       startX = e.data.topClientX
@@ -134,8 +134,8 @@ export interface IResponsiveSimulatorProps
 
 export const ResponsiveSimulator: React.FC<IResponsiveSimulatorProps> =
   observer((props) => {
-    const container = useRef<HTMLDivElement>()
-    const content = useRef<HTMLDivElement>()
+    const container = useRef<HTMLDivElement | undefined>(undefined)
+    const content = useRef<HTMLDivElement | undefined>(undefined)
     const prefix = usePrefix('responsive-simulator')
     const screen = useScreen()
     useDesigner((engine) => {

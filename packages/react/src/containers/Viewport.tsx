@@ -1,8 +1,8 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
 import { usePrefix, useViewport } from '../hooks'
 import { AuxToolWidget, EmptyWidget } from '../widgets'
-import { Viewport as ViewportType } from '@designable/core'
-import { requestIdle, globalThisPolyfill } from '@designable/shared'
+import { Viewport as ViewportType } from '@clearx/designable-core'
+import { requestIdle, globalThisPolyfill } from '@clearx/designable-shared'
 import cls from 'classnames'
 export interface IViewportProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'placeholder'> {
@@ -18,8 +18,8 @@ export const Viewport: React.FC<IViewportProps> = ({
   const [loaded, setLoaded] = useState(false)
   const prefix = usePrefix('viewport')
   const viewport = useViewport()
-  const ref = useRef<HTMLDivElement>()
-  const viewportRef = useRef<ViewportType>()
+  const ref = useRef<HTMLDivElement | undefined>(undefined)
+  const viewportRef = useRef<ViewportType | undefined>(undefined)
   const isFrameRef = useRef(false)
   useLayoutEffect(() => {
     const frameElement = ref.current.querySelector('iframe')

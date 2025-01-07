@@ -1,6 +1,6 @@
 import { isFn } from './types'
 
-const UNSUBSCRIBE_ID_SYMBOL = Symbol('UNSUBSCRIBE_ID_SYMBOL')
+const UNSUBSCRIBE_ID_SYMBOL: unique symbol = Symbol('UNSUBSCRIBE_ID_SYMBOL')
 
 export interface ISubscriber<Payload = any> {
   (payload: Payload): void | boolean

@@ -5,7 +5,12 @@ import { Selection } from './Selection'
 import { Hover } from './Hover'
 import { TransformHelper } from './TransformHelper'
 import { MoveHelper } from './MoveHelper'
-import { cancelIdle, ICustomEvent, isFn, requestIdle } from '@designable/shared'
+import {
+  cancelIdle,
+  ICustomEvent,
+  isFn,
+  requestIdle,
+} from '@clearx/designable-shared'
 import { RootNodeCreateEvent } from '../events/mutation/RootNodeCreateEvent'
 
 export interface IOperation {
@@ -55,11 +60,11 @@ export class Operation {
     this.selection.select(this.tree)
 
     this.dispatch(
-      new RootNodeCreateEvent({ source: this.tree, target: this.tree })
+      new RootNodeCreateEvent({ source: this.tree, target: this.tree }),
     )
   }
 
-  dispatch(event: ICustomEvent, callback?: () => void) {
+  dispatch<T>(event: ICustomEvent, callback?: () => T) {
     if (this.workspace.dispatch(event) === false) return
     if (isFn(callback)) return callback()
   }

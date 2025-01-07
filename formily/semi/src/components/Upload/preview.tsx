@@ -1,12 +1,12 @@
 import React from 'react'
-import { Upload as FormilyUpload } from '@formily/semi'
+import { Upload as FormilyUpload } from '@clearx/formily-semi'
 import {
   GlobalBOFieldProps,
   GlobalRegistry,
   createBehavior,
   createResource,
-} from '@designable/core'
-import { DnFC } from '@designable/react'
+} from '@clearx/designable-core'
+import { DnFC } from '@clearx/designable-react'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
@@ -32,7 +32,7 @@ Upload.Behavior = createBehavior(
       propsSchema: createFieldSchema(AllSchemas.Upload.Dragger),
     },
     designerLocales: AllLocales.UploadDragger,
-  }
+  },
 )
 
 Upload.Resource = createResource(
@@ -69,7 +69,7 @@ Upload.Resource = createResource(
         },
       },
     ],
-  }
+  },
 )
 
 GlobalRegistry.registerBOTransfer({

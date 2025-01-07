@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { isValid } from '@designable/shared'
+import { isValid } from '@clearx/designable-shared'
 import cls from 'classnames'
 import { IconWidget, TextWidget } from '../widgets'
 import { usePrefix } from '../hooks'
@@ -26,7 +26,7 @@ export interface ICompositePanelItemProps {
 }
 
 const parseItems = (
-  children: React.ReactNode
+  children: React.ReactNode,
 ): React.PropsWithChildren<ICompositePanelItemProps>[] => {
   const items = []
   React.Children.forEach(children, (child, index) => {
@@ -39,7 +39,7 @@ const parseItems = (
 
 const findItem = (
   items: React.PropsWithChildren<ICompositePanelItemProps>[],
-  key: string | number
+  key: string | number,
 ) => {
   for (let index = 0; index < items.length; index++) {
     const item = items[index]
@@ -58,9 +58,9 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
 } = (props) => {
   const prefix = usePrefix('composite-panel')
   const [activeKey, setActiveKey] = useState<string | number>(
-    props.defaultActiveKey ?? getDefaultKey(props.children)
+    props.defaultActiveKey ?? getDefaultKey(props.children),
   )
-  const activeKeyRef = useRef(null)
+  const activeKeyRef = useRef(activeKey)
   const [pinning, setPinning] = useState(props.defaultPinning ?? false)
   const [visible, setVisible] = useState(props.defaultOpen ?? true)
   const items = parseItems(props.children)
@@ -143,8 +143,8 @@ export const CompositePanel: React.FC<ICompositePanelProps> & {
                   props.showNavTitle
                     ? null
                     : {
-                        title: <TextWidget>{item.title}</TextWidget>,
-                        placement:
+                        content: <TextWidget>{item.title}</TextWidget>,
+                        position:
                           props.direction === 'right' ? 'left' : 'right',
                       }
                 }

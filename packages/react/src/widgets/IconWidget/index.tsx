@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useEffect, useRef } from 'react'
-import { isStr, isFn, isObj, isPlainObj } from '@designable/shared'
+import { isStr, isFn, isObj, isPlainObj } from '@clearx/designable-shared'
 import { observer } from '@formily/reactive-react'
 import { usePrefix, useRegistry, useTheme } from '../../hooks'
 import cls from 'classnames'
-import './styles.less'
+import './styles.scss'
 import { Tooltip } from '@douyinfe/semi-ui'
 import { TooltipProps } from '@douyinfe/semi-ui/lib/es/tooltip'
 
@@ -26,7 +26,7 @@ export interface IIconWidgetProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 export const IconWidget: React.FC<IIconWidgetProps> & {
-  Provider?: React.FC<IconProviderProps>
+  Provider?: React.FC<React.PropsWithChildren<IconProviderProps>>
   ShadowSVG?: React.FC<IShadowSVGProps>
 } = observer((props: React.PropsWithChildren<IIconWidgetProps>) => {
   const theme = useTheme()
@@ -36,7 +36,7 @@ export const IconWidget: React.FC<IIconWidgetProps> & {
   const size = props.size || '1em'
   const height = props.style?.height || size
   const width = props.style?.width || size
-  const takeIcon = (infer: React.ReactNode) => {
+  const takeIcon = (infer: IIconWidgetProps['infer']) => {
     if (isStr(infer)) {
       const finded = registry.getDesignerIcon(infer)
       if (finded) {
@@ -51,14 +51,7 @@ export const IconWidget: React.FC<IIconWidgetProps> & {
       })
     } else if (React.isValidElement(infer)) {
       if (infer.type === 'svg') {
-        return React.cloneElement(infer, {
-          height,
-          width,
-          fill: 'currentColor',
-          viewBox: infer.props.viewBox || '0 0 1024 1024',
-          focusable: 'false',
-          'aria-hidden': 'true',
-        })
+        return React.cloneElement(infer)
       } else if (infer.type === 'path' || infer.type === 'g') {
         return (
           <svg
@@ -102,8 +95,8 @@ export const IconWidget: React.FC<IIconWidgetProps> & {
         React.isValidElement(tooltip) || isStr(tooltip)
           ? {}
           : isObj(tooltip)
-          ? tooltip
-          : {}
+            ? tooltip
+            : {}
       if (title) {
         return (
           <Tooltip {...props} content={title}>
@@ -125,12 +118,12 @@ export const IconWidget: React.FC<IIconWidgetProps> & {
       }}
     >
       {takeIcon(props.infer)}
-    </span>
+    </span>,
   )
 })
 
 IconWidget.ShadowSVG = (props) => {
-  const ref = useRef<HTMLDivElement>()
+  const ref = useRef<HTMLDivElement | undefined>(undefined)
   const width = isNumSize(props.width) ? `${props.width}px` : props.width
   const height = isNumSize(props.height) ? `${props.height}px` : props.height
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@clearx/designable-core'
 import { observer } from '@formily/reactive-react'
 import { IconWidget } from '../IconWidget'
 import { useDesigner, usePrefix } from '../../hooks'
@@ -23,7 +23,7 @@ export const DragHandler: React.FC<IDragHandlerProps> = observer(
         <IconWidget infer="Move" />
       </Button>
     )
-  }
+  },
 )
 
 DragHandler.displayName = 'DragHandler'

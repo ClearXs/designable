@@ -3,7 +3,7 @@ import {
   calcDistanceOfSnapLineToEdges,
   LineSegment,
   Rect,
-} from '@designable/shared'
+} from '@clearx/designable-shared'
 import { SnapLine } from './SnapLine'
 import { TransformHelper } from './TransformHelper'
 import { TreeNode } from './TreeNode'
@@ -89,14 +89,14 @@ export class SpaceBlock {
         referRect.x,
         this.rect.y,
         referRect.width,
-        this.rect.height
+        this.rect.height,
       )
     } else {
       return new Rect(
         this.rect.x,
         referRect.y,
         this.rect.width,
-        referRect.height
+        referRect.height,
       )
     }
   }
@@ -108,14 +108,14 @@ export class SpaceBlock {
         dragNodesRect.x,
         this.rect.y,
         dragNodesRect.width,
-        this.rect.height
+        this.rect.height,
       )
     } else {
       return new Rect(
         this.rect.x,
         dragNodesRect.y,
         this.rect.width,
-        dragNodesRect.height
+        dragNodesRect.height,
       )
     }
   }
@@ -150,7 +150,7 @@ export class SpaceBlock {
         {
           x: nextRect.right,
           y: referRect.bottom + nextRect.height,
-        }
+        },
       )
     } else if (this.type === 'bottom') {
       line = new LineSegment(
@@ -161,7 +161,7 @@ export class SpaceBlock {
         {
           x: nextRect.right,
           y: referRect.top - nextRect.height,
-        }
+        },
       )
     } else if (this.type === 'left') {
       line = new LineSegment(
@@ -172,7 +172,7 @@ export class SpaceBlock {
         {
           x: referRect.right + nextRect.width,
           y: nextRect.bottom,
-        }
+        },
       )
     } else {
       line = new LineSegment(
@@ -183,12 +183,12 @@ export class SpaceBlock {
         {
           x: referRect.left - nextRect.width,
           y: nextRect.bottom,
-        }
+        },
       )
     }
     const distance = calcDistanceOfSnapLineToEdges(
       line,
-      this.helper.dragNodesEdgeLines
+      this.helper.dragNodesEdgeLines,
     )
     return new SnapLine(this.helper, {
       ...line,

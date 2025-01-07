@@ -1,6 +1,6 @@
 import React from 'react'
-import { TreeNode } from '@designable/core'
-import { useSelectedNode } from '@designable/react'
+import { TreeNode } from '@clearx/designable-core'
+import { useSelectedNode } from '@clearx/designable-react'
 import { TreeSelect } from '@douyinfe/semi-ui'
 import { TreeSelectProps } from '@douyinfe/semi-ui/lib/es/treeSelect'
 
@@ -54,7 +54,7 @@ const transformDataSource = (node: TreeNode) => {
       return `.${targetNode.props.name || targetNode.id}`
     return `${dots(currentNode.depth - arrayNode.depth)}[].${targetPath(
       arrayNode,
-      targetNode
+      targetNode,
     )}`
   }
   const transformChildren = (children: TreeNode[], path = []) => {

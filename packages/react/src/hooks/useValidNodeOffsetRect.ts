@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
-import { TreeNode, CursorStatus, CursorDragType } from '@designable/core'
-import { LayoutObserver } from '@designable/shared'
+import { TreeNode, CursorStatus, CursorDragType } from '@clearx/designable-core'
+import { LayoutObserver } from '@clearx/designable-shared'
 import { useViewport } from './useViewport'
 import { useDesigner } from './useDesigner'
 
@@ -19,7 +19,7 @@ export const useValidNodeOffsetRect = (node: TreeNode) => {
   const [, forceUpdate] = useState(null)
   const rectRef = useMemo(
     () => ({ current: viewport.getValidNodeOffsetRect(node) }),
-    [viewport]
+    [viewport],
   )
 
   const element = viewport.findElementById(node?.id)

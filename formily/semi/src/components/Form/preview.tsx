@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react'
-import { createBehavior, createResource } from '@designable/core'
+import { createBehavior, createResource } from '@clearx/designable-core'
 import { createForm } from '@formily/core'
 import { observer } from '@formily/react'
-import { Form as FormilyForm } from '@formily/semi'
-import { usePrefix, DnFC } from '@designable/react'
+import { Form as FormilyForm } from '@clearx/formily-semi'
+import { usePrefix, DnFC } from '@clearx/designable-react'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
-import './styles.less'
+import './styles.scss'
 
 export const Form: DnFC<React.ComponentProps<typeof FormilyForm>> = observer(
   (props) => {
@@ -16,7 +16,7 @@ export const Form: DnFC<React.ComponentProps<typeof FormilyForm>> = observer(
         createForm({
           designable: true,
         }),
-      []
+      [],
     )
     return (
       <FormilyForm
@@ -28,7 +28,7 @@ export const Form: DnFC<React.ComponentProps<typeof FormilyForm>> = observer(
         {props.children}
       </FormilyForm>
     )
-  }
+  },
 )
 
 Form.Behavior = createBehavior({

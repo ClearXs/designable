@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from '@formily/reactive-react'
-import { WorkbenchTypes } from '@designable/core'
+import { WorkbenchTypes } from '@clearx/designable-core'
 import { IconWidget } from '../IconWidget'
 import { usePrefix, useWorkbench } from '../../hooks'
 import cls from 'classnames'
@@ -14,7 +14,7 @@ export interface IViewToolsWidget {
 }
 
 export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
-  ({ use, style, className }) => {
+  ({ use = ['DESIGNABLE', 'JSONTREE', 'PREVIEW'], style, className }) => {
     const workbench = useWorkbench()
     const prefix = usePrefix('view-tools')
     return (
@@ -81,9 +81,5 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
         )}
       </ButtonGroup>
     )
-  }
+  },
 )
-
-ViewToolsWidget.defaultProps = {
-  use: ['DESIGNABLE', 'JSONTREE', 'PREVIEW'],
-}

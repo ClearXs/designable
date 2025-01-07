@@ -1,4 +1,4 @@
-import { each } from '@designable/shared'
+import { each } from '@clearx/designable-shared'
 import { Path } from '@formily/path'
 import { observable } from '@formily/reactive'
 import {
@@ -68,9 +68,8 @@ const DESIGNER_ICONS_STORE: IDesignerIconsStore = observable.ref({})
 
 const DESIGNER_LOCALES_STORE: IDesignerLocaleStore = observable.ref({})
 
-const DESIGNER_LANGUAGE_STORE: IDesignerLanguageStore = observable.ref(
-  getBrowserLanguage()
-)
+const DESIGNER_LANGUAGE_STORE: IDesignerLanguageStore =
+  observable.ref(getBrowserLanguage())
 
 const DESIGNER_GlobalRegistry = {
   setDesignerLanguage: (lang: string) => {
@@ -87,13 +86,13 @@ const DESIGNER_GlobalRegistry = {
         }
         return buf
       },
-      []
+      [],
     )
   },
 
   getDesignerBehaviors: (node: TreeNode) => {
     return DESIGNER_BEHAVIORS_STORE.value.filter((pattern) =>
-      pattern.selector(node)
+      pattern.selector(node),
     )
   },
 
@@ -112,7 +111,7 @@ const DESIGNER_GlobalRegistry = {
       for (const key in DESIGNER_LOCALES_STORE.value) {
         const message = Path.getIn(
           DESIGNER_LOCALES_STORE.value[key],
-          lowerSnake(token)
+          lowerSnake(token),
         )
         if (message) return message
       }

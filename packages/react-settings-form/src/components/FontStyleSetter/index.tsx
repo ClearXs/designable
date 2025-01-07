@@ -1,7 +1,7 @@
 import React from 'react'
-import { usePrefix, IconWidget } from '@designable/react'
+import { usePrefix, IconWidget } from '@clearx/designable-react'
 import { useField, Field, observer } from '@formily/react'
-import { Select, Radio, NumberPicker } from '@formily/semi'
+import { Select, Radio, NumberPicker } from '@clearx/formily-semi'
 import { FoldItem } from '../FoldItem'
 import { InputItems } from '../InputItems'
 import { SizeInput } from '../SizeInput'
@@ -164,5 +164,5 @@ export const FontStyleSetter: React.FC<IFontStyleSetterProps> = observer(
         </FoldItem.Extra>
       </FoldItem>
     )
-  }
+  },
 )

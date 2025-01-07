@@ -1,12 +1,12 @@
 import React from 'react'
-import { Input as FormilyInput } from '@formily/semi'
-import { createBehavior, createResource } from '@designable/core'
-import { DnFC } from '@designable/react'
+import { Input as FormilyInput } from '@clearx/formily-semi'
+import { createBehavior, createResource } from '@clearx/designable-core'
+import { DnFC } from '@clearx/designable-react'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
-import { GlobalRegistry } from '@designable/core'
-import { GlobalBOFieldProps } from '@designable/core'
+import { GlobalRegistry } from '@clearx/designable-core'
+import { GlobalBOFieldProps } from '@clearx/designable-core'
 
 export const Input: DnFC<React.ComponentProps<typeof FormilyInput>> =
   FormilyInput
@@ -29,7 +29,7 @@ Input.Behavior = createBehavior(
       propsSchema: createFieldSchema(AllSchemas.Input.TextArea),
     },
     designerLocales: AllLocales.TextArea,
-  }
+  },
 )
 
 Input.Resource = createResource(
@@ -60,7 +60,7 @@ Input.Resource = createResource(
         },
       },
     ],
-  }
+  },
 )
 
 GlobalRegistry.registerBOTransfer({

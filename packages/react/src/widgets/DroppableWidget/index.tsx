@@ -1,5 +1,5 @@
 import React from 'react'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@clearx/designable-core'
 import { observer } from '@formily/reactive-react'
 import { useTreeNode, useNodeIdProps } from '../../hooks'
 import { NodeTitleWidget } from '../NodeTitleWidget'
@@ -7,7 +7,7 @@ import {
   NodeActionsWidget,
   INodeActionsWidgetActionProps,
 } from '../NodeActionsWidget'
-import './styles.less'
+import './styles.scss'
 
 export interface IDroppableWidgetProps {
   node?: TreeNode
@@ -19,12 +19,14 @@ export interface IDroppableWidgetProps {
   hasChildren?: boolean
 }
 
-export const DroppableWidget: React.FC<IDroppableWidgetProps> = observer(
+export const DroppableWidget: React.FC<
+  React.PropsWithChildren<IDroppableWidgetProps>
+> = observer(
   ({
     node,
     actions,
     height,
-    placeholder,
+    placeholder = true,
     style,
     className,
     hasChildren: hasChildrenProp,
@@ -54,9 +56,5 @@ export const DroppableWidget: React.FC<IDroppableWidgetProps> = observer(
         ) : null}
       </div>
     )
-  }
+  },
 )
-
-DroppableWidget.defaultProps = {
-  placeholder: true,
-}

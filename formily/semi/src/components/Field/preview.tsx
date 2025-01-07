@@ -10,16 +10,16 @@ import {
   ISchema,
   Schema,
 } from '@formily/react'
-import { FormItem } from '@formily/semi'
+import { FormItem } from '@clearx/formily-semi'
 import { each, reduce } from '@formily/shared'
-import { createBehavior } from '@designable/core'
+import { createBehavior } from '@clearx/designable-core'
 import {
   useDesigner,
   useTreeNode,
   useComponents,
   DnFC,
-} from '@designable/react'
-import { isArr, isStr } from '@designable/shared'
+} from '@clearx/designable-react'
+import { isArr, isStr } from '@clearx/designable-shared'
 import { Container } from '../../common/Container'
 import { AllLocales } from '../../locales'
 
@@ -73,7 +73,7 @@ const filterExpression = (val: any) => {
           return buf
         }
       },
-      isArray ? [] : {}
+      isArray ? [] : {},
     )
     return results
   }
@@ -87,7 +87,7 @@ const toDesignableFieldProps = (
   schema: ISchema,
   components: any,
   nodeIdAttrName: string,
-  id: string
+  id: string,
 ) => {
   const results: any = {}
   each(SchemaStateMap, (fieldKey, schemaKey) => {
@@ -141,9 +141,12 @@ export const Field: DnFC<ISchema> = observer((props) => {
     props,
     components,
     designer.props.nodeIdAttrName,
-    node.id
+    node.id,
   )
   if (props.type === 'object') {
+    {
+      /* @ts-ignore */
+    }
     return (
       <Container>
         <ObjectField {...fieldProps} name={node.id}>

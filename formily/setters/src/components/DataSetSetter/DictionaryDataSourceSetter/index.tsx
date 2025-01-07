@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 import { observer } from '@formily/reactive-react'
-import { useDesigner } from '@designable/react'
+import { useDesigner } from '@clearx/designable-react'
 import { TreeSelect } from '@douyinfe/semi-ui'
-import { GlobalRegistry } from '@designable/core'
+import { GlobalRegistry } from '@clearx/designable-core'
 export interface IDictionaryDataSourceSetterProps {
   className?: string
   style?: React.CSSProperties
@@ -18,7 +18,7 @@ export const DictionaryDataSourceSetter: React.FC<IDictionaryDataSourceSetterPro
       <Fragment>
         <TreeSelect
           placeholder={GlobalRegistry.getDesignerMessage(
-            'SettingComponents.DataSetSetter.dictionary.placeholder'
+            'SettingComponents.DataSetSetter.dictionary.placeholder',
           )}
           value={props.value}
           treeData={dictionary}

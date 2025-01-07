@@ -1,4 +1,4 @@
-import { EventDriver } from '@designable/shared'
+import { EventDriver } from '@clearx/designable-shared'
 import { Engine } from '../models/Engine'
 import { DragStartEvent, DragMoveEvent, DragStopEvent } from '../events'
 
@@ -44,13 +44,13 @@ export class DragDropDriver extends EventDriver<Engine> {
           pageY: e.pageY,
           target: e.target,
           view: e.view,
-        })
+        }),
       )
     }
     this.batchRemoveEventListener(
       'contextmenu',
       this.onContextMenuWhileDragging,
-      true
+      true,
     )
     this.batchRemoveEventListener('mouseup', this.onMouseUp)
     this.batchRemoveEventListener('mousedown', this.onMouseDown)
@@ -74,7 +74,7 @@ export class DragDropDriver extends EventDriver<Engine> {
         pageY: e.pageY,
         target: e.target,
         view: e.view,
-      })
+      }),
     )
     GlobalState.moveEvent = e
   }
@@ -91,7 +91,7 @@ export class DragDropDriver extends EventDriver<Engine> {
     this.batchAddEventListener(
       'contextmenu',
       this.onContextMenuWhileDragging,
-      true
+      true,
     )
     this.dispatch(
       new DragStartEvent({
@@ -101,7 +101,7 @@ export class DragDropDriver extends EventDriver<Engine> {
         pageY: GlobalState.startEvent.pageY,
         target: GlobalState.startEvent.target,
         view: GlobalState.startEvent.view,
-      })
+      }),
     )
     GlobalState.dragging = true
   }
@@ -109,7 +109,7 @@ export class DragDropDriver extends EventDriver<Engine> {
   onDistanceChange = (e: MouseEvent) => {
     const distance = Math.sqrt(
       Math.pow(e.pageX - GlobalState.startEvent.pageX, 2) +
-        Math.pow(e.pageY - GlobalState.startEvent.pageY, 2)
+        Math.pow(e.pageY - GlobalState.startEvent.pageY, 2),
     )
     const timeDelta = Date.now() - GlobalState.onMouseDownAt
     if (timeDelta > 10 && e !== GlobalState.startEvent && distance > 4) {
@@ -137,7 +137,7 @@ export class DragDropDriver extends EventDriver<Engine> {
     this.batchRemoveEventListener(
       'contextmenu',
       this.onContextMenuWhileDragging,
-      true
+      true,
     )
   }
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Engine, GlobalRegistry } from '@designable/core'
+import { Engine, GlobalRegistry } from '@clearx/designable-core'
 import { DesignerEngineContext } from '../context'
 import { IDesignerProps } from '../types'
 import { GhostWidget } from '../widgets'
@@ -9,9 +9,11 @@ import * as icons from '../icons'
 
 GlobalRegistry.registerDesignerIcons(icons)
 
-export const Designer: React.FC<IDesignerProps> = (props) => {
+export const Designer: React.FC<React.PropsWithChildren<IDesignerProps>> = (
+  props,
+) => {
   const engine = useDesigner()
-  const ref = useRef<Engine>()
+  const ref = useRef<Engine | undefined>(undefined)
   useEffect(() => {
     if (props.engine) {
       if (props.engine && ref.current) {
@@ -31,7 +33,7 @@ export const Designer: React.FC<IDesignerProps> = (props) => {
 
   if (engine)
     throw new Error(
-      'There can only be one Designable Engine Context in the React Tree'
+      'There can only be one Designable Engine Context in the React Tree',
     )
 
   return (
@@ -42,9 +44,4 @@ export const Designer: React.FC<IDesignerProps> = (props) => {
       </DesignerEngineContext.Provider>
     </Layout>
   )
-}
-
-Designer.defaultProps = {
-  prefixCls: 'dn-',
-  theme: 'light',
 }

@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
 import { createForm } from '@formily/core'
-import { Form } from '@formily/semi'
+import { Form } from '@clearx/formily-semi'
 import { observer } from '@formily/react'
-import { requestIdle, cancelIdle } from '@designable/shared'
+import { requestIdle, cancelIdle } from '@clearx/designable-shared'
 import {
   usePrefix,
   useSelected,
@@ -12,13 +12,13 @@ import {
   IconWidget,
   NodePathWidget,
   useBo,
-} from '@designable/react'
+} from '@clearx/designable-react'
 import { SchemaField } from './SchemaField'
 import { ISettingFormProps } from './types'
 import { SettingsFormContext } from './shared/context'
 import { useBoDataSource, useLocales, useSnapshot } from './effects'
 import cls from 'classnames'
-import './styles.less'
+import './styles.scss'
 import { Empty } from '@douyinfe/semi-ui'
 
 const GlobalState = {
@@ -106,5 +106,5 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
         timeout: 500,
       })
     },
-  }
+  },
 )

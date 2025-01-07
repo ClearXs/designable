@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react'
-import ReactDOM from 'react-dom'
 import {
   Designer,
   DesignerToolsWidget,
@@ -17,17 +16,17 @@ import {
   SettingsPanel,
   ComponentTreeWidget,
   BOWidget,
-} from '@designable/react'
+} from '@clearx/designable-react'
 import {
   SettingsForm,
   setNpmCDNRegistry,
-} from '@designable/react-settings-form'
+} from '@clearx/designable-react-settings-form'
 import {
   createDesigner,
   GlobalRegistry,
   Shortcut,
   KeyCode,
-} from '@designable/core'
+} from '@clearx/designable-core'
 import {
   LogoWidget,
   ActionsWidget,
@@ -66,15 +65,10 @@ import {
   Slider,
 } from '../src'
 import { BoSchemaEditorWidget } from './widgets/BoSchemaEditorWidget'
-import {
-  Button,
-  ButtonGroup,
-  Spin,
-  Steps,
-  TabPane,
-  Tabs,
-} from '@douyinfe/semi-ui'
+import { TabPane, Tabs } from '@douyinfe/semi-ui'
 import DataForm from './DataForm'
+import { createRoot } from 'react-dom/client'
+window.React = React
 
 setNpmCDNRegistry('//unpkg.com')
 
@@ -124,7 +118,7 @@ const App = () => {
         ],
         rootComponentName: 'Form',
       }),
-    []
+    [],
   )
 
   const [mode, setMode] = useState<string>('designer')
@@ -137,21 +131,21 @@ const App = () => {
             title="sources.Inputs"
             sources={[
               Input,
-              // Password,
-              // NumberPicker,
+              Password,
+              NumberPicker,
               Select,
               TreeSelect,
-              // Cascader,
-              // Transfer,
-              // Checkbox,
-              // Radio,
-              // Rate,
-              // DatePicker,
-              // TimePicker,
-              // Upload,
-              // Switch,
-              // ObjectContainer,
-              // Slider,
+              Cascader,
+              Transfer,
+              Checkbox,
+              Radio,
+              Rate,
+              DatePicker,
+              TimePicker,
+              Upload,
+              Switch,
+              ObjectContainer,
+              Slider,
             ]}
           />
           <ResourceWidget
@@ -309,4 +303,4 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+createRoot(document.getElementById('root')).render(<App />)

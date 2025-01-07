@@ -1,4 +1,4 @@
-import { TreeNode, Engine } from '@designable/core'
+import { TreeNode, Engine } from '@clearx/designable-core'
 
 export type ComponentNameMatcher =
   | string
@@ -8,7 +8,7 @@ export type ComponentNameMatcher =
 export const matchComponent = (
   node: TreeNode,
   name: ComponentNameMatcher,
-  context?: any
+  context?: any,
 ) => {
   if (name === '*') return true
   const componentName = node?.props?.['x-component']
@@ -21,7 +21,7 @@ export const matchComponent = (
 export const matchChildComponent = (
   node: TreeNode,
   name: ComponentNameMatcher,
-  context?: any
+  context?: any,
 ) => {
   if (name === '*') return true
   const componentName = node?.props?.['x-component']
@@ -35,14 +35,14 @@ export const matchChildComponent = (
 export const includesComponent = (
   node: TreeNode,
   names: ComponentNameMatcher[],
-  target?: TreeNode
+  target?: TreeNode,
 ) => {
   return names.some((name) => matchComponent(node, name, target))
 }
 
 export const queryNodesByComponentPath = (
   node: TreeNode,
-  path: ComponentNameMatcher[]
+  path: ComponentNameMatcher[],
 ): TreeNode[] => {
   if (path?.length === 0) return []
   if (path?.length === 1) {
@@ -59,7 +59,7 @@ export const queryNodesByComponentPath = (
 
 export const findNodeByComponentPath = (
   node: TreeNode,
-  path: ComponentNameMatcher[]
+  path: ComponentNameMatcher[],
 ): TreeNode => {
   if (path?.length === 0) return
   if (path?.length === 1) {
@@ -79,7 +79,7 @@ export const findNodeByComponentPath = (
 
 export const hasNodeByComponentPath = (
   node: TreeNode,
-  path: ComponentNameMatcher[]
+  path: ComponentNameMatcher[],
 ) => !!findNodeByComponentPath(node, path)
 
 export const matchArrayItemsNode = (node: TreeNode) => {

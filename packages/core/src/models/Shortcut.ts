@@ -1,4 +1,4 @@
-import { isFn, KeyCode } from '@designable/shared'
+import { isFn, KeyCode } from '@clearx/designable-shared'
 import { IEngineContext } from '../types'
 
 export { KeyCode }

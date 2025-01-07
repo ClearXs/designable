@@ -1,7 +1,7 @@
-import React, { useRef } from 'react'
-import { usePrefix } from '@designable/react'
+import React from 'react'
+import { usePrefix } from '@clearx/designable-react'
 import { SketchPicker } from 'react-color'
-import './styles.less'
+import './styles.scss'
 import { Input, Popover } from '@douyinfe/semi-ui'
 
 export interface IColorInputProps {
@@ -10,11 +10,10 @@ export interface IColorInputProps {
 }
 
 export const ColorInput: React.FC<IColorInputProps> = (props) => {
-  const container = useRef<HTMLDivElement>()
   const prefix = usePrefix('color-input')
   const color = props.value as string
   return (
-    <div ref={container} className={prefix}>
+    <div className={prefix}>
       <Input
         value={props.value}
         onChange={(value) => {
@@ -27,7 +26,6 @@ export const ColorInput: React.FC<IColorInputProps> = (props) => {
             trigger="click"
             closeOnEsc
             clickToHide
-            getPopupContainer={() => container.current}
             content={
               <SketchPicker
                 color={color}

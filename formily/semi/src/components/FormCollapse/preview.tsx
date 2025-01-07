@@ -1,14 +1,18 @@
 import React, { Fragment, useState } from 'react'
 import { observer } from '@formily/react'
 import { Collapse } from '@douyinfe/semi-ui'
-import { TreeNode, createBehavior, createResource } from '@designable/core'
+import {
+  TreeNode,
+  createBehavior,
+  createResource,
+} from '@clearx/designable-core'
 import {
   useTreeNode,
   useNodeIdProps,
   DroppableWidget,
   TreeNodeWidget,
   DnFC,
-} from '@designable/react'
+} from '@clearx/designable-react'
 import { toArr } from '@formily/shared'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { useDropTemplate } from '../../hooks'
@@ -86,7 +90,7 @@ export const FormCollapse: DnFC<CollapseReactProps> & {
                   <TreeNodeWidget node={panel} />
                 ) : (
                   <DroppableWidget />
-                )
+                ),
               )}
             </Collapse.Panel>
           )
@@ -138,7 +142,7 @@ FormCollapse.Behavior = createBehavior(
       allowAppend: (target, source) =>
         target.children.length === 0 ||
         source.every(
-          (node) => node.props['x-component'] === 'FormCollapse.CollapsePanel'
+          (node) => node.props['x-component'] === 'FormCollapse.CollapsePanel',
         ),
       propsSchema: createVoidFieldSchema(AllSchemas.FormCollapse),
     },
@@ -155,7 +159,7 @@ FormCollapse.Behavior = createBehavior(
       propsSchema: createVoidFieldSchema(AllSchemas.FormCollapse.CollapsePanel),
     },
     designerLocales: AllLocales.FormCollapsePanel,
-  }
+  },
 )
 
 FormCollapse.Resource = createResource({

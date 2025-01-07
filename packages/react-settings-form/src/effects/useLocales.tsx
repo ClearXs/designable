@@ -1,8 +1,8 @@
 import React from 'react'
 import { isVoidField, onFieldReact } from '@formily/core'
-import { TreeNode, GlobalRegistry } from '@designable/core'
-import { isStr } from '@designable/shared'
-import { IconWidget } from '@designable/react'
+import { TreeNode, GlobalRegistry } from '@clearx/designable-core'
+import { isStr } from '@clearx/designable-shared'
+import { IconWidget } from '@clearx/designable-react'
 
 const takeIcon = (message: string) => {
   if (!isStr(message)) return
@@ -20,7 +20,7 @@ const mapEnum = (dataSource: any[]) => (item: any, index: number) => {
     label: icon ? (
       <IconWidget infer={icon[0]} tooltip={icon[1]} />
     ) : (
-      label?.label ?? label ?? 'Unknow'
+      (label?.label ?? label ?? 'Unknow')
     ),
   }
 }

@@ -7,13 +7,13 @@ import { Cover } from './Cover'
 import { DashedBox } from './DashedBox'
 import { SpaceBlock } from './SpaceBlock'
 import { SnapLine } from './SnapLine'
-import './styles.less'
+import './styles.scss'
 
 export const AuxToolWidget = () => {
   const engine = useDesigner()
   const viewport = useViewport()
   const prefix = usePrefix('auxtool')
-  const ref = useRef<HTMLDivElement>()
+  const ref = useRef<HTMLDivElement | undefined>(undefined)
   useEffect(() => {
     return engine.subscribeWith('viewport:scroll', () => {
       if (viewport.isIframe && ref.current) {

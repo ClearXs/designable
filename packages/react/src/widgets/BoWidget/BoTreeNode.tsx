@@ -4,7 +4,7 @@ import {
   ClosestPosition,
   CursorStatus,
   DragMoveEvent,
-} from '@designable/core'
+} from '@clearx/designable-core'
 import { autorun } from '@formily/reactive'
 import { observer } from '@formily/reactive-react'
 import {
@@ -16,8 +16,8 @@ import {
 } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import cls from 'classnames'
-import './styles.less'
-import { isFn } from '@designable/shared'
+import './styles.scss'
+import { isFn } from '@clearx/designable-shared'
 import { NodeContext } from './context'
 export interface IBoFieldNodeProps {
   node: BoNode
@@ -30,9 +30,9 @@ export const BoTreeNode: React.FC<IBoFieldNodeProps> = observer(
   ({ node, className, style, workspaceId }) => {
     const prefix = usePrefix('bo-tree-node')
     const engine = useDesigner()
-    const ref = useRef<HTMLDivElement>()
+    const ref = useRef<HTMLDivElement | undefined>(undefined)
     const ctx = useContext(NodeContext)
-    const request = useRef(null)
+    const request = useRef(undefined)
     const cursor = useCursor()
     const selection = useSelection(workspaceId)
     const moveHelper = useMoveHelper(workspaceId)
@@ -194,5 +194,5 @@ export const BoTreeNode: React.FC<IBoFieldNodeProps> = observer(
         </div>
       </div>
     )
-  }
+  },
 )

@@ -1,1 +1,1 @@
-# @designable/react-settings-form
+# @clearx/designable-react-settings-form

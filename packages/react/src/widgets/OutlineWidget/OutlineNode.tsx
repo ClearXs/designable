@@ -4,8 +4,8 @@ import {
   ClosestPosition,
   CursorStatus,
   DragMoveEvent,
-} from '@designable/core'
-import { isFn } from '@designable/shared'
+} from '@clearx/designable-core'
+import { isFn } from '@clearx/designable-shared'
 import { autorun } from '@formily/reactive'
 import { observer } from '@formily/reactive-react'
 import {
@@ -19,7 +19,7 @@ import { IconWidget } from '../IconWidget'
 import { NodeTitleWidget } from '../NodeTitleWidget'
 import { NodeContext } from './context'
 import cls from 'classnames'
-import './styles.less'
+import './styles.scss'
 export interface IOutlineTreeNodeProps {
   node: TreeNode
   style?: React.CSSProperties
@@ -31,9 +31,9 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
   ({ node, className, style, workspaceId }) => {
     const prefix = usePrefix('outline-tree-node')
     const engine = useDesigner()
-    const ref = useRef<HTMLDivElement>()
+    const ref = useRef<HTMLDivElement | undefined>(undefined)
     const ctx = useContext(NodeContext)
-    const request = useRef(null)
+    const request = useRef(undefined)
     const cursor = useCursor()
     const selection = useSelection(workspaceId)
     const moveHelper = useMoveHelper(workspaceId)
@@ -194,5 +194,5 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
         </div>
       </div>
     )
-  }
+  },
 )

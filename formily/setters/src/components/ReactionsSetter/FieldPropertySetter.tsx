@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { TextWidget, usePrefix } from '@designable/react'
-import { MonacoInput } from '@designable/react-settings-form'
+import { TextWidget, usePrefix } from '@clearx/designable-react'
+import { MonacoInput } from '@clearx/designable-react-settings-form'
 import { isPlainObj, reduce } from '@formily/shared'
 import { FieldProperties } from './properties'
 import { Nav } from '@douyinfe/semi-ui'
@@ -20,7 +20,7 @@ const template = (code: string) => {
 }
 
 export const FieldPropertySetter: React.FC<IFieldPropertySetterProps> = (
-  props
+  props,
 ) => {
   const [selectKeys, setSelectKeys] = useState(['visible'])
   const prefix = usePrefix('field-property-setter')
@@ -39,12 +39,12 @@ export const FieldPropertySetter: React.FC<IFieldPropertySetterProps> = (
         buf[key] = value
         return buf
       },
-      {}
+      {},
     )
   }
 
   const currentProperty = FieldProperties.find(
-    (item) => item.key === selectKeys[0]
+    (item) => item.key === selectKeys[0],
   )
 
   return (
@@ -124,7 +124,7 @@ export const FieldPropertySetter: React.FC<IFieldPropertySetterProps> = (
                 filterEmpty({
                   ...value,
                   [selectKeys[0]]: `{{${expression}}}`,
-                })
+                }),
               )
             }}
           />

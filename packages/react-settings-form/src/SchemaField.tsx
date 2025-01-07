@@ -17,7 +17,7 @@ import {
   FormGrid,
   FormLayout,
   FormTab,
-} from '@formily/semi'
+} from '@clearx/formily-semi'
 import {
   SizeInput,
   ColorInput,

@@ -1,4 +1,4 @@
-import { EventDriver } from '@designable/shared'
+import { EventDriver } from '@clearx/designable-shared'
 import { Engine } from '../models/Engine'
 import { MouseClickEvent, MouseDoubleClickEvent } from '../events'
 
@@ -18,7 +18,7 @@ export class MouseClickDriver extends EventDriver<Engine> {
         pageY: e.pageY,
         target: e.target,
         view: e.view,
-      })
+      }),
     )
   }
 
@@ -37,7 +37,7 @@ export class MouseClickDriver extends EventDriver<Engine> {
         pageY: e.pageY,
         target: e.target,
         view: e.view,
-      })
+      }),
     )
   }
 

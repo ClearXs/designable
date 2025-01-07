@@ -1,5 +1,5 @@
 import { IEngineContext } from '../../types'
-import { globalThisPolyfill } from '@designable/shared'
+import { globalThisPolyfill } from '@clearx/designable-shared'
 
 export interface ICursorEventOriginData {
   clientX: number
@@ -47,7 +47,7 @@ export class AbstractCursorEvent {
         this.data.pageY + frameRect.y - this.data.view.scrollY
       const topElement = document.elementFromPoint(
         this.data.topPageX,
-        this.data.topClientY
+        this.data.topClientY,
       )
       if (topElement !== frameElement) {
         this.data.target = topElement

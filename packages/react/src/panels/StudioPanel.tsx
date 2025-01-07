@@ -13,12 +13,9 @@ export interface IStudioPanelProps {
   position?: React.ComponentProps<typeof Layout>['position']
 }
 
-const StudioPanelInternal: React.FC<IStudioPanelProps> = ({
-  logo,
-  body,
-  actions,
-  ...props
-}) => {
+const StudioPanelInternal: React.FC<
+  React.PropsWithChildren<IStudioPanelProps>
+> = ({ logo, body, actions, ...props }) => {
   const prefix = usePrefix('main-panel')
   const position = usePosition()
   const classNameBase = cls('root', position, props.className)
@@ -41,7 +38,9 @@ const StudioPanelInternal: React.FC<IStudioPanelProps> = ({
   )
 }
 
-export const StudioPanel: React.FC<IStudioPanelProps> = (props) => {
+export const StudioPanel: React.FC<
+  React.PropsWithChildren<IStudioPanelProps>
+> = (props) => {
   return (
     <Layout
       theme={props.theme}

@@ -1,23 +1,22 @@
 import React from 'react'
 import {
   IconWidget,
-  NodePathWidget,
   useBo,
   useOperation,
   usePrefix,
   useSelected,
   useSelectedNode,
   useWorkbench,
-} from '@designable/react'
+} from '@clearx/designable-react'
 import { Form, createForm, isVoidField, onFieldReact } from '@formily/core'
 import { useMemo } from 'react'
 import cls from 'classnames'
-import { Form as SemiForm, SchemaField } from '@formily/semi'
+import { Form as SemiForm, SchemaField } from '@clearx/formily-semi'
 import { Empty } from '@douyinfe/semi-ui'
 import { observer } from '@formily/react'
 import schema from './schema'
 import './locales'
-import { GlobalRegistry, TreeNode } from '@designable/core'
+import { GlobalRegistry, TreeNode } from '@clearx/designable-core'
 
 export type IDataFormProps = {
   className?: string

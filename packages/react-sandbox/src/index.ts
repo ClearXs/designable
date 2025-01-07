@@ -1,12 +1,13 @@
-import React, { useRef, useEffect } from 'react'
-import { isFn, globalThisPolyfill } from '@designable/shared'
+import React, { useRef, useEffect, JSX } from 'react'
+import { isFn, globalThisPolyfill } from '@clearx/designable-shared'
 import {
   useDesigner,
   useWorkspace,
   useLayout,
   usePrefix,
-} from '@designable/react'
+} from '@clearx/designable-react'
 import ReactDOM from 'react-dom'
+import { createRoot, Root } from 'react-dom/client'
 
 export interface ISandboxProps {
   style?: React.CSSProperties
@@ -15,8 +16,10 @@ export interface ISandboxProps {
   scope?: any
 }
 
+let ROOT_SANDBOX: Root | undefined = undefined
+
 export const useSandbox = (props: React.PropsWithChildren<ISandboxProps>) => {
-  const ref = useRef<HTMLIFrameElement>()
+  const ref = useRef<HTMLIFrameElement | undefined>(undefined)
   const appCls = usePrefix('app')
   const designer = useDesigner()
   const workspace = useWorkspace()
@@ -25,7 +28,7 @@ export const useSandbox = (props: React.PropsWithChildren<ISandboxProps>) => {
   const jsAssets = props.jsAssets || []
   const getCSSVar = (name: string) => {
     return getComputedStyle(
-      document.querySelector(`.${appCls}`)
+      document.querySelector(`.${appCls}`),
     ).getPropertyValue(name)
   }
   useEffect(() => {
@@ -99,7 +102,7 @@ export const useSandbox = (props: React.PropsWithChildren<ISandboxProps>) => {
 if (globalThisPolyfill.frameElement) {
   //解决iframe内嵌如果iframe被移除，内部React无法回收内存的问题
   globalThisPolyfill.addEventListener('unload', () => {
-    ReactDOM.unmountComponentAtNode(document.getElementById('__SANDBOX_ROOT__'))
+    ROOT_SANDBOX.unmount()
   })
 }
 
@@ -109,10 +112,9 @@ export const useSandboxScope = () => {
 
 export const renderSandboxContent = (render: (scope?: any) => JSX.Element) => {
   if (isFn(render)) {
-    ReactDOM.render(
-      render(useSandboxScope()),
-      document.getElementById('__SANDBOX_ROOT__')
-    )
+    ROOT_SANDBOX?.unmount()
+    ROOT_SANDBOX = createRoot(document.getElementById('__SANDBOX_ROOT__'))
+    ROOT_SANDBOX.render(render(useSandboxScope()))
   }
 }
 

@@ -2,10 +2,10 @@ import React, { Fragment, useEffect } from 'react'
 import { useTree, usePrefix, useDesigner, useComponents } from '../../hooks'
 import { TreeNodeContext, DesignerComponentsContext } from '../../context'
 import { IDesignerComponents } from '../../types'
-import { TreeNode, GlobalRegistry } from '@designable/core'
+import { TreeNode, GlobalRegistry } from '@clearx/designable-core'
 import { observer } from '@formily/reactive-react'
 import cls from 'classnames'
-import './styles.less'
+import './styles.scss'
 
 export interface IComponentTreeWidgetProps {
   style?: React.CSSProperties
@@ -15,7 +15,7 @@ export interface IComponentTreeWidgetProps {
 
 export interface ITreeNodeWidgetProps {
   node: TreeNode
-  children?: React.ReactChild
+  children?: React.ReactNode
 }
 
 export const TreeNodeWidget: React.FC<ITreeNodeWidgetProps> = observer(
@@ -52,7 +52,7 @@ export const TreeNodeWidget: React.FC<ITreeNodeWidgetProps> = observer(
         return React.createElement(
           Component,
           renderProps(dataId),
-          ...renderChildren()
+          ...renderChildren(),
         )
       } else {
         if (node?.children?.length) {
@@ -66,9 +66,9 @@ export const TreeNodeWidget: React.FC<ITreeNodeWidgetProps> = observer(
     return React.createElement(
       TreeNodeContext.Provider,
       { value: node },
-      renderComponent()
+      renderComponent(),
     )
-  }
+  },
 )
 
 export const ComponentTreeWidget: React.FC<IComponentTreeWidgetProps> =

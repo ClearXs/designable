@@ -1,5 +1,5 @@
 import React from 'react'
-import { usePrefix } from '@designable/react'
+import { usePrefix } from '@clearx/designable-react'
 import { useField, observer } from '@formily/react'
 import { FoldItem } from '../FoldItem'
 import { ColorInput } from '../ColorInput'
@@ -29,7 +29,7 @@ export const BoxShadowStyleSetter: React.FC<IBoxShadowStyleSetterProps> =
           props.onChange?.(
             `${splited[0] || ''} ${splited[1] || ''} ${splited[2] || ''} ${
               splited[3] || ''
-            } ${splited[4] || ''}`
+            } ${splited[4] || ''}`,
           )
         },
       }

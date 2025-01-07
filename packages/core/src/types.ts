@@ -1,4 +1,4 @@
-import { IEventProps, Event } from '@designable/shared'
+import { IEventProps, Event } from '@clearx/designable-shared'
 import { ISchema } from '@formily/json-schema'
 import {
   Engine,
@@ -40,14 +40,14 @@ export type IEngineContext = {
 export type IResizable = {
   width?: (
     node: TreeNode,
-    element: Element
+    element: Element,
   ) => {
     plus: () => void
     minus: () => void
   }
   height?: (
     node: TreeNode,
-    element: Element
+    element: Element,
   ) => {
     plus: () => void
     minus: () => void
@@ -58,14 +58,14 @@ export type ITranslate = {
   x: (
     node: TreeNode,
     element: HTMLElement,
-    diffX: string | number
+    diffX: string | number,
   ) => {
     translate: () => void
   }
   y: (
     node: TreeNode,
     element: HTMLElement,
-    diffY: string | number
+    diffY: string | number,
   ) => {
     translate: () => void
   }

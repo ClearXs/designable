@@ -7,13 +7,13 @@ export interface IWorkspaceProps {
   description?: string
 }
 
-export const Workspace: React.FC<IWorkspaceProps> = ({
+export const Workspace: React.FC<React.PropsWithChildren<IWorkspaceProps>> = ({
   id,
   title,
   description,
   ...props
 }) => {
-  const oldId = useRef<string>()
+  const oldId = useRef<string>('')
   const designer = useDesigner()
   const workspace = useMemo(() => {
     if (!designer) return

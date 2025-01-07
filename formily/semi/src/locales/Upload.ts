@@ -1,4 +1,4 @@
-import { createLocales } from '@designable/core'
+import { createLocales } from '@clearx/designable-core'
 
 export const Upload = {
   'zh-CN': {

@@ -1,9 +1,11 @@
 {
-  "name": "@designable/formily-semi",
-  "version": "0.0.1-beta.27",
+  "name": "@clearx/designable-formily-semi",
+  "version": "1.0.8",
   "license": "MIT",
-  "main": "lib",
-  "module": "esm",
+  "type": "module",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "typings": "lib/esm/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ClearXs/designable.git"
@@ -16,52 +18,54 @@
   "engines": {
     "npm": ">=3.0.0"
   },
+  "files": [
+    "lib/*"
+  ],
   "scripts": {
-    "build": "rimraf -rf lib esm dist && npm run build:cjs && npm run build:esm && ts-node copy",
+    "build": "rollup --config rollup.config.mjs",
     "build:cjs": "tsc --project tsconfig.build.json",
     "build:esm": "tsc --project tsconfig.build.json --module es2015 --outDir esm",
     "build:playground": "webpack-cli --config playground/webpack.prod.ts",
-    "start": "webpack-dev-server --config playground/webpack.dev.ts"
+    "start": "webpack server --config playground/webpack.dev.mjs"
   },
   "devDependencies": {
-    "@designable/react-settings-form": "0.0.1-beta.27",
-    "@formily/core": "^2.3.2",
-    "@formily/react": "^2.3.2",
-    "@formily/reactive": "^2.3.2",
-    "@formily/semi": "^0.0.6-beta.0",
-    "@formily/shared": "^2.3.2",
-    "autoprefixer": "^9.0",
-    "file-loader": "^5.0.2",
-    "fs-extra": "^8.1.0",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^1.6.0",
-    "monaco-editor-webpack-plugin": "^4.0.0",
-    "raw-loader": "^4.0.0",
-    "react-monaco-editor": "^0.43.0",
-    "style-loader": "^1.1.3",
-    "ts-loader": "^7.0.4",
-    "typescript": "4.1.5",
-    "webpack": "^4.41.5",
-    "webpack-bundle-analyzer": "^3.9.0",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.1"
+    "autoprefixer": "^10.4",
+    "file-loader": "^6.2.0",
+    "fs-extra": "^11.2.0",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
+    "monaco-editor-webpack-plugin": "^7.1.0",
+    "raw-loader": "^4.0.2",
+    "react-monaco-editor": "^0.56.2",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "5.7.2",
+    "webpack": "^5.97.1",
+    "webpack-bundle-analyzer": "^4.10.2",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
   },
   "peerDependencies": {
-    "@douyinfe/semi-ui": "^2.64.0",
+    "@douyinfe/semi-ui": "^2.72.0",
+    "@clearx/formily-semi": "~1.1.5",
     "@formily/core": "^2.3.2",
     "@formily/react": "^2.3.2",
     "@formily/reactive": "^2.3.2",
     "@formily/shared": "^2.3.2",
-    "@types/react": ">=16.8.0 || >=17.0.0",
-    "@types/react-dom": ">=16.8.0 || >=17.0.0",
-    "react": ">=16.8.0 || >=17.0.0",
-    "react-dom": ">=16.8.0",
-    "react-is": ">=16.8.0 || >=17.0.0"
+    "@formily/json-schema": "^2.3.2",
+    "@formily/reactive-react": "^2.3.2",
+    "@types/react": "18.x",
+    "@types/react-dom": "18.x",
+    "react": "18.x",
+    "react-dom": "18.x",
+    "react-is": "18.x"
   },
   "dependencies": {
-    "@designable/core": "0.0.1-beta.27",
-    "@designable/formily-setters": "0.0.1-beta.27",
-    "@designable/formily-transformer": "0.0.1-beta.27",
-    "@designable/react": "0.0.1-beta.27"
+    "@clearx/designable-shared": "workspace:^",
+    "@clearx/designable-core": "workspace:^",
+    "@clearx/designable-formily-setters": "workspace:^",
+    "@clearx/designable-formily-transformer": "workspace:^",
+    "@clearx/designable-react": "workspace:^",
+    "@clearx/designable-react-settings-form": "workspace:^"
   }
 }

@@ -5,7 +5,7 @@ import {
   DragMoveEvent,
   DragStopEvent,
 } from '../events'
-import { requestIdle } from '@designable/shared'
+import { requestIdle } from '@clearx/designable-shared'
 
 export const useCursorEffect = (engine: Engine) => {
   engine.subscribeTo(MouseMoveEvent, (event) => {
@@ -13,7 +13,7 @@ export const useCursorEffect = (engine: Engine) => {
       engine.cursor.status === CursorStatus.Dragging ||
         engine.cursor.status === CursorStatus.DragStart
         ? engine.cursor.status
-        : CursorStatus.Normal
+        : CursorStatus.Normal,
     )
     if (engine.cursor.status === CursorStatus.Dragging) return
     engine.cursor.setPosition(event.data)

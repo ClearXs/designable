@@ -2,6 +2,11 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./lib",
+    "paths": {
+      "@clearx/designable-*": ["../../formily/*"],
+      "@clearx/designable-*": ["../../packages/*"],
+      "@formily/*": ["node_modules/@formily/*"]
+    },
     "declaration": true
   }
 }

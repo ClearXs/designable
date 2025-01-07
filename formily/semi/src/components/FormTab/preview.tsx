@@ -1,14 +1,18 @@
 import React, { Fragment, useState } from 'react'
 import { observer } from '@formily/react'
 import { Tabs } from '@douyinfe/semi-ui'
-import { TreeNode, createBehavior, createResource } from '@designable/core'
+import {
+  TreeNode,
+  createBehavior,
+  createResource,
+} from '@clearx/designable-core'
 import {
   useNodeIdProps,
   useTreeNode,
   TreeNodeWidget,
   DroppableWidget,
   DnFC,
-} from '@designable/react'
+} from '@clearx/designable-react'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { useDropTemplate } from '../../hooks'
 import { createVoidFieldSchema } from '../Field'
@@ -93,7 +97,7 @@ export const FormTab: DnFC<TabsProps> & {
                   <TreeNodeWidget node={tab} />
                 ) : (
                   <DroppableWidget node={tab} />
-                )
+                ),
               )}
             </Tabs.TabPane>
           )
@@ -158,7 +162,7 @@ FormTab.Behavior = createBehavior(
       propsSchema: createVoidFieldSchema(AllSchemas.FormTab.TabPane),
     },
     designerLocales: AllLocales.FormTabPane,
-  }
+  },
 )
 
 FormTab.Resource = createResource({

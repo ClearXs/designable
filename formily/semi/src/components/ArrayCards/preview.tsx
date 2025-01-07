@@ -4,14 +4,14 @@ import {
   GlobalRegistry,
   TreeNode,
   createResource,
-} from '@designable/core'
+} from '@clearx/designable-core'
 import {
   useTreeNode,
   TreeNodeWidget,
   DroppableWidget,
   useNodeIdProps,
   DnFC,
-} from '@designable/react'
+} from '@clearx/designable-react'
 import { observer } from '@formily/react'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { useDropTemplate } from '../../hooks'
@@ -24,8 +24,8 @@ import {
 } from '../../shared'
 import { createArrayBehavior } from '../ArrayBase'
 import cls from 'classnames'
-import './styles.less'
-import { ArrayBase, Card } from '@formily/semi'
+import './styles.scss'
+import { ArrayBase, Card } from '@clearx/formily-semi'
 import { CardProps } from '@douyinfe/semi-ui/lib/es/card'
 
 const ensureObjectItemsNode = createEnsureTypeItemsNode('object')
@@ -222,7 +222,7 @@ export const ArrayCards: DnFC<CardProps> = observer((props) => {
                       type: 'void',
                       'x-component': 'ArrayCards.Remove',
                     },
-                  })
+                  }),
                 )
               }
               if (!oldMoveDownNode) {
@@ -233,7 +233,7 @@ export const ArrayCards: DnFC<CardProps> = observer((props) => {
                       type: 'void',
                       'x-component': 'ArrayCards.MoveDown',
                     },
-                  })
+                  }),
                 )
               }
               if (!oldMoveUpNode) {
@@ -244,7 +244,7 @@ export const ArrayCards: DnFC<CardProps> = observer((props) => {
                       type: 'void',
                       'x-component': 'ArrayCards.MoveUp',
                     },
-                  })
+                  }),
                 )
               }
             },

@@ -5,18 +5,18 @@ import {
   WorkbenchTypes,
   BusinessObject,
   BoSchema,
-} from '@designable/core'
+} from '@clearx/designable-core'
 import { observer } from '@formily/reactive-react'
 import { useBo, useTree, useWorkbench } from '../hooks'
 import { Viewport } from '../containers'
-import { requestIdle } from '@designable/shared'
+import { requestIdle } from '@clearx/designable-shared'
 
 export interface IViewPanelProps {
   type: WorkbenchTypes
   children: (
     tree: TreeNode,
     bo: BusinessObject,
-    onChange: (tree?: ITreeNode, boSchema?: BoSchema) => void
+    onChange: (tree?: ITreeNode, boSchema?: BoSchema) => void,
   ) => React.ReactElement
   scrollable?: boolean
   dragTipsDirection?: 'left' | 'right'
@@ -54,10 +54,11 @@ export const ViewPanel: React.FC<IViewPanelProps> = observer((props) => {
         {render()}
       </Viewport>
     )
+  const { scrollable = true } = props
   return (
     <div
       style={{
-        overflow: props.scrollable ? 'overlay' : 'hidden',
+        overflow: scrollable ? 'overlay' : 'hidden',
         height: '100%',
         cursor: 'auto',
         userSelect: 'text',
@@ -67,7 +68,3 @@ export const ViewPanel: React.FC<IViewPanelProps> = observer((props) => {
     </div>
   )
 })
-
-ViewPanel.defaultProps = {
-  scrollable: true,
-}

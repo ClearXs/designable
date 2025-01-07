@@ -7,7 +7,11 @@ import {
   usePrefix,
 } from '../../hooks'
 import { observer } from '@formily/reactive-react'
-import { CursorStatus, ClosestPosition, TreeNode } from '@designable/core'
+import {
+  CursorStatus,
+  ClosestPosition,
+  TreeNode,
+} from '@clearx/designable-core'
 import cls from 'classnames'
 interface ICoverRectProps {
   node: TreeNode
@@ -52,7 +56,7 @@ export const Cover = observer(() => {
     if (
       !viewportMoveHelper.closestNode ||
       !viewportMoveHelper.closestNode?.allowAppend(
-        viewportMoveHelper.dragNodes
+        viewportMoveHelper.dragNodes,
       ) ||
       viewportMoveHelper.viewportClosestDirection !== ClosestPosition.Inner
     )

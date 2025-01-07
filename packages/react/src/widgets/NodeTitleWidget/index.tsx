@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { observer } from '@formily/reactive-react'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@clearx/designable-core'
 export interface INodeTitleWidgetProps {
   node: TreeNode
 }
@@ -16,5 +16,5 @@ export const NodeTitleWidget: React.FC<INodeTitleWidgetProps> = observer(
     }
     const node = takeNode()
     return <Fragment>{node.getMessage('title') || node.componentName}</Fragment>
-  }
+  },
 )

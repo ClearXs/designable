@@ -4,7 +4,7 @@ import { usePrefix, useTreeNode, useSelected } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { TextWidget } from '../TextWidget'
 import cls from 'classnames'
-import './styles.less'
+import './styles.scss'
 import { Space, Typography } from '@douyinfe/semi-ui'
 
 export interface INodeActionsWidgetProps {
@@ -21,7 +21,9 @@ export interface INodeActionsWidgetActionProps
   icon?: React.ReactNode
 }
 
-export const NodeActionsWidget: React.FC<INodeActionsWidgetProps> & {
+export const NodeActionsWidget: React.FC<
+  React.PropsWithChildren<INodeActionsWidgetProps>
+> & {
   Action?: React.FC<INodeActionsWidgetActionProps>
 } = observer((props) => {
   const node = useTreeNode()

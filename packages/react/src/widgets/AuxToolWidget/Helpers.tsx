@@ -1,5 +1,5 @@
 import React, { useRef, useState, useLayoutEffect } from 'react'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@clearx/designable-core'
 import { reaction } from '@formily/reactive'
 import { usePrefix, useViewport } from '../../hooks'
 import { Selector } from './Selector'
@@ -27,7 +27,7 @@ export const Helpers: React.FC<IHelpersProps> = ({ node, nodeRect }) => {
   const prefix = usePrefix('aux-helpers')
   const viewport = useViewport()
   const unmountRef = useRef(false)
-  const ref = useRef<HTMLDivElement>()
+  const ref = useRef<HTMLDivElement | undefined>(undefined)
   const [position, setPosition] = useState('top-right')
 
   useLayoutEffect(() => {
@@ -72,7 +72,7 @@ export const Helpers: React.FC<IHelpersProps> = ({ node, nodeRect }) => {
       setPosition(
         getYInViewport(nodeRect, helpersRect) +
           '-' +
-          getXInViewport(nodeRect, helpersRect)
+          getXInViewport(nodeRect, helpersRect),
       )
     }
 
@@ -90,7 +90,7 @@ export const Helpers: React.FC<IHelpersProps> = ({ node, nodeRect }) => {
       () => {
         clearTimeout(request)
         request = setTimeout(update, HELPER_DEBOUNCE_TIMEOUT)
-      }
+      },
     )
   }, [viewport, nodeRect])
 

@@ -1,4 +1,4 @@
-import { isArr, uid } from '@designable/shared'
+import { isArr, uid } from '@clearx/designable-shared'
 import { define, observable } from '@formily/reactive'
 import { Engine } from './Engine'
 import { TreeNode } from './TreeNode'
@@ -117,7 +117,7 @@ export class BusinessObject {
         treeNodeRoot &&
         GlobalBOTransferRegistry.getHandler(treeNodeRoot)?.transform(
           treeNodeRoot,
-          undefined
+          undefined,
         )
       if (root) {
         this.root = root
@@ -144,7 +144,7 @@ export class BusinessObject {
         target.id = source.id
       }
       const node = GlobalBOTransferRegistry.getHandler(
-        source as TreeNode
+        source as TreeNode,
       )?.transform(target, this.root)
       if (node?.isRoot() && this.root) {
         this.root.treeNode = node.treeNode
@@ -223,7 +223,7 @@ export class BusinessObject {
   private static toBoNode(
     attrSchema: BoAttrSchema,
     parent?: BoNode,
-    map?: (boNode: BoNode) => BoNode
+    map?: (boNode: BoNode) => BoNode,
   ): BoNode {
     const boNode = new BoNode()
     boNode.id = attrSchema.id
@@ -240,7 +240,7 @@ export class BusinessObject {
     boNode.lifecycle = 'persistent'
     boNode.defaulted = attrSchema.defaulted
     boNode.children = attrSchema.children?.map((attr) =>
-      BusinessObject.toBoNode(attr, boNode, map)
+      BusinessObject.toBoNode(attr, boNode, map),
     )
     return map?.(boNode) || boNode
   }
@@ -439,7 +439,7 @@ export type FieldProps = {
   transform: (
     node: TreeNode,
     boRoot?: BoNode,
-    defaultProps?: Partial<BoNode>
+    defaultProps?: Partial<BoNode>,
   ) => BoNode
   /**
    * 以Bo root寻找，不断递归treeNode的paren

@@ -1,4 +1,4 @@
-import { DataSetSetter } from '@designable/formily-setters'
+import { DataSetSetter } from '@clearx/designable-formily-setters'
 import { ISchema } from '@formily/react'
 
 export const TreeSelect: ISchema = {

@@ -33,45 +33,45 @@ export interface IEventDriver {
   addEventListener<K extends keyof HTMLElementEventMap>(
     type: K,
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   addEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   addEventListener(type: any, listener: any, options: any): void
   removeEventListener<K extends keyof HTMLElementEventMap>(
     type: K,
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   removeEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   removeEventListener(type: any, listener: any, options?: any): void
   batchAddEventListener<K extends keyof HTMLElementEventMap>(
     type: K,
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   batchAddEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   batchAddEventListener(type: any, listener: any, options?: any): void
   batchRemoveEventListener<K extends keyof HTMLElementEventMap>(
     type: K,
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   batchRemoveEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   batchRemoveEventListener(type: any, listener: any, options: any): void
 }
@@ -126,14 +126,14 @@ export class EventDriver<Engine extends Event = Event, Context = any>
 
   subscribeTo<T extends CustomEventClass>(
     type: T,
-    subscriber: ISubscriber<InstanceType<T>>
+    subscriber: ISubscriber<InstanceType<T>>,
   ) {
     return this.engine.subscribeTo(type, subscriber)
   }
 
   subscribeWith<T extends ICustomEvent = ICustomEvent>(
     type: string | string[],
-    subscriber: ISubscriber<T>
+    subscriber: ISubscriber<T>,
   ) {
     return this.engine.subscribeWith(type, subscriber)
   }
@@ -158,12 +158,12 @@ export class EventDriver<Engine extends Event = Event, Context = any>
   addEventListener<K extends keyof HTMLElementEventMap>(
     type: K,
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   addEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   addEventListener(type: any, listener: any, options: any) {
     const target = this.eventTarget(type)
@@ -180,7 +180,7 @@ export class EventDriver<Engine extends Event = Event, Context = any>
               container.removeEventListener(
                 type,
                 container[EVENTS_ONCE_SYMBOL][type],
-                options
+                options,
               )
               delete container[EVENTS_ONCE_SYMBOL][type]
             }
@@ -205,12 +205,12 @@ export class EventDriver<Engine extends Event = Event, Context = any>
   removeEventListener<K extends keyof HTMLElementEventMap>(
     type: K,
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   removeEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   removeEventListener(type: any, listener: any, options?: any) {
     const target = this.eventTarget(type)
@@ -232,12 +232,12 @@ export class EventDriver<Engine extends Event = Event, Context = any>
   batchAddEventListener<K extends keyof HTMLElementEventMap>(
     type: K,
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   batchAddEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   batchAddEventListener(type: any, listener: any, options?: any) {
     this.engine[DRIVER_INSTANCES_SYMBOL] =
@@ -258,12 +258,12 @@ export class EventDriver<Engine extends Event = Event, Context = any>
   batchRemoveEventListener<K extends keyof HTMLElementEventMap>(
     type: K,
     listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   batchRemoveEventListener(
     type: string,
     listener: EventListenerOrEventListenerObject,
-    options?: boolean | EventOptions
+    options?: boolean | EventOptions,
   ): void
   batchRemoveEventListener(type: any, listener: any, options: any) {
     this.engine[DRIVER_INSTANCES_SYMBOL] =
@@ -296,7 +296,7 @@ export class Event extends Subscribable<ICustomEvent<any>> {
 
   subscribeTo<T extends CustomEventClass>(
     type: T,
-    subscriber: ISubscriber<InstanceType<T>>
+    subscriber: ISubscriber<InstanceType<T>>,
   ) {
     return this.subscribe((event) => {
       if (type && event instanceof type) {
@@ -307,7 +307,7 @@ export class Event extends Subscribable<ICustomEvent<any>> {
 
   subscribeWith<T extends ICustomEvent = ICustomEvent>(
     type: string | string[],
-    subscriber: ISubscriber<T>
+    subscriber: ISubscriber<T>,
   ) {
     return this.subscribe((event) => {
       if (isArr(type)) {
@@ -325,7 +325,7 @@ export class Event extends Subscribable<ICustomEvent<any>> {
   attachEvents(
     container: EventContainer,
     contentWindow: Window = globalThisPolyfill,
-    context?: any
+    context?: any,
   ) {
     if (!container) return
     if (isWindow(container)) {
@@ -368,7 +368,7 @@ export class Event extends Subscribable<ICustomEvent<any>> {
         }
         return drivers.concat(driver)
       },
-      []
+      [],
     )
     this.containers = this.containers.filter((item) => item !== container)
     delete container[ATTACHED_SYMBOL]

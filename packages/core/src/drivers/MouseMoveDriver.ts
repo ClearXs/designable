@@ -1,4 +1,4 @@
-import { EventDriver } from '@designable/shared'
+import { EventDriver } from '@clearx/designable-shared'
 import { Engine } from '../models/Engine'
 import { MouseMoveEvent } from '../events'
 export class MouseMoveDriver extends EventDriver<Engine> {
@@ -15,7 +15,7 @@ export class MouseMoveDriver extends EventDriver<Engine> {
           pageY: e.pageY,
           target: e.target,
           view: e.view,
-        })
+        }),
       )
     })
   }

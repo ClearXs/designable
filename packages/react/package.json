@@ -1,23 +1,27 @@
 {
-  "name": "@designable/react",
-  "version": "0.0.1-beta.27",
+  "name": "@clearx/designable-react",
+  "version": "1.0.8",
   "license": "MIT",
-  "main": "lib",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "typings": "lib/esm/index.d.ts",
   "types": "lib/index.d.ts",
   "engines": {
     "npm": ">=3.0.0"
   },
-  "module": "esm",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ClearXs/designable.git"
   },
+  "files": [
+    "lib/*"
+  ],
   "bugs": {
     "url": "https://github.com/ClearXs/designable/issues"
   },
   "homepage": "https://github.com/ClearXs/designable#readme",
   "scripts": {
-    "build": "rimraf -rf lib esm dist && npm run build:cjs && npm run build:esm && npm run build:umd && ts-node copy",
+    "build": "rollup --config rollup.config.mjs",
     "build:cjs": "tsc --project tsconfig.build.json",
     "build:esm": "tsc --project tsconfig.build.json --module es2015 --outDir esm",
     "build:umd": "rollup --config"
@@ -27,14 +31,18 @@
     "@formily/reactive-react": "^2.3.2"
   },
   "peerDependencies": {
-    "@douyinfe/semi-ui": "^2.64.0",
+    "@douyinfe/semi-ui": "^2.72.0",
     "@formily/reactive": "^2.3.2",
     "@formily/reactive-react": "^2.3.2",
-    "react": "16.x || 17.x"
+    "@types/react": "18.x",
+    "@types/react-dom": "18.x",
+    "react": "18.x",
+    "react-dom": "18.x",
+    "react-is": "18.x"
   },
   "dependencies": {
-    "@designable/core": "0.0.1-beta.27",
-    "@designable/shared": "0.0.1-beta.27",
+    "@clearx/designable-core": "workspace:^",
+    "@clearx/designable-shared": "workspace:^",
     "dateformat": "^4.5.1"
   }
 }

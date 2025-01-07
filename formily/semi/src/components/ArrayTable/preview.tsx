@@ -6,15 +6,15 @@ import {
   TreeNode,
   createBehavior,
   createResource,
-} from '@designable/core'
+} from '@clearx/designable-core'
 import {
   useTreeNode,
   TreeNodeWidget,
   DroppableWidget,
   useNodeIdProps,
   DnFC,
-} from '@designable/react'
-import { ArrayBase } from '@formily/semi'
+} from '@clearx/designable-react'
+import { ArrayBase } from '@clearx/formily-semi'
 import { observer } from '@formily/react'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import cls from 'classnames'
@@ -26,7 +26,7 @@ import {
 } from '../../shared'
 import { useDropTemplate } from '../../hooks'
 import { createArrayBehavior } from '../ArrayBase'
-import './styles.less'
+import './styles.scss'
 import { createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'

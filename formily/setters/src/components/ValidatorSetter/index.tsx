@@ -7,9 +7,9 @@ import {
   Schema,
   ISchema,
 } from '@formily/react'
-import { GlobalRegistry } from '@designable/core'
-import { ArrayItems } from '@formily/semi'
-import { FoldItem } from '@designable/react-settings-form'
+import { GlobalRegistry } from '@clearx/designable-core'
+import { ArrayItems } from '@clearx/formily-semi'
+import { FoldItem } from '@clearx/designable-react-settings-form'
 import { Select } from '@douyinfe/semi-ui'
 
 export interface IValidatorSetterProps {
@@ -154,10 +154,10 @@ export const ValidatorSetter: React.FC<IValidatorSetterProps> = observer(
             onChange={props.onChange}
             showClear
             placeholder={GlobalRegistry.getDesignerMessage(
-              'SettingComponents.ValidatorSetter.pleaseSelect'
+              'SettingComponents.ValidatorSetter.pleaseSelect',
             )}
             optionList={GlobalRegistry.getDesignerMessage(
-              'SettingComponents.ValidatorSetter.formats'
+              'SettingComponents.ValidatorSetter.formats',
             )}
           />
         </FoldItem.Base>
@@ -168,5 +168,5 @@ export const ValidatorSetter: React.FC<IValidatorSetterProps> = observer(
         </FoldItem.Extra>
       </FoldItem>
     )
-  }
+  },
 )

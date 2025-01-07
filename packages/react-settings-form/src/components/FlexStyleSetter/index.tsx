@@ -1,10 +1,10 @@
 import React from 'react'
 import { Field, useField, observer } from '@formily/react'
-import { Radio } from '@formily/semi'
-import { usePrefix, IconWidget } from '@designable/react'
+import { Radio } from '@clearx/formily-semi'
+import { usePrefix, IconWidget } from '@clearx/designable-react'
 import { InputItems } from '../InputItems'
 import cls from 'classnames'
-import './styles.less'
+import './styles.scss'
 export interface IFlexStyleSetterProps {
   className?: string
   style?: React.CSSProperties
@@ -161,5 +161,5 @@ export const FlexStyleSetter: React.FC<IFlexStyleSetterProps> = observer(
         </InputItems>
       </div>
     )
-  }
+  },
 )

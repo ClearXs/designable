@@ -1,6 +1,6 @@
 import React from 'react'
 import { useMoveHelper, usePrefix } from '../../hooks'
-import { ClosestPosition } from '@designable/core'
+import { ClosestPosition } from '@clearx/designable-core'
 import { observer } from '@formily/reactive-react'
 
 export interface IInsertionProps {
@@ -57,7 +57,7 @@ export const Insertion: React.FC<IInsertionProps> = observer(
     if (!moveHelper?.closestNode) return null
 
     return <div className={prefix} style={createInsertionStyle()}></div>
-  }
+  },
 )
 
 Insertion.displayName = 'Insertion'

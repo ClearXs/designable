@@ -1,10 +1,10 @@
 import React, { Fragment, useState, useLayoutEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { observer, useField } from '@formily/react'
-import { FormLayout } from '@formily/semi'
-import { IconWidget, usePrefix, useTreeNode } from '@designable/react'
+import { FormLayout } from '@clearx/formily-semi'
+import { IconWidget, usePrefix, useTreeNode } from '@clearx/designable-react'
 import cls from 'classnames'
-import './styles.less'
+import './styles.scss'
 import { ButtonProps } from '@douyinfe/semi-ui/lib/es/button'
 import { Button } from '@douyinfe/semi-ui'
 
@@ -55,7 +55,7 @@ export const DrawerSetter: React.FC<IDrawerSetterProps> = observer((props) => {
             </FormLayout>
           </div>
         </div>,
-        root
+        root,
       )
     }
     return null

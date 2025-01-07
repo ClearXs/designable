@@ -1,4 +1,4 @@
-import { EventDriver, globalThisPolyfill } from '@designable/shared'
+import { EventDriver, globalThisPolyfill } from '@clearx/designable-shared'
 import { Engine } from '../models/Engine'
 import { ViewportScrollEvent } from '../events'
 
@@ -18,7 +18,7 @@ export class ViewportScrollDriver extends EventDriver<Engine> {
           innerWidth: this.contentWindow.innerWidth,
           view: this.contentWindow,
           target: e.target,
-        })
+        }),
       )
       cancelAnimationFrame(this.request)
     })
